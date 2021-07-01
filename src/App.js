@@ -4,9 +4,9 @@ import Login from './components/Login.js';
 function App() {
   return (
     <div className="app">
-      <header className="app-header">
+      {/* <header className="app-header">
         Brenna's Phase 5 Project App
-      </header>
+      </header> */}
       <Login />
     </div>
   );
