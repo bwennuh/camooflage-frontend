@@ -16,7 +16,7 @@ const usersURL = baseURL + 'users'
 export default class Login extends Component {
 
   state = {
-    display: "",
+    display: "login",
     username: "",
     password: "",
     loggedInUser: {}
@@ -43,6 +43,7 @@ export default class Login extends Component {
             this.setState({
               loggedInUser: foundUser
             })
+            this.changeToHome()
 
           } else {
             alert("Password does not match")
@@ -92,7 +93,9 @@ export default class Login extends Component {
   render(){
     return(
       <div className="login-page">
+      {this.state.display === "login" ?
         <div className="login-header">
+
           <h1>CAMOOFLAGE LOGIN PAGE</h1>
           <h2>Login Form</h2>
           <form onSubmit={(event) => this.loginFormSubmitHandler(event)}>
@@ -102,10 +105,21 @@ export default class Login extends Component {
             <input onChange={(event) => this.getPassword(event)} placeholder="password"></input><br></br>
             <button type="submit">Log In</button>
           </form>
-          {/* {this.state.display === "home" ? console.log("Switch to home!") : console.log("Did not switch to home...")} */}
-          {/* {this.state.display === "home" ? <Home /> : null}
-          {this.state.display === "sign-up" ? <SignUp /> : null} */}
+
+          <button>Sign Up!</button>
         </div>
+        : null }
+
+        <div className="change-to-home">
+          { this.state.display === "home" ? 
+          <Home user={this.state?.loggedInUser}/>
+          : null }
+        </div>
+
+        <div className="change-to-signup">
+          {this.state.display === "sign-up" ? <SignUp /> : null}
+        </div>
+
       </div>
     )
   }
