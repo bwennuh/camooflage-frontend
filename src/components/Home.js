@@ -8,11 +8,26 @@ export default class Home extends Component {
   }
 
   render(){
+
+    let {address, avatar, bio, email, first_name, last_name, phone_number, username, password, id} = this.state?.user
+
+
     return(
       <div className="home-page">
         <Navbar />
         <div>
           <h1>HOME PAGE</h1>
+          <ul>
+            <li>{first_name + ' ' + last_name}</li>
+            <li>{bio}</li>
+            <li>{email}</li>
+            <li>{address}</li>
+            <li>{phone_number}</li>
+            <li>Username: {username}</li>
+            <li>Password: {password}</li>
+            <li>User Id: {id}</li>
+            <img src={avatar}></img>
+          </ul>
         </div>
       </div>
     )

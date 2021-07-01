@@ -90,6 +90,12 @@ export default class Login extends Component {
     })
   }
 
+  changeToLogin = () => {
+    this.setState({
+      display: "login"
+    })
+  }
+
   render(){
     return(
       <div className="login-page">
@@ -106,7 +112,7 @@ export default class Login extends Component {
             <button type="submit">Log In</button>
           </form>
 
-          <button>Sign Up!</button>
+          <button onClick={() => this.changeToSignUp()}>Sign Up!</button>
         </div>
         : null }
 
@@ -117,7 +123,7 @@ export default class Login extends Component {
         </div>
 
         <div className="change-to-signup">
-          {this.state.display === "sign-up" ? <SignUp /> : null}
+          {this.state.display === "sign-up" ? <SignUp changeToLogin={this.changeToLogin}/> : null}
         </div>
 
       </div>
