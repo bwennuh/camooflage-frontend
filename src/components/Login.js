@@ -106,9 +106,9 @@ export default class Login extends Component {
           <h2>Login Form</h2>
           <form onSubmit={(event) => this.loginFormSubmitHandler(event)}>
             <label>Username:</label><br></br>
-            <input onChange={(event) => this.getUsername(event)} placeholder="username"></input><br></br>
+            <input type="text" onChange={(event) => this.getUsername(event)} placeholder="username" required></input><br></br>
             <label>Password:</label><br></br>
-            <input onChange={(event) => this.getPassword(event)} placeholder="password"></input><br></br>
+            <input type="password" onChange={(event) => this.getPassword(event)} placeholder="password" required></input><br></br>
             <button type="submit">Log In</button>
           </form>
 
