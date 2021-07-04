@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from './Navbar.js';
 
 const baseURL = 'http://localhost:3001/'
 const usersURL = baseURL + 'users'
@@ -13,9 +12,10 @@ export default class SignUp extends Component {
     firstName: "",
     lastName: "",
     email: "",
-    address: "",
-    bio: "",
-    avatar: "",
+    // phoneNumber: "",
+    // address: "",
+    // bio: "",
+    // avatar: "",
     display: "sign-up"
   }
 
@@ -34,6 +34,24 @@ export default class SignUp extends Component {
   confirmPassword = (event) => {
     this.setState({
       reconfirmPassword: event.target.value
+    })
+  }
+
+  getFirstName = (event) => {
+    this.setState({
+      firstName: event.target.value
+    })
+  }
+
+  getLastName = (event) => {
+    this.setState({
+      lastName: event.target.value
+    })
+  }
+
+  getEmail = (event) => {
+    this.setState({
+      email: event.target.value
     })
   }
 
@@ -58,7 +76,6 @@ export default class SignUp extends Component {
     .then(users => {
       let takenUsername = users.filter(user => user.username === username)
       let usernameError = document.getElementById("enter-username-error")
-
 
       if (takenUsername.length > 0){
         usernameError.innerText = "Username already taken."
@@ -85,18 +102,60 @@ export default class SignUp extends Component {
 
   submitUserInfoHandler = (event) => {
     event.preventDefault()
-    console.log("Testing submit user info handler")
+    this.createNewUser()
   }
 
-  renderContinueButton = () => {
+  renderContinueButton = (event) => {
+    let buttonId = event.target.id
+    let clickedSubmitButton = document.getElementById(buttonId)
+
+    clickedSubmitButton.style.display = "none"
+
     let continueButton = document.getElementById("continue-button")
-    continueButton.style.display = "block"
+
+    let loginContinueButton = document.getElementById("login-continue-button")
+
+    if (continueButton){
+      continueButton.style.display = "block"
+    } else if (loginContinueButton){
+      loginContinueButton.style.display = "block"
+    }
+  }
+
+  createNewUser = () => {
+    const newUser = {
+      first_name: this.state.firstName, 
+      last_name: this.state.lastName, 
+      email: this.state.email, 
+      phone_number: "", 
+      address: "", 
+      username: this.state.username, 
+      password: this.state.password, 
+      bio: "", 
+      avatar: ""
+    }
+
+    const reqObj = {}
+
+    reqObj.headers = {"Content-Type": "application/json"}
+    reqObj.method = "POST"
+    reqObj.body = JSON.stringify(newUser)
+
+    fetch(usersURL, reqObj)
+    .then(resp => resp.json())
+    .then(newUser => this.setState({
+        ...this.state,
+        username: "", 
+        password: "",
+        first_name: "", 
+        last_name: "", 
+        email: ""
+      }))
   }
 
   render(){
     return(
       <div className="signup-page">
-        <Navbar />
         <div>
           <h1>SIGN-UP PAGE</h1>
 
@@ -115,7 +174,7 @@ export default class SignUp extends Component {
               <input id="reconfirm-password-input" type="password" onChange={(event) => this.confirmPassword(event)} placeholder="re-enter password" required></input><br></br>
               <p id="re-enter-password-error" className="form-errors"></p>
 
-              <button id="submit-username-password-button" type="submit" onClick={() => this.renderContinueButton()}>Submit</button>
+              <button id="submit-username-password-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button>
 
             </form>
 
@@ -127,19 +186,19 @@ export default class SignUp extends Component {
           <div className="user-info-form">
             <form onSubmit={(event) => this.submitUserInfoHandler(event)}>
               <label>First name:</label><br></br>
-              <input type="text" placeholder="first name" required></input><br></br>
+              <input id="first-name-input" type="text" onChange={(event) => this.getFirstName(event)} placeholder="first name" required></input><br></br>
 
               <label>Last name:</label><br></br>
-              <input type="text" placeholder="last name"></input><br></br>
+              <input id="last-name-input" type="text" onChange={(event) => this.getLastName(event)} placeholder="last name"></input><br></br>
 
               <label>Email:</label><br></br>
-              <input type="email" placeholder="example@example.com" required></input><br></br>
+              <input id="email-input" type="email" onChange={(event) => this.getEmail(event)} placeholder="example@example.com" required></input><br></br>
 
-              <button type="submit">Submit</button>
+              <button id="submit-personal-info-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button>
 
             </form>
 
-            <button onClick={() => this.props.changeToLogin()}>Continue to log in page:</button>
+            <button style={{display: "none"}} id="login-continue-button" onClick={() => this.props.changeToLogin()}>Continue to log in page:</button>
 
           </div>
           : null }

@@ -14,7 +14,7 @@ export default class Home extends Component {
 
     return(
       <div className="home-page">
-        <Navbar />
+        <Navbar user={this.props.user}/>
         <div>
           <h1>HOME PAGE</h1>
           <ul>
@@ -26,8 +26,17 @@ export default class Home extends Component {
             <li>Username: {username}</li>
             <li>Password: {password}</li>
             <li>User Id: {id}</li>
-            <img src={avatar}></img>
+            <img src={avatar} alt="avatar"></img>
           </ul>
+
+          <div className="boards-page">
+
+          </div>
+
+          <div className="profile-page">
+
+          </div>
+
         </div>
       </div>
     )
