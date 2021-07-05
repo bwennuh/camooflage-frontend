@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.logo {
+/* .logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -20,7 +20,7 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .app-header {
   background-color: #282c34;
@@ -38,10 +38,50 @@
   border: #000000 solid 5px;
   padding: 5px;
   width: 500px;
-  height: 500px;
+  height: auto;
   display: inline-grid;
   margin: 25px;
   box-shadow: 10px 10px #df7ac0, -10px -10px #000000;
   background-color: white;
 }
 
+.dropdown-button {
+  background-color: #df7ac0;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-options {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-options p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-options :hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-options {
+  display: block;
+}
+
+.dropdown:hover .dropdown-button {
+  background-color: #d8a0c7;;
+}

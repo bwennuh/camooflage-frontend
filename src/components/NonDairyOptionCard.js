@@ -20,6 +20,15 @@ export default class NonDairyOptionCard extends Component {
             <li><img src={image}></img></li>
           </ul>
 
+        <div class="dropdown">
+          <button class="dropdown-button">Add to board</button>
+          <div class="dropdown-options">
+            <p>Board 1</p>
+            <p>Board 2</p>
+            <p>Board 3</p>
+          </div>
+        </div>
+
         </div>
       </div>
     )
