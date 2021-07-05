@@ -51,6 +51,7 @@
   padding: 16px;
   font-size: 16px;
   border: none;
+  cursor: pointer;
 }
 
 .dropdown {
@@ -74,7 +75,11 @@
   display: block;
 }
 
-.dropdown-options :hover {
+/* .dropdown-options :hover {
+  background-color: #ddd;
+} */
+
+.dropdown-options p:hover {
   background-color: #ddd;
 }
 
@@ -84,4 +89,12 @@
 
 .dropdown:hover .dropdown-button {
   background-color: #d8a0c7;;
+}
+
+.dropdown-button:hover, .dropdown-button:focus {
+  background-color: #790757;
+}
+
+.show {
+  display: block;
 }
