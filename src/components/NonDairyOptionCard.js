@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 export default class NonDairyOptionCard extends Component {
 
+  state = {
+    board: 0
+  }
+
   render(){
 
     let {id, name, allergens, description, image, brandID, categoryID} = this.props
@@ -20,12 +24,10 @@ export default class NonDairyOptionCard extends Component {
             <li><img src={image}></img></li>
           </ul>
 
-        <div class="dropdown">
-          <button class="dropdown-button">Add to board</button>
-          <div class="dropdown-options">
-            <p>Board 1</p>
-            <p>Board 2</p>
-            <p>Board 3</p>
+        <div className="dropdown">
+          <button className="dropdown-button">Add to board</button>
+          <div className="dropdown-options">
+            {this.props.boards.map(board => <p>Board: {board.name}</p>)}
           </div>
         </div>
 

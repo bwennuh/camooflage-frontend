@@ -41,7 +41,8 @@ export default class NonDairyOptionCardContainer extends Component {
           allergens={nonDairyOption.allergens} 
           image={nonDairyOption.image}
           brandID={nonDairyOption.brand_id} 
-          categoryID={nonDairyOption.category_id} />)}
+          categoryID={nonDairyOption.category_id}
+          boards={this.props.boards} />)}
 
         </div>
       </div>
