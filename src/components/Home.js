@@ -4,9 +4,9 @@ import NonDairyOptionCardContainer from './NonDairyOptionCardContainer.js'
 
 const baseURL = 'http://localhost:3001/'
 // const usersURL = baseURL + 'users'
-// const boardsURL = baseURL + 'boards'
+const boardsURL = baseURL + 'boards'
 // const recipesURL = baseURL + 'recipes'
-const nonDairyOptionsURL = baseURL + 'non_dairy_options'
+// const nonDairyOptionsURL = baseURL + 'non_dairy_options'
 // const boardPinsURL = baseURL + 'board_pins'
 // const recipePinsURL = baseURL + 'recipe_pins'
 // const categoriesURL = baseURL + 'categories'
@@ -17,22 +17,34 @@ export default class Home extends Component {
   state = {
     user: this.props.user,
     searchText: "",
-    display: "home"
+    display: "home",
+    boards: []
     // nonDairyOptions: []
   }
 
-  // componentDidMount = () => {
-  //   this.fetchNonDairyOptions()
-  // }
+  componentDidMount = () => {
+    this.fetchUserBoards()
+  }
 
-  // fetchNonDairyOptions = () => {
-  //   fetch(nonDairyOptionsURL)
-  //   .then(resp => resp.json())
-  //   .then(nonDairyOptions => this.setState({
-  //     ...this.state,
-  //     nonDairyOptions: nonDairyOptions
-  //   }))
-  // }
+  findUserBoards = (boards) => {
+    let user = this.state.user
+    let userID = user.id
+    let filteredBoards = boards.filter(board => board.user_id === userID)
+    return filteredBoards
+  }
+
+  fetchUserBoards = () => {
+    fetch(boardsURL)
+    .then(resp => resp.json())
+    .then(boards => {
+      let filteredBoards = this.findUserBoards(boards)
+      
+      this.setState({
+        ...this.state,
+        boards: filteredBoards
+      })
+    })
+  }
 
   handleSearchText = (text) => {
     this.setState({
@@ -63,7 +75,7 @@ export default class Home extends Component {
           </ul>
 
           <div className="boards-page">
-            <NonDairyOptionCardContainer searchText={this.state.searchText}/>
+            <NonDairyOptionCardContainer searchText={this.state.searchText} boards={this.state.boards}/>
           </div>
 
           <div className="profile-page">
