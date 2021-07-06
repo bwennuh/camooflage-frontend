@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import NonDairyOptionCard from './NonDairyOptionCard.js';
 
 export default class BoardCard extends Component {
+
+  state = {
+    boardPins: [],
+    nonDairyOptions: []
+  }
 
   render(){
 
@@ -8,13 +14,14 @@ export default class BoardCard extends Component {
 
     return(
       <div className="board-card">
-        <div>
+        <div className="board-card-info">
           <h1>BOARD CARD</h1>
-          <ul>
-            <li>ID # {id}</li>
-            <li>{name}</li>
-            <li>{description}</li>
-          </ul>
+            <p>ID # {id}</p>
+            <p>{name}</p>
+            <p>{description}</p>
+        </div>
+        <div className="board-non-dairy-options">
+
         </div>
       </div>
     )
