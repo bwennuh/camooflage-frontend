@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar.js';
 import NonDairyOptionCardContainer from './NonDairyOptionCardContainer.js'
+import BoardCardContainer from './BoardCardContainer.js'
 
 const baseURL = 'http://localhost:3001/'
 // const usersURL = baseURL + 'users'
@@ -74,8 +75,12 @@ export default class Home extends Component {
             <img src={avatar} alt="avatar"></img>
           </ul>
 
-          <div className="boards-page">
+          <div className="non-dairy-options-page">
             <NonDairyOptionCardContainer searchText={this.state.searchText} boards={this.state.boards}/>
+          </div>
+
+          <div className="boards-page">
+            <BoardCardContainer user={this.props.user} boards={this.state.boards}/>
           </div>
 
           <div className="profile-page">
