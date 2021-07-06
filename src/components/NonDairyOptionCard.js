@@ -7,7 +7,7 @@ const boardPinsURL = baseURL + 'board_pins'
 export default class NonDairyOptionCard extends Component {
 
   state = {
-    boardID: this.props.boards[0].id
+    boardID: this.props.boards[0]?.id
   }
 
   getBoardSelection = (event) => {
