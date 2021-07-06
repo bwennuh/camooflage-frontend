@@ -33,16 +33,29 @@ export default class BoardCard extends Component {
     let nonDairyOptionIDs = boardPins.map(boardPin => boardPin.non_dairy_option_id)
 
     if (nonDairyOptionIDs.length > 0){
-      console.log(nonDairyOptionIDs)
       let nonDairyOptions = nonDairyOptionIDs.map(id => {
         fetch(nonDairyOptionsURL + `/${id}`)
         .then(resp => resp.json())
         .then(nonDairyOption => this.setState({nonDairyOptions: [...this.state.nonDairyOptions, nonDairyOption]}))
       })
-    } else {
-      console.log("No options for board.")
     }
+  }
 
+  removeOptionFromBoard = (event) => {
+    console.log(`Non-dairy option id: ${event.target.value}`)
+    console.log(`Board id: ${this.props.id}`)
+
+    let deletedBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === this.props.id && boardPin.non_dairy_option_id === +event.target.value)
+
+    console.log(deletedBoardPin)
+
+    let updatedBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== deletedBoardPin.id)
+    console.log(updatedBoardPins)
+
+    fetch(boardPinsURL + `/${deletedBoardPin.id}`, {method: "DELETE"})
+    .then(() => this.setState({ 
+      boardPins: updatedBoardPins 
+    }))
   }
 
   render(){
@@ -60,10 +73,8 @@ export default class BoardCard extends Component {
         </div>
 
         <div className="board-non-dairy-options">
-          {/* { this.state.boardPins.length > 0 ? this.state.boardPins.map(boardPin => <NonDairyOptionCard id={boardPin.non_dairy_option_id}/>) : null } */}
 
           { this.state.nonDairyOptions.map(nonDairyOption => 
-            // console.log(nonDairyOption.name)
             <NonDairyOptionCard 
             key={nonDairyOption.id} 
             id={nonDairyOption.id} 
@@ -73,7 +84,9 @@ export default class BoardCard extends Component {
             image={nonDairyOption.image}
             brandID={nonDairyOption.brand_id} 
             categoryID={nonDairyOption.category_id}
-            boards={this.props.boards} />)}
+            boards={this.props.boards}
+            boardCard={true}
+            removeOptionFromBoard={this.removeOptionFromBoard} />)}
 
         </div>
 
