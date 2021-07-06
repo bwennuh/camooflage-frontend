@@ -11,32 +11,33 @@ export default class BoardCardContainer extends Component {
   }
 
   componentDidMount = () => {
-    this.fetchBoards()
+    this.fetchUserBoards()
   }
 
-  fetchBoards = () => {
+  fetchUserBoards = () => {
     fetch(boardsURL)
     .then(resp => resp.json())
-    .then(boards => this.setState({boards}))
-  }
-
-  getUserBoards = () => {
-    const userBoards = this.state.boards.filter(board => board.user_id === this.props.user.id)
-    return userBoards
+    .then(boards => {
+      const userBoards = boards.filter(board => board.user_id === this.props.user.id)
+      this.setState({
+        boards: userBoards
+      })
+    })
   }
 
   render(){
 
     return(
       <div className="board-card-conatiner">
-        <div>
+        <div className="board-cards">
           <h1>BOARD CARD CONTAINER</h1>
-          {this.getUserBoards().map(board => 
+          {this.state.boards.map(board => 
           <BoardCard 
           key={board.id} 
           id={board.id} 
           name={board.name} 
-          description={board.description} />)}
+          description={board.description}
+          boards={this.props.boards} />)}
         </div>
       </div>
     )
