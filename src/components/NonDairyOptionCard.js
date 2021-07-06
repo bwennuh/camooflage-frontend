@@ -8,7 +8,8 @@ export default class NonDairyOptionCard extends Component {
 
   state = {
     addToBoardID: this.props.boards[0]?.id,
-    removeFromBoardID: 0
+    removeFromBoardID: 0,
+    editable: false
   }
 
   getBoardSelection = (event) => {
@@ -35,6 +36,40 @@ export default class NonDairyOptionCard extends Component {
     .then(newBoardPin => this.setState({ addToBoardID: 0 }))
   }
 
+  editOption = () => {
+    this.setState({
+      editable: !this.state.editable
+    })
+  }
+
+  moveOptionToNewBoard = (event) => {
+    let boardID = +event.target.value
+    let nonDairyOptionID = this.props.id
+
+    let boardPin = fetch(boardPinsURL)
+    .then(resp => resp.json())
+    .then(boardPins => boardPin = boardPins.find(boardPin => boardPin.board_id === boardID && boardPin.non_dairy_option_id === nonDairyOptionID))
+
+    console.log(boardPin)
+
+    const updatedBoardPin = {
+      board_id: boardID, 
+      non_dairy_option_id: nonDairyOptionID
+    }
+
+    console.log(updatedBoardPin)
+
+    // const reqObj = {}
+
+    // reqObj.headers = {"Content-Type": "application/json"}
+    // reqObj.method = "PATCH"
+    // reqObj.body = JSON.stringify(updatedBoardPin)
+
+    // fetch(boardPinsURL + `/${boardPinID}`, reqObj)
+    // .then(resp => resp.json())
+    // .then(() => this.setState({ addToBoardID: 0 }))
+  }
+
   render(){
 
     let {id, name, allergens, description, image, brandID, categoryID, boards} = this.props
@@ -55,7 +90,20 @@ export default class NonDairyOptionCard extends Component {
 
           { this.props.boardCard ? 
             <div className="board-non-dairy-option-cards">
-              <button value={id} onClick={(event) => this.props.removeOptionFromBoard(event)}>Remove pin</button>
+              <button value={id} onClick={() => this.editOption()}>Edit option</button>
+              <button value={id} onClick={(event) => this.props.removeOptionFromBoard(event)}>Remove option</button>
+
+              { this.state.editable === true ? 
+                <div className="edit-option-on-board">
+                  <div className="main-feed-non-dairy-option-cards">
+                    <label htmlFor={`${name}-select-board`}>Move to board:</label><br></br>
+                    <select name="Boards" id={`${name}-select-board`} default="Select board:">
+                      {boards.map(board => <option value={board.name}>Board: {board.name}</option>)}
+                    </select><br></br>
+                    <button value={id} onClick={(event) => this.moveOptionToNewBoard(event)}>Move to board</button>
+                  </div>
+                </div> : null }
+
             </div> 
             :
             <div className="main-feed-non-dairy-option-cards">
