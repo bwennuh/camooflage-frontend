@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
+const baseURL = 'http://localhost:3001/'
+const nonDairyOptionsURL = baseURL + 'non_dairy_options'
+const boardPinsURL = baseURL + 'board_pins'
+
 export default class NonDairyOptionCard extends Component {
 
   state = {
-    boardID: 0
+    boardID: this.props.boards[0].id
   }
 
   getBoardSelection = (event) => {
@@ -17,6 +21,20 @@ export default class NonDairyOptionCard extends Component {
 
   addOptionToBoard = () => {
     console.log("Add option to board logic here ~")
+    const newBoardPin = {
+      board_id: this.state.boardID, 
+      non_dairy_option_id: this.props.id
+    }
+
+    const reqObj = {}
+
+    reqObj.headers = {"Content-Type": "application/json"}
+    reqObj.method = "POST"
+    reqObj.body = JSON.stringify(newBoardPin)
+
+    fetch(boardPinsURL, reqObj)
+    .then(resp => resp.json())
+    .then(newBoardPin => this.setState({ boardID: 0 }))
   }
 
   render(){
