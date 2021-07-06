@@ -21,7 +21,7 @@ export default class NonDairyOptionCardContainer extends Component {
   }
 
   filterNonDairyOptions = () => {
-    const filteredOptions = this.state.nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.includes(this.props.searchText))
+    const filteredOptions = this.state?.nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.includes(this.props.searchText))
     return filteredOptions
   }
 
