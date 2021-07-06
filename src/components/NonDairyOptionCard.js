@@ -7,22 +7,20 @@ const boardPinsURL = baseURL + 'board_pins'
 export default class NonDairyOptionCard extends Component {
 
   state = {
-    boardID: this.props.boards[0]?.id
+    addToBoardID: this.props.boards[0]?.id,
+    removeFromBoardID: 0
   }
 
   getBoardSelection = (event) => {
-    console.log(event.target.value)
     let selectedBoard = this.props.boards.filter(board => board.name === event.target.value)[0]
-    console.log(selectedBoard.id)
     this.setState({
-      boardID: selectedBoard.id
+      addToBoardID: selectedBoard.id
     })
   }
 
   addOptionToBoard = () => {
-    console.log("Add option to board logic here ~")
     const newBoardPin = {
-      board_id: this.state.boardID, 
+      board_id: this.state.addToBoardID, 
       non_dairy_option_id: this.props.id
     }
 
@@ -34,7 +32,7 @@ export default class NonDairyOptionCard extends Component {
 
     fetch(boardPinsURL, reqObj)
     .then(resp => resp.json())
-    .then(newBoardPin => this.setState({ boardID: 0 }))
+    .then(newBoardPin => this.setState({ addToBoardID: 0 }))
   }
 
   render(){
@@ -54,12 +52,19 @@ export default class NonDairyOptionCard extends Component {
             <p>{allergens}</p>
             <img src={image} alt="Non Dairy Option"></img>
           </div>
-        
-          <label htmlFor={`${name}-select-board`}>Add to board:</label><br></br>
-          <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} default="Select board:">
-            {boards.map(board => <option value={board.name}>Board: {board.name}</option>)}
-          </select><br></br>
-          <button onClick={() => this.addOptionToBoard()}>Add to board</button>
+
+          { this.props.boardCard ? 
+            <div className="board-non-dairy-option-cards">
+              <button value={id} onClick={(event) => this.props.removeOptionFromBoard(event)}>Remove pin</button>
+            </div> 
+            :
+            <div className="main-feed-non-dairy-option-cards">
+              <label htmlFor={`${name}-select-board`}>Add to board:</label><br></br>
+              <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} default="Select board:">
+                {boards.map(board => <option value={board.name}>Board: {board.name}</option>)}
+              </select><br></br>
+              <button onClick={() => this.addOptionToBoard()}>Add to board</button>
+            </div> }
 
         </div>
       </div>
