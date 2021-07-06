@@ -31,7 +31,7 @@ export default class NonDairyOptionCardContainer extends Component {
       <div className="non-dairy-card-conatiner">
         <div>
           <h1>NON-DAIRY OPTION CARD CONTAINER</h1>
-          {this.filterNonDairyOptions().map(nonDairyOption => 
+          {this.filterNonDairyOptions()?.map(nonDairyOption => 
           <NonDairyOptionCard 
           key={nonDairyOption.id} 
           id={nonDairyOption.id} 

@@ -82,15 +82,6 @@ export default class Home extends Component {
         <Navbar user={this.props.user} handleSearchText={this.handleSearchText} display={this.state.display} changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} changeToBoardsPage={this.changeToBoardsPage} changeToProfilePage={this.changeToProfilePage}/>
         <div>
           <h1>HOME PAGE</h1>
-            {/* <p>{first_name + ' ' + last_name}</p>
-            <p>{bio}</p>
-            <p>{email}</p>
-            <p>{address}</p>
-            <p>{phone_number}</p>
-            <p>Username: {username}</p>
-            <p>Password: {password}</p>
-            <p>User Id: {id}</p>
-            <img src={avatar} alt="avatar"></img> */}
 
           <div className="non-dairy-options-page">
             { this.state.display === "home" ? <NonDairyOptionCardContainer searchText={this.state.searchText} boards={this.state.boards}/> : null }
