@@ -9,7 +9,8 @@ export default class BoardCard extends Component {
 
   state = {
     boardPins: [],
-    nonDairyOptions: []
+    nonDairyOptions: [],
+    deleteBoard: false
   }
 
   componentDidMount = () => {
@@ -56,6 +57,12 @@ export default class BoardCard extends Component {
     }))
   }
 
+  toggleDeleteBoard = () => {
+    this.setState({
+      deleteBoard: !this.state.deleteBoard
+    })
+  }
+
   render(){
 
     let {id, name, description} = this.props
@@ -89,6 +96,19 @@ export default class BoardCard extends Component {
           <button onClick={() => this.props.changeToNonDairyOptionsPage()}>Add options</button>
 
         </div>
+        
+        <div className="delete-board">
+          { this.state.deleteBoard === false ? 
+          <button onClick={() => this.toggleDeleteBoard()}>Delete Board</button> 
+          : 
+          <div className="delete-board-options">
+            <label>Are you sure?</label><br></br>
+            <button value={id} onClick={(event) => this.props.deleteBoard(event)}>Yes</button>
+            <button onClick={() => this.toggleDeleteBoard()}>No</button>
+          </div>
+           }
+        </div>
+
 
       </div>
     )

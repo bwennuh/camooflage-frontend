@@ -78,6 +78,18 @@ export default class BoardCardContainer extends Component {
     return searchBoards
   }
 
+  deleteBoard = (event) => {
+    let boardID = +event.target.value
+
+    const updatedBoards = this.state.boards.filter(board => board.id !== boardID)
+
+    fetch(boardsURL + `/${boardID}`, {method: "DELETE"})
+    .then(() => this.setState({ 
+      ...this.state,
+      boards: updatedBoards
+    }))
+  }
+
   render(){
 
     return(
@@ -108,7 +120,8 @@ export default class BoardCardContainer extends Component {
             name={board.name} 
             description={board.description}
             boards={this.props.boards}
-            changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage} />)}
+            changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
+            deleteBoard={this.deleteBoard} />)}
         </div>
       </div>
     )
