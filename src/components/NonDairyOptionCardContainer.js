@@ -20,9 +20,9 @@ export default class NonDairyOptionCardContainer extends Component {
     .then(nonDairyOptions => this.setState({nonDairyOptions}))
   }
 
-  filterNonDairyOptions = () => {
-    const filteredOptions = this.state?.nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.includes(this.props.searchText))
-    return filteredOptions
+  searchNonDairyOptions = () => {
+    const searchOptions = this.state?.nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.includes(this.props.searchText))
+    return searchOptions
   }
 
   render(){
@@ -31,7 +31,7 @@ export default class NonDairyOptionCardContainer extends Component {
       <div className="non-dairy-card-conatiner">
         <div>
           <h1>NON-DAIRY OPTION CARD CONTAINER</h1>
-          {this.filterNonDairyOptions()?.map(nonDairyOption => 
+          {this.searchNonDairyOptions()?.map(nonDairyOption => 
           <NonDairyOptionCard 
           key={nonDairyOption.id} 
           id={nonDairyOption.id} 

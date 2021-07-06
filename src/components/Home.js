@@ -56,26 +56,26 @@ export default class Home extends Component {
 
   changeToNonDairyOptionsPage = () => {
     this.setState({
-      display: "home"
+      display: "home",
+      searchText: ""
     })
   }
 
   changeToBoardsPage = () => {
     this.setState({
-      display: "boards"
+      display: "boards",
+      searchText: ""
     })
   }
 
   changeToProfilePage = () => {
     this.setState({
-      display: "profile"
+      display: "profile",
+      searchText: ""
     })
   }
 
   render(){
-
-    // let {address, avatar, bio, email, first_name, last_name, phone_number, username, password, id} = this.state?.user
-
 
     return(
       <div className="home-page">
@@ -88,7 +88,8 @@ export default class Home extends Component {
           </div>
 
           <div className="boards-page">
-            { this.state.display === "boards" ? <BoardCardContainer user={this.props.user} boards={this.state.boards}/> : null }
+            { this.state.display === "boards" ? <BoardCardContainer user={this.props.user} boards={this.state.boards} 
+            searchText={this.state.searchText}changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage}/> : null }
           </div>
 
           <div className="profile-page">

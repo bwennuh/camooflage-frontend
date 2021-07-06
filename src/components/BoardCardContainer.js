@@ -73,6 +73,11 @@ export default class BoardCardContainer extends Component {
      }))
   }
 
+  searchBoards = () => {
+    const searchBoards = this.state?.boards.filter(board => board.name.includes(this.props.searchText))
+    return searchBoards
+  }
+
   render(){
 
     return(
@@ -95,13 +100,15 @@ export default class BoardCardContainer extends Component {
            : null }
 
 
-          {this.state.boards.map(board => 
-          <BoardCard 
-          key={board.id} 
-          id={board.id} 
-          name={board.name} 
-          description={board.description}
-          boards={this.props.boards} />)}
+          {/* {this.state.boards.map(board =>  */}
+          {this.searchBoards()?.map(board => 
+            <BoardCard 
+            key={board.id} 
+            id={board.id} 
+            name={board.name} 
+            description={board.description}
+            boards={this.props.boards}
+            changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage} />)}
         </div>
       </div>
     )
