@@ -51,7 +51,7 @@ export default class NonDairyOptionCard extends Component {
             <li>{name}</li>
             <li>{description}</li>
             <li>{allergens}</li>
-            <li><img src={image}></img></li>
+            <li><img src={image} alt="Non Dairy Option"></img></li>
           </ul>
 
         {/* <div className="dropdown">
@@ -60,9 +60,9 @@ export default class NonDairyOptionCard extends Component {
             {boards.map(board => <p>Board: {board.name}</p>)}
           </div>
         </div> */}
-
-        <select name="Boards" id="select-board" onChange={(event) => this.getBoardSelection(event)} default="Select board:">
-          <option disabled selected value>-- Select a board --</option>
+        
+        <label htmlFor={`${name}-select-board`}>Add to board:</label><br></br>
+        <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} default="Select board:">
           {boards.map(board => <option value={board.name}>Board: {board.name}</option>)}
         </select><br></br>
         <button onClick={() => this.addOptionToBoard()}>Add to board</button>

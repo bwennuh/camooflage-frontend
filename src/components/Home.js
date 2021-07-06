@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from './Navbar.js';
 import NonDairyOptionCardContainer from './NonDairyOptionCardContainer.js'
 import BoardCardContainer from './BoardCardContainer.js'
+import ProfilePage from './ProfilePage.js';
 
 const baseURL = 'http://localhost:3001/'
 // const usersURL = baseURL + 'users'
@@ -53,37 +54,54 @@ export default class Home extends Component {
     })
   }
 
+  changeToNonDairyOptionsPage = () => {
+    this.setState({
+      display: "home"
+    })
+  }
+
+  changeToBoardsPage = () => {
+    this.setState({
+      display: "boards"
+    })
+  }
+
+  changeToProfilePage = () => {
+    this.setState({
+      display: "profile"
+    })
+  }
+
   render(){
 
-    let {address, avatar, bio, email, first_name, last_name, phone_number, username, password, id} = this.state?.user
+    // let {address, avatar, bio, email, first_name, last_name, phone_number, username, password, id} = this.state?.user
 
 
     return(
       <div className="home-page">
-        <Navbar user={this.props.user} handleSearchText={this.handleSearchText} display={this.state.display}/>
+        <Navbar user={this.props.user} handleSearchText={this.handleSearchText} display={this.state.display} changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} changeToBoardsPage={this.changeToBoardsPage} changeToProfilePage={this.changeToProfilePage}/>
         <div>
           <h1>HOME PAGE</h1>
-          <ul>
-            <li>{first_name + ' ' + last_name}</li>
-            <li>{bio}</li>
-            <li>{email}</li>
-            <li>{address}</li>
-            <li>{phone_number}</li>
-            <li>Username: {username}</li>
-            <li>Password: {password}</li>
-            <li>User Id: {id}</li>
-            <img src={avatar} alt="avatar"></img>
-          </ul>
+            {/* <p>{first_name + ' ' + last_name}</p>
+            <p>{bio}</p>
+            <p>{email}</p>
+            <p>{address}</p>
+            <p>{phone_number}</p>
+            <p>Username: {username}</p>
+            <p>Password: {password}</p>
+            <p>User Id: {id}</p>
+            <img src={avatar} alt="avatar"></img> */}
 
           <div className="non-dairy-options-page">
-            <NonDairyOptionCardContainer searchText={this.state.searchText} boards={this.state.boards}/>
+            { this.state.display === "home" ? <NonDairyOptionCardContainer searchText={this.state.searchText} boards={this.state.boards}/> : null }
           </div>
 
           <div className="boards-page">
-            <BoardCardContainer user={this.props.user} boards={this.state.boards}/>
+            { this.state.display === "boards" ? <BoardCardContainer user={this.props.user} boards={this.state.boards}/> : null }
           </div>
 
           <div className="profile-page">
+            { this.state.display === "profile" ? <ProfilePage userID={this.state.user.id}/> : null }
 
           </div>
 

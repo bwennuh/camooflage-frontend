@@ -167,11 +167,11 @@ export default class SignUp extends Component {
               <p id="enter-username-error" className="form-errors"></p>
 
               <label>Choose a password:</label><br></br>
-              <input id="password-input" type="password" onChange={(event) => this.getPassword(event)} placeholder="password" required></input><br></br>
+              <input id="password-input" type="password" onChange={(event) => this.getPassword(event)} placeholder="password" autoComplete="on" required></input><br></br>
               <p id="enter-password-error" className="form-errors"></p>
 
               <label>Re-enter password:</label><br></br>
-              <input id="reconfirm-password-input" type="password" onChange={(event) => this.confirmPassword(event)} placeholder="re-enter password" required></input><br></br>
+              <input id="reconfirm-password-input" type="password" onChange={(event) => this.confirmPassword(event)} placeholder="re-enter password" autoComplete="on" required></input><br></br>
               <p id="re-enter-password-error" className="form-errors"></p>
 
               <button id="submit-username-password-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button>
