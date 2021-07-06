@@ -42,17 +42,12 @@ export default class BoardCard extends Component {
   }
 
   removeOptionFromBoard = (event) => {
-    console.log(`Non-dairy option id: ${event.target.value}`)
-    console.log(`Board id: ${this.props.id}`)
-
     let deletedBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === this.props.id && boardPin.non_dairy_option_id === +event.target.value)
-
-    console.log(deletedBoardPin)
-
-    let updatedNonDairyOptions = this.state.nonDairyOptions.filter(nonDairyOption => nonDairyOption.id !== deletedBoardPin.non_dairy_option_id)
 
     let updatedBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== deletedBoardPin.id)
     console.log(updatedBoardPins)
+
+    let updatedNonDairyOptions = this.state.nonDairyOptions.filter(nonDairyOption => nonDairyOption.id !== deletedBoardPin.non_dairy_option_id)
 
     fetch(boardPinsURL + `/${deletedBoardPin.id}`, {method: "DELETE"})
     .then(() => this.setState({ 
