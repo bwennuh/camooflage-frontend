@@ -49,12 +49,15 @@ export default class BoardCard extends Component {
 
     console.log(deletedBoardPin)
 
+    let updatedNonDairyOptions = this.state.nonDairyOptions.filter(nonDairyOption => nonDairyOption.id !== deletedBoardPin.non_dairy_option_id)
+
     let updatedBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== deletedBoardPin.id)
     console.log(updatedBoardPins)
 
     fetch(boardPinsURL + `/${deletedBoardPin.id}`, {method: "DELETE"})
     .then(() => this.setState({ 
-      boardPins: updatedBoardPins 
+      boardPins: updatedBoardPins,
+      nonDairyOptions: updatedNonDairyOptions
     }))
   }
 
