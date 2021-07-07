@@ -93,7 +93,7 @@ export default class BoardCard extends Component {
             boardCard={true}
             removeOptionFromBoard={this.removeOptionFromBoard} />)}
           <br></br>
-          <button onClick={() => this.props.changeToNonDairyOptionsPage()}>Add options</button>
+          <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add options</button>
 
         </div>
         

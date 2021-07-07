@@ -71,6 +71,8 @@ export default class BoardCardContainer extends Component {
       userID: this.props.user.id,
       showCreateBoardForm: false
      }))
+
+     this.props.updateBoards(newBoard)
   }
 
   searchBoards = () => {
