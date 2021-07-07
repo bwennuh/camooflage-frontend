@@ -90,6 +90,7 @@ export default class BoardCard extends Component {
             brandID={nonDairyOption.brand_id} 
             categoryID={nonDairyOption.category_id}
             boards={this.props.boards}
+            boardID={id}
             boardCard={true}
             removeOptionFromBoard={this.removeOptionFromBoard} />)}
           <br></br>

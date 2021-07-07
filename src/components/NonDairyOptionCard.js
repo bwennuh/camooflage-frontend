@@ -9,7 +9,9 @@ export default class NonDairyOptionCard extends Component {
   state = {
     addToBoardID: this.props.boards[0]?.id,
     removeFromBoardID: 0,
-    editable: false
+    moveToBoardID: 0,
+    editable: false,
+    boardPinToBeUpdated: {}
   }
 
   getBoardSelection = (event) => {
@@ -42,32 +44,44 @@ export default class NonDairyOptionCard extends Component {
     })
   }
 
-  moveOptionToNewBoard = (event) => {
-    let boardID = +event.target.value
+  moveOptionToNewBoard = () => {
     let nonDairyOptionID = this.props.id
+    let newBoardID = this.state.addToBoardID
+    let previousBoardID = this.props.boardID
 
-    let boardPin = fetch(boardPinsURL)
+    fetch(boardPinsURL)
     .then(resp => resp.json())
-    .then(boardPins => boardPin = boardPins.find(boardPin => boardPin.board_id === boardID && boardPin.non_dairy_option_id === nonDairyOptionID))
+    .then(boardPins => {
+      let foundBoardPin = boardPins.find(boardPin => boardPin.board_id === previousBoardID && boardPin.non_dairy_option_id === nonDairyOptionID)
+      this.setState({
+        boardPinToBeUpdated: foundBoardPin
+      })
+      console.log(this.state.boardPinToBeUpdated)
+      console.log(this.state.boardPinToBeUpdated.id)
+      this.updateBoardPin(this.state.boardPinToBeUpdated.id, newBoardID, nonDairyOptionID)
+    })
+  }
 
-    console.log(boardPin)
-
+  updateBoardPin = (id, boardID, nonDairyOptionID) => {
     const updatedBoardPin = {
       board_id: boardID, 
       non_dairy_option_id: nonDairyOptionID
     }
 
     console.log(updatedBoardPin)
+    console.log(id)
 
-    // const reqObj = {}
+    const reqObj = {}
 
-    // reqObj.headers = {"Content-Type": "application/json"}
-    // reqObj.method = "PATCH"
-    // reqObj.body = JSON.stringify(updatedBoardPin)
+    reqObj.headers = {"Content-Type": "application/json"}
+    reqObj.method = "PATCH"
+    reqObj.body = JSON.stringify(updatedBoardPin)
 
-    // fetch(boardPinsURL + `/${boardPinID}`, reqObj)
-    // .then(resp => resp.json())
-    // .then(() => this.setState({ addToBoardID: 0 }))
+    fetch(boardPinsURL + `/${id}`, reqObj)
+    .then(resp => resp.json())
+    .then(() => this.setState({ 
+      boardPinToBeUpdated: {}
+    }))
   }
 
   render(){
@@ -96,11 +110,13 @@ export default class NonDairyOptionCard extends Component {
               { this.state.editable === true ? 
                 <div className="edit-option-on-board">
                   <div className="main-feed-non-dairy-option-cards">
+                    
                     <label htmlFor={`${name}-select-board`}>Move to board:</label><br></br>
-                    <select name="Boards" id={`${name}-select-board`} default="Select board:">
-                      {boards.map(board => <option value={board.name}>Board: {board.name}</option>)}
+
+                    <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} default="Select board:">
+                      {boards.filter(board => board.id !== this.props.boardID).map(board => <option value={board.name}>Board: {board.name}</option>)}
                     </select><br></br>
-                    <button value={id} onClick={(event) => this.moveOptionToNewBoard(event)}>Move to board</button>
+                    <button value={id} onClick={() => this.moveOptionToNewBoard()}>Move to board</button>
                   </div>
                 </div> : null }
 

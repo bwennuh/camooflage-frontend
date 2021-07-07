@@ -44,6 +44,7 @@ export default class NonDairyOptionCardContainer extends Component {
           brandID={nonDairyOption.brand_id} 
           categoryID={nonDairyOption.category_id}
           boards={this.props.boards}
+          boardID={0}
           boardCard={false} />)}
         </div>
       </div>
