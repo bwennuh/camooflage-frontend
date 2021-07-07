@@ -76,7 +76,7 @@ export default class BoardCardContainer extends Component {
   }
 
   searchBoards = () => {
-    const searchBoards = this.state?.boards.filter(board => board.name.includes(this.props.searchText))
+    const searchBoards = this.state?.boards.filter(board => board.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
     return searchBoards
   }
 
