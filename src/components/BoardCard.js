@@ -45,50 +45,9 @@ export default class BoardCard extends Component {
     }
   }
 
-  // removeOptionFromBoard = (event) => {
-  //   let deletedBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === this.props.id && boardPin.non_dairy_option_id === +event.target.value)
-
-  //   let updatedBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== deletedBoardPin.id)
-  //   console.log(updatedBoardPins)
-
-  //   let updatedNonDairyOptions = this.state.nonDairyOptions.filter(nonDairyOption => nonDairyOption.id !== deletedBoardPin.non_dairy_option_id)
-
-  //   fetch(boardPinsURL + `/${deletedBoardPin.id}`, {method: "DELETE"})
-  //   .then(() => this.setState({ 
-  //     boardPins: updatedBoardPins,
-  //     nonDairyOptions: updatedNonDairyOptions
-  //   }))
-  // }
-
-  toggleDeleteBoard = () => {
-    this.setState({
-      deleteBoard: !this.state.deleteBoard
-    })
-  }
-
-  // moveOptionToNewBoard = (nonDairyOptionID, newBoardID, previousBoardID) => {
-  //   const oldBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === previousBoardID && boardPin.non_dairy_option_id === nonDairyOptionID)
-
-  //   const filteredBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== oldBoardPin.id)
-
-  //   const updatedBoardPin = {
-  //       board_id: newBoardID, 
-  //       non_dairy_option_id: nonDairyOptionID
-  //     }
-
-  //   const reqObj = {}
-
-  //   reqObj.headers = {"Content-Type": "application/json"}
-  //   reqObj.method = "PATCH"
-  //   reqObj.body = JSON.stringify(updatedBoardPin)
-
-  //   fetch(boardPinsURL + `/${oldBoardPin.id}`, reqObj)
-  //   .then(resp => resp.json())
-  //   .then(() => {
-  //     this.setState({
-  //     boardPins: filteredBoardPins
-  //     })
-  //     console.log("Why won't this WORK")
+  // toggleDeleteBoard = () => {
+  //   this.setState({
+  //     deleteBoard: !this.state.deleteBoard
   //   })
   // }
 

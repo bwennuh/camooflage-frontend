@@ -172,6 +172,12 @@ export default class BoardPage extends Component {
     })
   }
 
+  toggleDeleteBoard = () => {
+    this.setState({
+      deleteBoard: !this.state.deleteBoard
+    })
+  }
+
   render(){
 
     let { boardID, name, description, boardPins, nonDairyOptions } = this.state
@@ -206,7 +212,9 @@ export default class BoardPage extends Component {
             boardCard={true}
             editable={true}
             removeOptionFromBoard={this.removeOptionFromBoard}
-            moveOptionToNewBoard={this.moveOptionToNewBoard} />)}
+            moveOptionToNewBoard={this.moveOptionToNewBoard}
+            getAllUserBoards={this.props.getAllUserBoards}
+            />)}
           <br></br>
           <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add more options</button>
 
@@ -218,7 +226,7 @@ export default class BoardPage extends Component {
           {this.state.editBoard ? 
           <form onSubmit={(event) => this.saveBoardChanges(event)}>
             <label>Board name:</label><br></br>
-                <input type="text" onChange={(event) => this.editBoardName(event)}  placeholder="Board Name" required></input><br></br>
+                <input type="text" onChange={(event) => this.editBoardName(event)}  placeholder="Board Name"></input><br></br>
 
                 <label>Board description:</label><br></br>
                 <input type="text" onChange={(event) => this.editBoardDescription(event)}  placeholder="Board Description"></input><br></br>

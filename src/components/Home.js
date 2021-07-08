@@ -87,31 +87,68 @@ export default class Home extends Component {
     console.log(updatedBoards)
     updatedBoards.push(editedBoard)
     console.log(updatedBoards.push(editedBoard))
-
-    // this.setState({
-    //   ...this.state,
-    //   boards: [...this.state.boards, board]
-    // })
   }
+
+
+  getAllUserBoards = () => {
+    fetch(boardsURL)
+    .then(resp => resp.json())
+    .then(boards => {
+      let filteredBoards = this.findUserBoards(boards)
+      
+      this.setState({
+        ...this.state,
+        boards: filteredBoards
+      })
+    })
+  }
+
+
 
   render(){
 
     return(
       <div className="home-page">
-        <Navbar user={this.props.user} handleSearchText={this.handleSearchText} display={this.state.display} changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} changeToBoardsPage={this.changeToBoardsPage} changeToProfilePage={this.changeToProfilePage}/>
+        <Navbar 
+          user={this.props.user} 
+          handleSearchText={this.handleSearchText} 
+          display={this.state.display} 
+          changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} 
+          changeToBoardsPage={this.changeToBoardsPage} 
+          changeToProfilePage={this.changeToProfilePage}
+        />
         <div>
           <h1>HOME PAGE</h1>
 
           <div className="non-dairy-options-page">
-            { this.state.display === "home" ? <NonDairyOptionCardContainer searchText={this.state.searchText} boards={this.state.boards}/> : null }
+            { this.state.display === "home" ? 
+              <NonDairyOptionCardContainer 
+                searchText={this.state.searchText} 
+                boards={this.state.boards}
+                getAllUserBoards={this.getAllUserBoards}
+              /> 
+            : null }
           </div>
 
           <div className="boards-page">
-            { this.state.display === "boards" ? <BoardCardContainer user={this.props.user} boards={this.state.boards} searchText={this.state.searchText} changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} updateBoards={this.updateBoards} changeToBoardsPage={this.changeToBoardsPage} editBoards={this.editBoards} /> : null }
+            { this.state.display === "boards" ? 
+            <BoardCardContainer 
+              user={this.props.user} 
+              boards={this.state.boards} 
+              searchText={this.state.searchText} 
+              changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} 
+              updateBoards={this.updateBoards} 
+              changeToBoardsPage={this.changeToBoardsPage} 
+              editBoards={this.editBoards}
+              getAllUserBoards={this.getAllUserBoards} 
+            /> 
+            : null }
           </div>
 
           <div className="profile-page">
-            { this.state.display === "profile" ? <ProfilePage userID={this.state.user.id}/> : null }
+            { this.state.display === "profile" ? 
+            <ProfilePage userID={this.state.user.id}/> 
+            : null }
 
           </div>
 

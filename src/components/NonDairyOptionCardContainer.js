@@ -17,7 +17,7 @@ export default class NonDairyOptionCardContainer extends Component {
   fetchNonDairyOptions = () => {
     fetch(nonDairyOptionsURL)
     .then(resp => resp.json())
-    .then(nonDairyOptions => this.setState({nonDairyOptions}))
+    .then(nonDairyOptions => this.setState({ nonDairyOptions }))
   }
 
   searchNonDairyOptions = () => {
@@ -25,9 +25,6 @@ export default class NonDairyOptionCardContainer extends Component {
       const searchOptions = this.state?.nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
       return searchOptions
     }
-    // } else {
-    //   return this.state.nonDairyOptions
-    // }
   }
 
   render(){
@@ -48,7 +45,8 @@ export default class NonDairyOptionCardContainer extends Component {
           categoryID={nonDairyOption.category_id}
           boards={this.props.boards}
           boardID={0}
-          boardCard={false} />)}
+          boardCard={false}
+          getAllUserBoards={this.props.getAllUserBoards} />)}
         </div>
       </div>
     )
