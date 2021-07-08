@@ -45,20 +45,20 @@ export default class BoardCard extends Component {
     }
   }
 
-  removeOptionFromBoard = (event) => {
-    let deletedBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === this.props.id && boardPin.non_dairy_option_id === +event.target.value)
+  // removeOptionFromBoard = (event) => {
+  //   let deletedBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === this.props.id && boardPin.non_dairy_option_id === +event.target.value)
 
-    let updatedBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== deletedBoardPin.id)
-    console.log(updatedBoardPins)
+  //   let updatedBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== deletedBoardPin.id)
+  //   console.log(updatedBoardPins)
 
-    let updatedNonDairyOptions = this.state.nonDairyOptions.filter(nonDairyOption => nonDairyOption.id !== deletedBoardPin.non_dairy_option_id)
+  //   let updatedNonDairyOptions = this.state.nonDairyOptions.filter(nonDairyOption => nonDairyOption.id !== deletedBoardPin.non_dairy_option_id)
 
-    fetch(boardPinsURL + `/${deletedBoardPin.id}`, {method: "DELETE"})
-    .then(() => this.setState({ 
-      boardPins: updatedBoardPins,
-      nonDairyOptions: updatedNonDairyOptions
-    }))
-  }
+  //   fetch(boardPinsURL + `/${deletedBoardPin.id}`, {method: "DELETE"})
+  //   .then(() => this.setState({ 
+  //     boardPins: updatedBoardPins,
+  //     nonDairyOptions: updatedNonDairyOptions
+  //   }))
+  // }
 
   toggleDeleteBoard = () => {
     this.setState({
@@ -66,31 +66,31 @@ export default class BoardCard extends Component {
     })
   }
 
-  moveOptionToNewBoard = (nonDairyOptionID, newBoardID, previousBoardID) => {
-    const oldBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === previousBoardID && boardPin.non_dairy_option_id === nonDairyOptionID)
+  // moveOptionToNewBoard = (nonDairyOptionID, newBoardID, previousBoardID) => {
+  //   const oldBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === previousBoardID && boardPin.non_dairy_option_id === nonDairyOptionID)
 
-    const filteredBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== oldBoardPin.id)
+  //   const filteredBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== oldBoardPin.id)
 
-    const updatedBoardPin = {
-        board_id: newBoardID, 
-        non_dairy_option_id: nonDairyOptionID
-      }
+  //   const updatedBoardPin = {
+  //       board_id: newBoardID, 
+  //       non_dairy_option_id: nonDairyOptionID
+  //     }
 
-    const reqObj = {}
+  //   const reqObj = {}
 
-    reqObj.headers = {"Content-Type": "application/json"}
-    reqObj.method = "PATCH"
-    reqObj.body = JSON.stringify(updatedBoardPin)
+  //   reqObj.headers = {"Content-Type": "application/json"}
+  //   reqObj.method = "PATCH"
+  //   reqObj.body = JSON.stringify(updatedBoardPin)
 
-    fetch(boardPinsURL + `/${oldBoardPin.id}`, reqObj)
-    .then(resp => resp.json())
-    .then(() => {
-      this.setState({
-      boardPins: filteredBoardPins
-      })
-      console.log("Why won't this WORK")
-    })
-  }
+  //   fetch(boardPinsURL + `/${oldBoardPin.id}`, reqObj)
+  //   .then(resp => resp.json())
+  //   .then(() => {
+  //     this.setState({
+  //     boardPins: filteredBoardPins
+  //     })
+  //     console.log("Why won't this WORK")
+  //   })
+  // }
 
   render(){
 
@@ -121,10 +121,12 @@ export default class BoardCard extends Component {
             boards={this.props.boards}
             boardID={id}
             boardCard={true}
-            removeOptionFromBoard={this.removeOptionFromBoard}
-            moveOptionToNewBoard={this.moveOptionToNewBoard} />)}
+            editable={false}
+            // removeOptionFromBoard={this.removeOptionFromBoard}
+            // moveOptionToNewBoard={this.moveOptionToNewBoard} 
+            />)}
           <br></br>
-          <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add options</button>
+          {/* <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add options</button> */}
 
         </div>
 
@@ -132,7 +134,7 @@ export default class BoardCard extends Component {
           <button value={id} onClick={() => this.props.changeToBoardPage(id)}>View Board</button>
         </div>
 
-        <div className="edit-board">
+        {/* <div className="edit-board">
           <button value={id} onClick={(event) => this.props.updateBoard(event)}>Edit Board</button>
         </div>
         
@@ -146,7 +148,7 @@ export default class BoardCard extends Component {
             <button onClick={() => this.toggleDeleteBoard()}>No</button>
           </div>
            }
-        </div>
+        </div> */}
 
 
       </div>
