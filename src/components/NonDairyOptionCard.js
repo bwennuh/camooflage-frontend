@@ -56,8 +56,6 @@ export default class NonDairyOptionCard extends Component {
       this.setState({
         boardPinToBeUpdated: foundBoardPin
       })
-      console.log(this.state.boardPinToBeUpdated)
-      console.log(this.state.boardPinToBeUpdated.id)
       this.updateBoardPin(this.state.boardPinToBeUpdated.id, newBoardID, nonDairyOptionID)
     })
   }
@@ -67,9 +65,6 @@ export default class NonDairyOptionCard extends Component {
       board_id: boardID, 
       non_dairy_option_id: nonDairyOptionID
     }
-
-    console.log(updatedBoardPin)
-    console.log(id)
 
     const reqObj = {}
 
@@ -82,6 +77,7 @@ export default class NonDairyOptionCard extends Component {
     .then(() => this.setState({ 
       boardPinToBeUpdated: {}
     }))
+    this.props.getUpdatedBoardPins()
   }
 
   render(){

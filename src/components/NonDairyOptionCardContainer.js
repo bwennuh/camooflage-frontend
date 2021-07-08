@@ -21,10 +21,13 @@ export default class NonDairyOptionCardContainer extends Component {
   }
 
   searchNonDairyOptions = () => {
-    if (this.state.nonDairyOptions) {
+    if (this.state?.nonDairyOptions) {
       const searchOptions = this.state?.nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
       return searchOptions
     }
+    // } else {
+    //   return this.state.nonDairyOptions
+    // }
   }
 
   render(){
