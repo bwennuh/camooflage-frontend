@@ -37,7 +37,9 @@ export default class BoardCard extends Component {
       let nonDairyOptions = nonDairyOptionIDs.map(id => {
         fetch(nonDairyOptionsURL + `/${id}`)
         .then(resp => resp.json())
-        .then(nonDairyOption => this.setState({nonDairyOptions: [...this.state.nonDairyOptions, nonDairyOption]}))
+        .then(nonDairyOption => this.setState({
+          nonDairyOptions: [...this.state.nonDairyOptions, nonDairyOption]
+        }))
       })
     }
   }
@@ -55,6 +57,10 @@ export default class BoardCard extends Component {
       boardPins: updatedBoardPins,
       nonDairyOptions: updatedNonDairyOptions
     }))
+  }
+
+  getUpdatedBoardPins = () => {
+    this.props.updateBoard()
   }
 
   toggleDeleteBoard = () => {
@@ -90,11 +96,17 @@ export default class BoardCard extends Component {
             brandID={nonDairyOption.brand_id} 
             categoryID={nonDairyOption.category_id}
             boards={this.props.boards}
+            boardID={id}
             boardCard={true}
-            removeOptionFromBoard={this.removeOptionFromBoard} />)}
+            removeOptionFromBoard={this.removeOptionFromBoard}
+            getUpdatedBoardPins={this.getUpdatedBoardPins} />)}
           <br></br>
           <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add options</button>
 
+        </div>
+
+        <div className="edit-board">
+          <button value={id} onClick={(event) => this.props.updateBoard(event)}>Edit Board</button>
         </div>
         
         <div className="delete-board">

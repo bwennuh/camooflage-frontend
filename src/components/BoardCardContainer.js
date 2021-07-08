@@ -92,6 +92,11 @@ export default class BoardCardContainer extends Component {
     }))
   }
 
+  updateBoard = (event) => {
+    console.log("Add updated board logic")
+    console.log(`Board id: ${event.target.value}`)
+  }
+
   render(){
 
     return(
@@ -113,7 +118,6 @@ export default class BoardCardContainer extends Component {
             </div>
            : null }
 
-
           {/* {this.state.boards.map(board =>  */}
           {this.searchBoards()?.map(board => 
             <BoardCard 
@@ -123,7 +127,8 @@ export default class BoardCardContainer extends Component {
             description={board.description}
             boards={this.props.boards}
             changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
-            deleteBoard={this.deleteBoard} />)}
+            deleteBoard={this.deleteBoard}
+            updateBoard={this.updateBoard} />)}
         </div>
       </div>
     )
