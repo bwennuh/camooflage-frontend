@@ -65,13 +65,30 @@ export default class BoardCard extends Component {
     })
   }
 
-  updateBoardPinsforMovedPin = (previousBoardID, newBoardID) => {
-    console.log(previousBoardID)
-    let previousBoardPins = this.state.boardPins.filter(boardPin => boardPin.board_id === previousBoardID)
-    console.log(previousBoardPins)
-    console.log(newBoardID)
-    let updatedBoardPins = this.state.boardPins.filter(boardPin => boardPin.board_id === newBoardID)
-    console.log(updatedBoardPins)
+  moveOptionToNewBoard = (nonDairyOptionID, newBoardID, previousBoardID) => {
+    const oldBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === previousBoardID && boardPin.non_dairy_option_id === nonDairyOptionID)
+
+    const filteredBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== oldBoardPin.id)
+
+    const updatedBoardPin = {
+        board_id: newBoardID, 
+        non_dairy_option_id: nonDairyOptionID
+      }
+
+    const reqObj = {}
+
+    reqObj.headers = {"Content-Type": "application/json"}
+    reqObj.method = "PATCH"
+    reqObj.body = JSON.stringify(updatedBoardPin)
+
+    fetch(boardPinsURL + `/${oldBoardPin.id}`, reqObj)
+    .then(resp => resp.json())
+    .then(() => {
+      this.setState({
+      boardPins: filteredBoardPins
+      })
+      console.log("Why won't this WORK")
+    })
   }
 
   render(){
@@ -104,7 +121,7 @@ export default class BoardCard extends Component {
             boardID={id}
             boardCard={true}
             removeOptionFromBoard={this.removeOptionFromBoard}
-            updateBoardPinsforMovedPin={this.updateBoardPinsforMovedPin} />)}
+            moveOptionToNewBoard={this.moveOptionToNewBoard} />)}
           <br></br>
           <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add options</button>
 

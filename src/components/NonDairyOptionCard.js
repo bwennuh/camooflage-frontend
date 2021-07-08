@@ -8,10 +8,10 @@ export default class NonDairyOptionCard extends Component {
 
   state = {
     addToBoardID: this.props.boards[0]?.id,
+    editable: false
     // removeFromBoardID: 0,
     // moveToBoardID: 0,
-    editable: false,
-    boardPinToBeUpdated: {}
+    // boardPinToBeUpdated: {}
   }
 
   getBoardSelection = (event) => {
@@ -44,42 +44,40 @@ export default class NonDairyOptionCard extends Component {
     })
   }
 
-  moveOptionToNewBoard = () => {
-    let nonDairyOptionID = this.props.id
-    let newBoardID = this.state.addToBoardID
-    let previousBoardID = this.props.boardID
+  // moveOptionToNewBoard = () => {
+  //   let nonDairyOptionID = this.props.id
+  //   let newBoardID = this.state.addToBoardID
+  //   let previousBoardID = this.props.boardID
 
-    fetch(boardPinsURL)
-    .then(resp => resp.json())
-    .then(boardPins => {
-      let foundBoardPin = boardPins.find(boardPin => boardPin.board_id === previousBoardID && boardPin.non_dairy_option_id === nonDairyOptionID)
-      this.setState({
-        boardPinToBeUpdated: foundBoardPin
-      })
-      this.updateBoardPin(this.state.boardPinToBeUpdated.id, newBoardID, nonDairyOptionID)
-    })
+  //   fetch(boardPinsURL)
+  //   .then(resp => resp.json())
+  //   .then(boardPins => {
+  //     let foundBoardPin = boardPins.find(boardPin => boardPin.board_id === previousBoardID && boardPin.non_dairy_option_id === nonDairyOptionID)
+  //     this.setState({
+  //       boardPinToBeUpdated: foundBoardPin
+  //     })
+  //     this.updateBoardPin(this.state.boardPinToBeUpdated.id, newBoardID, nonDairyOptionID)
+  //   })
+  // }
 
-    this.props.updateBoardPinsforMovedPin(previousBoardID, newBoardID)
-  }
+  // updateBoardPin = (id, boardID, nonDairyOptionID) => {
+  //   const updatedBoardPin = {
+  //     board_id: boardID, 
+  //     non_dairy_option_id: nonDairyOptionID
+  //   }
 
-  updateBoardPin = (id, boardID, nonDairyOptionID) => {
-    const updatedBoardPin = {
-      board_id: boardID, 
-      non_dairy_option_id: nonDairyOptionID
-    }
+  //   const reqObj = {}
 
-    const reqObj = {}
+  //   reqObj.headers = {"Content-Type": "application/json"}
+  //   reqObj.method = "PATCH"
+  //   reqObj.body = JSON.stringify(updatedBoardPin)
 
-    reqObj.headers = {"Content-Type": "application/json"}
-    reqObj.method = "PATCH"
-    reqObj.body = JSON.stringify(updatedBoardPin)
-
-    fetch(boardPinsURL + `/${id}`, reqObj)
-    .then(resp => resp.json())
-    .then(() => this.setState({ 
-      boardPinToBeUpdated: {}
-    }))
-  }
+  //   fetch(boardPinsURL + `/${id}`, reqObj)
+  //   .then(resp => resp.json())
+  //   .then(() => this.setState({ 
+  //     boardPinToBeUpdated: {}
+  //   }))
+  // }
 
   render(){
 
@@ -113,7 +111,8 @@ export default class NonDairyOptionCard extends Component {
                     <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} default="Select board:">
                       {boards.filter(board => board.id !== this.props.boardID).map(board => <option value={board.name}>Board: {board.name}</option>)}
                     </select><br></br>
-                    <button value={id} onClick={() => this.moveOptionToNewBoard()}>Move to board</button>
+                    {/* <button value={id} onClick={() => this.moveOptionToNewBoard()}>Move to board</button> */}
+                    <button value={id} onClick={() => this.props.moveOptionToNewBoard(id, this.state.addToBoardID, this.props.boardID)}>Move to board</button>
                   </div>
                 </div> 
                 : null }

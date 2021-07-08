@@ -95,7 +95,7 @@ export default class Home extends Component {
           </div>
 
           <div className="boards-page">
-            { this.state.display === "boards" ? <BoardCardContainer user={this.props.user} boards={this.state.boards} searchText={this.state.searchText} changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} updateBoards={this.updateBoards}/> : null }
+            { this.state.display === "boards" ? <BoardCardContainer user={this.props.user} boards={this.state.boards} searchText={this.state.searchText} changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} updateBoards={this.updateBoards} changeToBoardsPage={this.changeToBoardsPage}/> : null }
           </div>
 
           <div className="profile-page">
