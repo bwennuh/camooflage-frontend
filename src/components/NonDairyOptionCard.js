@@ -44,41 +44,6 @@ export default class NonDairyOptionCard extends Component {
     })
   }
 
-  // moveOptionToNewBoard = () => {
-  //   let nonDairyOptionID = this.props.id
-  //   let newBoardID = this.state.addToBoardID
-  //   let previousBoardID = this.props.boardID
-
-  //   fetch(boardPinsURL)
-  //   .then(resp => resp.json())
-  //   .then(boardPins => {
-  //     let foundBoardPin = boardPins.find(boardPin => boardPin.board_id === previousBoardID && boardPin.non_dairy_option_id === nonDairyOptionID)
-  //     this.setState({
-  //       boardPinToBeUpdated: foundBoardPin
-  //     })
-  //     this.updateBoardPin(this.state.boardPinToBeUpdated.id, newBoardID, nonDairyOptionID)
-  //   })
-  // }
-
-  // updateBoardPin = (id, boardID, nonDairyOptionID) => {
-  //   const updatedBoardPin = {
-  //     board_id: boardID, 
-  //     non_dairy_option_id: nonDairyOptionID
-  //   }
-
-  //   const reqObj = {}
-
-  //   reqObj.headers = {"Content-Type": "application/json"}
-  //   reqObj.method = "PATCH"
-  //   reqObj.body = JSON.stringify(updatedBoardPin)
-
-  //   fetch(boardPinsURL + `/${id}`, reqObj)
-  //   .then(resp => resp.json())
-  //   .then(() => this.setState({ 
-  //     boardPinToBeUpdated: {}
-  //   }))
-  // }
-
   render(){
 
     let {id, name, allergens, description, image, brandID, categoryID, boards} = this.props
@@ -86,7 +51,7 @@ export default class NonDairyOptionCard extends Component {
     return(
       <div className="non-dairy-option-card">
         <div>
-          <h1>NON-DAIRY OPTION CARD</h1>
+          <h4>NON-DAIRY OPTION CARD</h4>
           <div className="non-dairy-option-info">
             <p>ID # {id}</p>
             <p>Brand ID # {brandID}</p>
@@ -99,8 +64,12 @@ export default class NonDairyOptionCard extends Component {
 
           { this.props.boardCard ? 
             <div className="board-non-dairy-option-cards">
+              { this.props.editable ? 
+              <div className="edit-buttons">
               <button value={id} onClick={() => this.editOption()}>Edit option</button>
               <button value={id} onClick={(event) => this.props.removeOptionFromBoard(event)}>Remove option</button>
+              </div>
+              : null }
 
               { this.state.editable === true ? 
                 <div className="edit-option-on-board">

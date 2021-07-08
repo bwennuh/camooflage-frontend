@@ -154,7 +154,14 @@ export default class BoardCardContainer extends Component {
       : 
       <div className="board-card-page">
         <h1>BOARD CARD PAGE</h1>
-        <BoardPage id={this.state.boardPageID} userID={this.state.userID} changeToAllBoards={this.changeToAllBoards} />
+        <BoardPage 
+        id={this.state.boardPageID} 
+        userID={this.state.userID} 
+        changeToAllBoards={this.changeToAllBoards}
+        boards={this.props.boards}
+        changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
+        deleteBoard={this.deleteBoard}
+        updateBoard={this.updateBoard} />
       </div>
       }
 
