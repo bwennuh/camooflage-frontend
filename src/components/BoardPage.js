@@ -2,28 +2,45 @@ import React, { Component } from 'react';
 import NonDairyOptionCard from './NonDairyOptionCard.js';
 
 const baseURL = 'http://localhost:3001/'
+const boardsURL = baseURL + 'boards'
 const nonDairyOptionsURL = baseURL + 'non_dairy_options'
 const boardPinsURL = baseURL + 'board_pins'
 
-export default class BoardCard extends Component {
+export default class BoardPage extends Component {
 
   state = {
+    boardID: this.props.id,
+    // userID: this.props.userID,
+    name: "",
+    description: "",
     boardPins: [],
-    nonDairyOptions: [],
-    deleteBoard: false,
-    viewBoardPage: false
+    nonDairyOptions: []
   }
 
   componentDidMount = () => {
-    this.fetchBoardPins()
+    this.fetchBoardInfo()
+  }
+
+  fetchBoardInfo = () => {
+    fetch(boardsURL + `/${this.state.boardID}`)
+    .then(resp => resp.json())
+    .then(board => {
+      this.setState({
+        ...this.state,
+        name: board.name,
+        description: board.description
+      })
+      this.fetchBoardPins()
+    })
   }
 
   fetchBoardPins = () => {
     fetch(boardPinsURL)
     .then(resp => resp.json())
     .then(allBoardPins => {
-      const boardPins = allBoardPins.filter(boardPin => boardPin.board_id === this.props.id)
+      const boardPins = allBoardPins.filter(boardPin => boardPin.board_id === this.state.boardID)
       this.setState({
+        ...this.state,
         boardPins: boardPins
       })
       this.fetchNonDairyOptions()
@@ -39,76 +56,27 @@ export default class BoardCard extends Component {
         fetch(nonDairyOptionsURL + `/${id}`)
         .then(resp => resp.json())
         .then(nonDairyOption => this.setState({
+          ...this.state,
           nonDairyOptions: [...this.state.nonDairyOptions, nonDairyOption]
         }))
       })
     }
   }
 
-  removeOptionFromBoard = (event) => {
-    let deletedBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === this.props.id && boardPin.non_dairy_option_id === +event.target.value)
-
-    let updatedBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== deletedBoardPin.id)
-    console.log(updatedBoardPins)
-
-    let updatedNonDairyOptions = this.state.nonDairyOptions.filter(nonDairyOption => nonDairyOption.id !== deletedBoardPin.non_dairy_option_id)
-
-    fetch(boardPinsURL + `/${deletedBoardPin.id}`, {method: "DELETE"})
-    .then(() => this.setState({ 
-      boardPins: updatedBoardPins,
-      nonDairyOptions: updatedNonDairyOptions
-    }))
-  }
-
-  toggleDeleteBoard = () => {
-    this.setState({
-      deleteBoard: !this.state.deleteBoard
-    })
-  }
-
-  moveOptionToNewBoard = (nonDairyOptionID, newBoardID, previousBoardID) => {
-    const oldBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === previousBoardID && boardPin.non_dairy_option_id === nonDairyOptionID)
-
-    const filteredBoardPins = this.state.boardPins.filter(boardPin => boardPin.id !== oldBoardPin.id)
-
-    const updatedBoardPin = {
-        board_id: newBoardID, 
-        non_dairy_option_id: nonDairyOptionID
-      }
-
-    const reqObj = {}
-
-    reqObj.headers = {"Content-Type": "application/json"}
-    reqObj.method = "PATCH"
-    reqObj.body = JSON.stringify(updatedBoardPin)
-
-    fetch(boardPinsURL + `/${oldBoardPin.id}`, reqObj)
-    .then(resp => resp.json())
-    .then(() => {
-      this.setState({
-      boardPins: filteredBoardPins
-      })
-      console.log("Why won't this WORK")
-    })
-  }
-
   render(){
 
-    let {id, name, description} = this.props
-
     return(
-      <div className="board-card">
+      <div className="board-page">
 
-        <div className="board-card-info">
-          <h1>BOARD CARD</h1>
-            <p>ID # {id}</p>
-            <p>{name}</p>
-            <p>{description}</p>
+        <div className="board-info">
+          <h1> ~ BOARD INFO HERE ~</h1>
         </div>
+
+        <button onClick={() => this.props.changeToAllBoards()}>Go back to boards</button>
 
         <div className="board-non-dairy-options">
 
-          { this.state.nonDairyOptions.map(nonDairyOption => 
+          {/* { this.state.nonDairyOptions.map(nonDairyOption => 
             <NonDairyOptionCard 
             key={nonDairyOption.id} 
             id={nonDairyOption.id} 
@@ -128,10 +96,6 @@ export default class BoardCard extends Component {
 
         </div>
 
-        <div className="view-board">
-          <button value={id} onClick={() => this.props.changeToBoardPage(id)}>View Board</button>
-        </div>
-
         <div className="edit-board">
           <button value={id} onClick={(event) => this.props.updateBoard(event)}>Edit Board</button>
         </div>
@@ -145,7 +109,7 @@ export default class BoardCard extends Component {
             <button value={id} onClick={(event) => this.props.deleteBoard(event)}>Yes</button>
             <button onClick={() => this.toggleDeleteBoard()}>No</button>
           </div>
-           }
+           } */}
         </div>
 
 

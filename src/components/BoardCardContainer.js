@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BoardCard from './BoardCard.js';
+import BoardPage from './BoardPage.js';
 
 const baseURL = 'http://localhost:3001/'
 const boardsURL = baseURL + 'boards'
@@ -11,7 +12,9 @@ export default class BoardCardContainer extends Component {
     name: "",
     description: "",
     userID: this.props.user.id,
-    showCreateBoardForm: false
+    showCreateBoardForm: false,
+    showAllBoards: true,
+    boardPageID: 0
   }
 
   componentDidMount = () => {
@@ -97,9 +100,25 @@ export default class BoardCardContainer extends Component {
     console.log(`Board id: ${event.target.value}`)
   }
 
+  changeToBoardPage = (id) => {
+    this.setState({
+      ...this.state,
+      showAllBoards: false,
+      boardPageID: id
+    })
+  }
+
+  changeToAllBoards = () => {
+    this.setState({
+      showAllBoards: true
+    })
+  }
+
   render(){
 
     return(
+      <div className="boards-displays">
+      { this.state.showAllBoards === true ?
       <div className="board-card-conatiner">
         <div className="board-cards">
           <h1>BOARD CARD CONTAINER</h1>
@@ -128,8 +147,17 @@ export default class BoardCardContainer extends Component {
             boards={this.props.boards}
             changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
             deleteBoard={this.deleteBoard}
-            updateBoard={this.updateBoard} />)}
+            updateBoard={this.updateBoard}
+            changeToBoardPage={this.changeToBoardPage} />)}
         </div>
+      </div>
+      : 
+      <div className="board-card-page">
+        <h1>BOARD CARD PAGE</h1>
+        <BoardPage id={this.state.boardPageID} userID={this.state.userID} changeToAllBoards={this.changeToAllBoards} />
+      </div>
+      }
+
       </div>
     )
   }
