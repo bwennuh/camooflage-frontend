@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
 const baseURL = 'http://localhost:3001/'
-const nonDairyOptionsURL = baseURL + 'non_dairy_options'
+// const nonDairyOptionsURL = baseURL + 'non_dairy_options'
 const boardPinsURL = baseURL + 'board_pins'
 
 export default class NonDairyOptionCard extends Component {
 
   state = {
     addToBoardID: this.props.boards[0]?.id,
-    removeFromBoardID: 0,
-    moveToBoardID: 0,
+    // removeFromBoardID: 0,
+    // moveToBoardID: 0,
     editable: false,
     boardPinToBeUpdated: {}
   }
@@ -58,6 +58,8 @@ export default class NonDairyOptionCard extends Component {
       })
       this.updateBoardPin(this.state.boardPinToBeUpdated.id, newBoardID, nonDairyOptionID)
     })
+
+    this.props.updateBoardPinsforMovedPin(previousBoardID, newBoardID)
   }
 
   updateBoardPin = (id, boardID, nonDairyOptionID) => {
@@ -77,7 +79,6 @@ export default class NonDairyOptionCard extends Component {
     .then(() => this.setState({ 
       boardPinToBeUpdated: {}
     }))
-    this.props.getUpdatedBoardPins()
   }
 
   render(){
@@ -114,7 +115,8 @@ export default class NonDairyOptionCard extends Component {
                     </select><br></br>
                     <button value={id} onClick={() => this.moveOptionToNewBoard()}>Move to board</button>
                   </div>
-                </div> : null }
+                </div> 
+                : null }
 
             </div> 
             :

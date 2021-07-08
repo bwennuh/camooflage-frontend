@@ -59,14 +59,19 @@ export default class BoardCard extends Component {
     }))
   }
 
-  getUpdatedBoardPins = () => {
-    this.props.updateBoard()
-  }
-
   toggleDeleteBoard = () => {
     this.setState({
       deleteBoard: !this.state.deleteBoard
     })
+  }
+
+  updateBoardPinsforMovedPin = (previousBoardID, newBoardID) => {
+    console.log(previousBoardID)
+    let previousBoardPins = this.state.boardPins.filter(boardPin => boardPin.board_id === previousBoardID)
+    console.log(previousBoardPins)
+    console.log(newBoardID)
+    let updatedBoardPins = this.state.boardPins.filter(boardPin => boardPin.board_id === newBoardID)
+    console.log(updatedBoardPins)
   }
 
   render(){
@@ -99,7 +104,7 @@ export default class BoardCard extends Component {
             boardID={id}
             boardCard={true}
             removeOptionFromBoard={this.removeOptionFromBoard}
-            getUpdatedBoardPins={this.getUpdatedBoardPins} />)}
+            updateBoardPinsforMovedPin={this.updateBoardPinsforMovedPin} />)}
           <br></br>
           <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add options</button>
 
