@@ -82,6 +82,18 @@ export default class Home extends Component {
     })
   }
 
+  editBoards = (editedBoard) => {
+    let updatedBoards = this.state.boards.filter(board => board.id !== editedBoard.id)
+    console.log(updatedBoards)
+    updatedBoards.push(editedBoard)
+    console.log(updatedBoards.push(editedBoard))
+
+    // this.setState({
+    //   ...this.state,
+    //   boards: [...this.state.boards, board]
+    // })
+  }
+
   render(){
 
     return(
@@ -95,7 +107,7 @@ export default class Home extends Component {
           </div>
 
           <div className="boards-page">
-            { this.state.display === "boards" ? <BoardCardContainer user={this.props.user} boards={this.state.boards} searchText={this.state.searchText} changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} updateBoards={this.updateBoards} changeToBoardsPage={this.changeToBoardsPage}/> : null }
+            { this.state.display === "boards" ? <BoardCardContainer user={this.props.user} boards={this.state.boards} searchText={this.state.searchText} changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} updateBoards={this.updateBoards} changeToBoardsPage={this.changeToBoardsPage} editBoards={this.editBoards} /> : null }
           </div>
 
           <div className="profile-page">

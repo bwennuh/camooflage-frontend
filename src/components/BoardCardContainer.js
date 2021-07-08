@@ -9,8 +9,8 @@ export default class BoardCardContainer extends Component {
 
   state = {
     boards: [],
-    name: "",
-    description: "",
+    // name: "",
+    // description: "",
     userID: this.props.user.id,
     showCreateBoardForm: false,
     showAllBoards: true,
@@ -95,11 +95,6 @@ export default class BoardCardContainer extends Component {
     }))
   }
 
-  updateBoard = (event) => {
-    console.log("Add updated board logic")
-    console.log(`Board id: ${event.target.value}`)
-  }
-
   changeToBoardPage = (id) => {
     this.setState({
       ...this.state,
@@ -111,6 +106,17 @@ export default class BoardCardContainer extends Component {
   changeToAllBoards = () => {
     this.setState({
       showAllBoards: true
+    })
+  }
+
+  getEditedBoards = () => {
+    fetch(boardsURL)
+    .then(resp => resp.json())
+    .then(boards => {
+      const userBoards = boards.filter(board => board.user_id === this.props.user.id)
+      this.setState({
+        boards: userBoards
+      })
     })
   }
 
@@ -144,10 +150,10 @@ export default class BoardCardContainer extends Component {
             id={board.id} 
             name={board.name} 
             description={board.description}
-            boards={this.props.boards}
+            boards={this.state.boards}
             changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
-            deleteBoard={this.deleteBoard}
-            updateBoard={this.updateBoard}
+            // deleteBoard={this.deleteBoard}
+            // updateBoard={this.updateBoard}
             changeToBoardPage={this.changeToBoardPage} />)}
         </div>
       </div>
@@ -158,10 +164,13 @@ export default class BoardCardContainer extends Component {
         id={this.state.boardPageID} 
         userID={this.state.userID} 
         changeToAllBoards={this.changeToAllBoards}
-        boards={this.props.boards}
+        boards={this.state.boards}
         changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
+        changeToBoardPage={this.changeToBoardPage}
         deleteBoard={this.deleteBoard}
-        updateBoard={this.updateBoard} />
+        // editBoard={this.editBoard}
+        getEditedBoards={this.getEditedBoards}
+         />
       </div>
       }
 
