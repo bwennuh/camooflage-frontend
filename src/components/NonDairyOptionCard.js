@@ -15,6 +15,7 @@ export default class NonDairyOptionCard extends Component {
   }
 
   getBoardSelection = (event) => {
+    this.props.getAllUserBoards()
     let selectedBoard = this.props.boards.filter(board => board.name === event.target.value)[0]
     this.setState({
       addToBoardID: selectedBoard.id
@@ -73,6 +74,7 @@ export default class NonDairyOptionCard extends Component {
 
               { this.state.editable === true ? 
                 <div className="edit-option-on-board">
+
                   <div className="main-feed-non-dairy-option-cards">
                     
                     <label htmlFor={`${name}-select-board`}>Move to board:</label><br></br>
@@ -83,6 +85,7 @@ export default class NonDairyOptionCard extends Component {
                     {/* <button value={id} onClick={() => this.moveOptionToNewBoard()}>Move to board</button> */}
                     <button value={id} onClick={() => this.props.moveOptionToNewBoard(id, this.state.addToBoardID, this.props.boardID)}>Move to board</button>
                   </div>
+                  
                 </div> 
                 : null }
 

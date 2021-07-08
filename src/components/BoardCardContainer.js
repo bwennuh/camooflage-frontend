@@ -91,7 +91,8 @@ export default class BoardCardContainer extends Component {
     fetch(boardsURL + `/${boardID}`, {method: "DELETE"})
     .then(() => this.setState({ 
       ...this.state,
-      boards: updatedBoards
+      boards: updatedBoards,
+      showAllBoards: true
     }))
   }
 
@@ -170,6 +171,7 @@ export default class BoardCardContainer extends Component {
         deleteBoard={this.deleteBoard}
         // editBoard={this.editBoard}
         getEditedBoards={this.getEditedBoards}
+        getAllUserBoards={this.props.getAllUserBoards}
          />
       </div>
       }
