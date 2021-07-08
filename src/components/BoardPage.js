@@ -10,12 +10,15 @@ export default class BoardPage extends Component {
 
   state = {
     boardID: this.props.id,
-    // userID: this.props.userID,
+    userID: this.props.userID,
     name: "",
+    previousName: "",
     description: "",
+    previousDescription: "",
     boardPins: [],
     nonDairyOptions: [],
     deleteBoard: false,
+    editBoard: false
   }
 
   componentDidMount = () => {
@@ -29,7 +32,9 @@ export default class BoardPage extends Component {
       this.setState({
         ...this.state,
         name: board.name,
-        description: board.description
+        previousName: board.name,
+        description: board.description,
+        previousDescription: board.description
       })
       this.fetchBoardPins()
     })
@@ -106,6 +111,67 @@ export default class BoardPage extends Component {
       }))
   }
 
+  editBoard = (event) => {
+    console.log("Add updated board logic")
+    console.log(`Board id: ${event.target.value}`)
+
+    this.setState({
+      editBoard: true
+    })
+  }
+
+  editBoardName = (event) => {
+    this.setState({
+      name: event.target.value
+    })
+  }
+
+  editBoardDescription = (event) => {
+    this.setState({
+      description: event.target.value
+    })
+  }
+
+  saveBoardChanges = (event) => {
+    event.preventDefault()
+
+    let boardID = this.state.boardID
+
+    const editedBoard = {
+      name: this.state.name, 
+      description: this.state.description,
+      user_id: this.state.userID
+    }
+
+    console.log(editedBoard)
+
+    const reqObj = {}
+
+    reqObj.headers = {"Content-Type": "application/json"}
+    reqObj.method = "PATCH"
+    reqObj.body = JSON.stringify(editedBoard)
+
+    fetch(boardsURL + `/${boardID}`, reqObj)
+    .then(resp => resp.json())
+    .then(() => {
+      this.setState({
+        ...this.state,
+        editBoard: false,
+        previousName: editedBoard.name,
+        previousDescription: editedBoard.description
+      })
+      this.props.getEditedBoards()
+    })
+  }
+
+  cancelBoardChanges = () => {
+    this.setState({
+      ...this.state,
+      name: this.state.previousName,
+      description: this.state.previousDescription
+    })
+  }
+
   render(){
 
     let { boardID, name, description, boardPins, nonDairyOptions } = this.state
@@ -125,7 +191,7 @@ export default class BoardPage extends Component {
 
         <div className="board-page-non-dairy-options">
 
-          { this.state.nonDairyOptions.map(nonDairyOption => 
+          { nonDairyOptions.map(nonDairyOption => 
             <NonDairyOptionCard 
             key={nonDairyOption.id} 
             id={nonDairyOption.id} 
@@ -147,7 +213,20 @@ export default class BoardPage extends Component {
         </div>
 
         <div className="edit-board">
-          <button value={boardID} onClick={(event) => this.props.updateBoard(event)}>Edit Board</button>
+          <button value={boardID} onClick={(event) => this.editBoard(event)}>Edit Board</button>
+
+          {this.state.editBoard ? 
+          <form onSubmit={(event) => this.saveBoardChanges(event)}>
+            <label>Board name:</label><br></br>
+                <input type="text" onChange={(event) => this.editBoardName(event)}  placeholder="Board Name" required></input><br></br>
+
+                <label>Board description:</label><br></br>
+                <input type="text" onChange={(event) => this.editBoardDescription(event)}  placeholder="Board Description"></input><br></br>
+
+            <button type="submit">Save changes</button>
+            <button onClick={() => this.cancelBoardChanges()}>Cancel changes</button>
+          </form> 
+          : null }
         </div>
         
         <div className="delete-board">
