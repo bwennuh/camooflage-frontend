@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 const baseURL = 'http://localhost:3001/'
 const usersURL = baseURL + 'users'
+const boardsURL = baseURL + 'boards'
 
 export default class SignUp extends Component {
 
@@ -17,6 +18,7 @@ export default class SignUp extends Component {
     // bio: "",
     // avatar: "",
     display: "sign-up"
+    // newUserID: ""
   }
 
   getUsername = (event) => {
@@ -143,14 +145,39 @@ export default class SignUp extends Component {
 
     fetch(usersURL, reqObj)
     .then(resp => resp.json())
-    .then(newUser => this.setState({
+    .then(newUser => {
+      this.setState({
         ...this.state,
         username: "", 
         password: "",
         first_name: "", 
         last_name: "", 
         email: ""
-      }))
+      })
+      this.createDefaultBoardForNewUser(newUser.id)
+    })
+
+  }
+
+  createDefaultBoardForNewUser = (id) => {
+    console.log("New user id:")
+    console.log(id)
+
+    const defaultBoard = {
+      name: "Default Board", 
+      description: "Let's start adding some options!",
+      user_id: id
+    }
+
+    const reqObj = {}
+
+    reqObj.headers = {"Content-Type": "application/json"}
+    reqObj.method = "POST"
+    reqObj.body = JSON.stringify(defaultBoard)
+
+    fetch(boardsURL, reqObj)
+    .then(resp => resp.json())
+    .then(() => console.log("New default board created!"))
   }
 
   render(){
