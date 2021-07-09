@@ -20,20 +20,11 @@ export default class NonDairyOptionCardContainer extends Component {
     .then(nonDairyOptions => this.setState({ nonDairyOptions }))
   }
 
-  // searchNonDairyOptions = () => {
-  //   if (this.state?.nonDairyOptions) {
-  //     // const searchOptions = this.state?.nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
-  //     return searchOptions
-  //   }
-  // }
-
   render(){
 
     const nonDairyOptions = this.state.nonDairyOptions
 
-    const searchOptions = this.state.nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
-
-    // return nonDairyOptions.length ? this.renderNonDairyOptions 
+    const searchOptions = nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
 
     return nonDairyOptions.length > 0 ? (
       <div className="non-dairy-card-conatiner">
