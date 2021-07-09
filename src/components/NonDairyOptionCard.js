@@ -47,7 +47,7 @@ export default class NonDairyOptionCard extends Component {
 
   render(){
 
-    let {id, name, allergens, description, image, brandID, categoryID, boards} = this.props
+    let {id, name, allergens, description, image, brandID, categoryID, boards, boardCard, editable} = this.props
 
     return(
       <div className="non-dairy-option-card">
@@ -63,9 +63,9 @@ export default class NonDairyOptionCard extends Component {
             <img src={image} alt="Non Dairy Option"></img>
           </div>
 
-          { this.props.boardCard ? 
+          { boardCard ? 
             <div className="board-non-dairy-option-cards">
-              { this.props.editable ? 
+              { editable ? 
               <div className="edit-buttons">
               <button value={id} onClick={() => this.editOption()}>Edit option</button>
               <button value={id} onClick={(event) => this.props.removeOptionFromBoard(event)}>Remove option</button>
@@ -79,9 +79,13 @@ export default class NonDairyOptionCard extends Component {
                     
                     <label htmlFor={`${name}-select-board`}>Move to board:</label><br></br>
 
-                    <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} default="Select board:">
-                      {boards.filter(board => board.id !== this.props.boardID).map(board => <option value={board.name}>Board: {board.name}</option>)}
-                    </select><br></br>
+                    { boards.length > 0 ?
+                      <span>
+                        <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} default="Select board:">
+                       { boards.filter(board => board.id !== this.props.boardID).map(board => <option value={board.name}>Board: {board.name}</option>) }
+                      </select><br></br>
+                      </span> 
+                      : <button>Create new board</button> }
                     {/* <button value={id} onClick={() => this.moveOptionToNewBoard()}>Move to board</button> */}
                     <button value={id} onClick={() => this.props.moveOptionToNewBoard(id, this.state.addToBoardID, this.props.boardID)}>Move to board</button>
                   </div>
@@ -92,11 +96,16 @@ export default class NonDairyOptionCard extends Component {
             </div> 
             :
             <div className="main-feed-non-dairy-option-cards">
-              <label htmlFor={`${name}-select-board`}>Add to board:</label><br></br>
-              <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} default="Select board:">
-                {boards.map(board => <option value={board.name}>Board: {board.name}</option>)}
-              </select><br></br>
-              <button onClick={() => this.addOptionToBoard()}>Add to board</button>
+              { boards.length > 0 ? 
+                <span>
+                  <label htmlFor={`${name}-select-board`}>Add to board:</label><br></br>
+                    <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} default="Select board:">
+                      { boards.map(board => <option value={board.name}>Board: {board.name}</option>) }
+                    </select><br></br>
+                    <button onClick={() => this.addOptionToBoard()}>Add to board</button>
+                </span> 
+              : <button>Create new board</button> }
+
             </div> }
 
         </div>
