@@ -29,9 +29,13 @@ export default class NonDairyOptionCardContainer extends Component {
 
   render(){
 
+    const nonDairyOptions = this.state.nonDairyOptions
+
     const searchOptions = this.state.nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
 
-    return(
+    // return nonDairyOptions.length ? this.renderNonDairyOptions 
+
+    return nonDairyOptions.length > 0 ? (
       <div className="non-dairy-card-conatiner">
         <div>
           <h1>NON-DAIRY OPTION CARD CONTAINER</h1>
@@ -52,6 +56,6 @@ export default class NonDairyOptionCardContainer extends Component {
           getAllUserBoards={this.props.getAllUserBoards} />)}
         </div>
       </div>
-    )
+    ) : (<span>~ Loading non-dairy options ~</span>)
   }
 }
