@@ -90,7 +90,11 @@ export default class Login extends Component {
 
   changeToLogin = () => {
     this.setState({
-      display: "login"
+      display: "login",
+      username: "",
+      password: "",
+      loggedInUser: {},
+      showErrors: false
     })
   }
 
@@ -117,7 +121,10 @@ export default class Login extends Component {
 
         <div className="change-to-home">
           { this.state.display === "home" ? 
-          <Home user={this.state?.loggedInUser}/>
+          <Home 
+            user={this.state?.loggedInUser}
+            changeToLogin={this.changeToLogin}
+          />
           : null }
         </div>
 
