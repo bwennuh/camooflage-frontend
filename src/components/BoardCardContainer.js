@@ -89,11 +89,14 @@ export default class BoardCardContainer extends Component {
     const updatedBoards = this.state.boards.filter(board => board.id !== boardID)
 
     fetch(boardsURL + `/${boardID}`, {method: "DELETE"})
-    .then(() => this.setState({ 
+    .then(() => {
+      this.props.removeDeletedBoard(updatedBoards)
+      this.setState({ 
       ...this.state,
       boards: updatedBoards,
       showAllBoards: true
-    }))
+    })
+  })
   }
 
   changeToBoardPage = (id) => {
@@ -147,31 +150,32 @@ export default class BoardCardContainer extends Component {
           {/* {this.state.boards.map(board =>  */}
           {this.searchBoards()?.map(board => 
             <BoardCard 
-            key={board.id} 
-            id={board.id} 
-            name={board.name} 
-            description={board.description}
-            boards={this.state.boards}
-            changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
-            // deleteBoard={this.deleteBoard}
-            // updateBoard={this.updateBoard}
-            changeToBoardPage={this.changeToBoardPage} />)}
+              key={board.id} 
+              id={board.id} 
+              name={board.name} 
+              description={board.description}
+              boards={this.state.boards}
+              changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
+              // deleteBoard={this.deleteBoard}
+              // updateBoard={this.updateBoard}
+              changeToBoardPage={this.changeToBoardPage} 
+            />)}
         </div>
       </div>
       : 
       <div className="board-card-page">
         <h1>BOARD CARD PAGE</h1>
         <BoardPage 
-        id={this.state.boardPageID} 
-        userID={this.state.userID} 
-        changeToAllBoards={this.changeToAllBoards}
-        boards={this.state.boards}
-        changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
-        changeToBoardPage={this.changeToBoardPage}
-        deleteBoard={this.deleteBoard}
-        // editBoard={this.editBoard}
-        getEditedBoards={this.getEditedBoards}
-        getAllUserBoards={this.props.getAllUserBoards}
+          id={this.state.boardPageID} 
+          userID={this.state.userID} 
+          changeToAllBoards={this.changeToAllBoards}
+          boards={this.state.boards}
+          changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
+          changeToBoardPage={this.changeToBoardPage}
+          deleteBoard={this.deleteBoard}
+          getEditedBoards={this.getEditedBoards}
+          getAllUserBoards={this.props.getAllUserBoards}
+          removeDeletedBoard={this.props.removeDeletedBoard} 
          />
       </div>
       }
