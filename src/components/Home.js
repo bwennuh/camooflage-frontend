@@ -89,7 +89,6 @@ export default class Home extends Component {
     console.log(updatedBoards.push(editedBoard))
   }
 
-
   getAllUserBoards = () => {
     fetch(boardsURL)
     .then(resp => resp.json())
@@ -102,8 +101,6 @@ export default class Home extends Component {
       })
     })
   }
-
-
 
   render(){
 
