@@ -13,12 +13,9 @@ export default class SignUp extends Component {
     firstName: "",
     lastName: "",
     email: "",
-    // phoneNumber: "",
-    // address: "",
-    // bio: "",
-    // avatar: "",
-    display: "sign-up"
-    // newUserID: ""
+    display: "sign-up",
+    validUsername: false,
+    validPassword: false
   }
 
   getUsername = (event) => {
@@ -83,45 +80,81 @@ export default class SignUp extends Component {
         usernameError.innerText = "Username already taken."
       } else {
         usernameError.innerText = "Valid username ✅"
+        this.setState({
+          validUsername: true
+        })
       }
+
+      let passwordError = document.getElementById("re-enter-password-error")
+
+      if (this.state.password !== this.state.reconfirmPassword){
+        
+        passwordError.innerText = "Passwords do not match ❌"
+  
+        let passwordInput = document.getElementById("password-input")
+        passwordInput.value = ""
+  
+        let reconfirmRasswordInput = document.getElementById("reconfirm-password-input")
+        reconfirmRasswordInput.value = ""
+      } else {
+        passwordError.innerText = "Passwords match ✅"
+        this.setState({
+          validPassword: true
+        })
+      }
+      // debugger
+      if (this.state.validPassword === true && this.state.validUsername === true){
+        this.renderContinueButton()
+      }
+      // this.renderContinueButton()
     })
 
-    let passwordError = document.getElementById("re-enter-password-error")
+    // let passwordError = document.getElementById("re-enter-password-error")
 
-    if (this.state.password !== this.state.reconfirmPassword){
+    // if (this.state.password !== this.state.reconfirmPassword){
       
-      passwordError.innerText = "Passwords do not match ❌"
+    //   passwordError.innerText = "Passwords do not match ❌"
 
-      let passwordInput = document.getElementById("password-input")
-      passwordInput.value = ""
+    //   let passwordInput = document.getElementById("password-input")
+    //   passwordInput.value = ""
 
-      let reconfirmRasswordInput = document.getElementById("reconfirm-password-input")
-      reconfirmRasswordInput.value = ""
-    } else {
-      passwordError.innerText = "Passwords match ✅"
-    }
+    //   let reconfirmRasswordInput = document.getElementById("reconfirm-password-input")
+    //   reconfirmRasswordInput.value = ""
+    // } else {
+    //   passwordError.innerText = "Passwords match ✅"
+    //   this.setState({
+    //     validPassword: true
+    //   })
+    // }
+
+    // this.renderContinueButton()
   }
 
   submitUserInfoHandler = (event) => {
     event.preventDefault()
     this.createNewUser()
+    this.renderLoginContinueButton()
   }
 
-  renderContinueButton = (event) => {
-    let buttonId = event.target.id
-    let clickedSubmitButton = document.getElementById(buttonId)
+  renderContinueButton = () => {
 
-    clickedSubmitButton.style.display = "none"
-
-    let continueButton = document.getElementById("continue-button")
-
-    let loginContinueButton = document.getElementById("login-continue-button")
-
-    if (continueButton){
+    if (this.state.validUsername === true && this.state.validPassword === true){
+      console.log("Testing username and password validation + then need to render button")
+      let clickedSubmitButton = document.getElementById("submit-username-password-button")
+      clickedSubmitButton.style.display = "none"
+      let continueButton = document.getElementById("continue-button")
       continueButton.style.display = "block"
-    } else if (loginContinueButton){
-      loginContinueButton.style.display = "block"
-    }
+    } 
+    // else {
+    //   console.log("Why isn't this check working")
+    // }
+  }
+
+  renderLoginContinueButton = () => {
+    let clickedSubmitButton = document.getElementById("submit-personal-info-button")
+    clickedSubmitButton.style.display = "none"
+    let loginContinueButton = document.getElementById("login-continue-button")
+    loginContinueButton.style.display = "block"
   }
 
   createNewUser = () => {
@@ -201,7 +234,8 @@ export default class SignUp extends Component {
               <input id="reconfirm-password-input" type="password" onChange={(event) => this.confirmPassword(event)} placeholder="re-enter password" autoComplete="on" required></input><br></br>
               <p id="re-enter-password-error" className="form-errors"></p>
 
-              <button id="submit-username-password-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button>
+              {/* <button id="submit-username-password-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button> */}
+              <button id="submit-username-password-button" type="submit">Submit</button>
 
             </form>
 
@@ -221,7 +255,9 @@ export default class SignUp extends Component {
               <label>Email:</label><br></br>
               <input id="email-input" type="email" onChange={(event) => this.getEmail(event)} placeholder="example@example.com" required></input><br></br>
 
-              <button id="submit-personal-info-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button>
+              {/* <button id="submit-personal-info-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button> */}
+              {/* <button id="submit-personal-info-button" type="submit" onClick={() => this.renderLoginContinueButton()}>Submit</button> */}
+              <button id="submit-personal-info-button" type="submit">Submit</button>
 
             </form>
 

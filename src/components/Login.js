@@ -19,7 +19,8 @@ export default class Login extends Component {
     display: "login",
     username: "",
     password: "",
-    loggedInUser: {}
+    loggedInUser: {},
+    showErrors: false
   }
 
   fetchUser = () => {
@@ -31,34 +32,31 @@ export default class Login extends Component {
       fetch(usersURL)
       .then(resp => resp.json())
       .then(users => {
-        let foundUser = users?.find(user => user.username === username)
+        let foundUser = users.find(user => user.username === username)
 
         if (foundUser){
-          console.log(foundUser)
-
           let userPassword = foundUser.password
           if (userPassword === password){
-            console.log("Both username + password match")
-
             this.setState({
-              loggedInUser: foundUser
+              ...this.state,
+              loggedInUser: foundUser,
+              showErrors: false
             })
             this.changeToHome()
 
           } else {
-            alert("Password does not match")
+            this.setState({
+              showErrors: true
+            })
           }
 
         } else {
-          alert("Did not find anyone with that username")
+          this.setState({
+            showErrors: true
+          })
         }
-
       })
-
-    } else {
-      alert("Please enter both your username and your password to continue.")
     }
-
   }
 
   getUsername = (event) => {
@@ -99,7 +97,7 @@ export default class Login extends Component {
   render(){
     return(
       <div className="login-page">
-      {this.state.display === "login" ?
+      { this.state.display === "login" ?
         <div className="login-header">
 
           <h1>CAMOOFLAGE LOGIN PAGE</h1>
@@ -108,8 +106,9 @@ export default class Login extends Component {
             <label>Username:</label><br></br>
             <input type="text" onChange={(event) => this.getUsername(event)} placeholder="username" required></input><br></br>
             <label>Password:</label><br></br>
-            <input type="password" onChange={(event) => this.getPassword(event)} placeholder="password" autoComplete="on" required></input><br></br>
-            <button type="submit">Log In</button>
+            <input type="password" onChange={(event) => this.getPassword(event)} placeholder="password" autoComplete="on" required></input><br></br><br></br>
+            { this.state.showErrors ? <p className="login-errors">Username or password is not correct.</p> : null }
+            <button type="submit">Log In</button><br></br>
           </form>
 
           <button onClick={() => this.changeToSignUp()}>Sign Up!</button>

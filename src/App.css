@@ -62,3 +62,7 @@
   height: auto;
 }
 
+.login-errors, .form-errors {
+  color: red
+}
+
