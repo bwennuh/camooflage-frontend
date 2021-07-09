@@ -99,6 +99,8 @@ export default class BoardCardContainer extends Component {
         })
       })
       this.deleteBoard(boardID)
+    } else {
+      this.deleteBoard(boardID)
     }
   }
 
