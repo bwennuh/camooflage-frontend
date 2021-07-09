@@ -84,7 +84,6 @@ export default class BoardPage extends Component {
     }))
   }
 
-
   moveOptionToNewBoard = (nonDairyOptionID, newBoardID, previousBoardID) => {
     const oldBoardPin = this.state.boardPins.find(boardPin => boardPin.board_id === previousBoardID && boardPin.non_dairy_option_id === nonDairyOptionID)
 
