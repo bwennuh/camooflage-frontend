@@ -49,15 +49,19 @@ export default class ProfilePage extends Component {
       <div className="profile-page">
         <div>
           <h1>Profile Page</h1>
-            <p>{firstName + ' ' + lastName}</p>
-            <p>{bio}</p>
-            <p>{email}</p>
-            <p>{address}</p>
-            <p>{phoneNumber}</p>
+            <p>Name: {firstName + ' ' + lastName}</p>
+            <p>Bio: {bio}</p>
+            <p>Email: {email}</p>
+            <p>Address: {address}</p>
+            <p>Phone number: {phoneNumber}</p>
             <p>Username: {username}</p>
             <p>Password: {password}</p>
             <p>User Id: {id}</p>
-            <img src={avatar} alt="avatar"></img>
+            <p>Profile avatar:</p>
+            <img src={avatar} alt="avatar"></img><br></br>
+            <br></br>
+            <p>Placeholder avatar:</p>
+            <img src="https://image.shutterstock.com/image-vector/illustration-cute-cow-260nw-347317901.jpg"></img>
         </div>
       </div>
     )

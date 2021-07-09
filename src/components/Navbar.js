@@ -10,8 +10,8 @@ export default class Navbar extends Component {
           { this.props.display === "home" ? 
             <div id="home-page-navbar">
               <button onClick={() => this.props.changeToBoardsPage()}>My Boards</button>
-              <button onClick={() => this.props.changeToProfilePage()}>My Profile</button>
               <input placeholder="search by product name..." onChange={(event) => this.props.handleSearchText(event.target.value)} className="search-bar"></input>
+              <button onClick={() => this.props.changeToProfilePage()}>My Profile</button>
               <button onClick={() => this.props.changeToLogin()}>Log Out</button>
             </div> 
             : null }
@@ -19,8 +19,8 @@ export default class Navbar extends Component {
           { this.props.display === "boards" ? 
             <div id="boards-page-navbar">
               <button onClick={() => this.props.changeToNonDairyOptionsPage()}>Home</button>
-              <button onClick={() => this.props.changeToProfilePage()}>My Profile</button>
               <input placeholder="search by board name..." onChange={(event) => this.props.handleSearchText(event.target.value)} className="search-bar"></input>
+              <button onClick={() => this.props.changeToProfilePage()}>My Profile</button>
               <button onClick={() => this.props.changeToLogin()}>Log Out</button>
             </div> 
             : null }

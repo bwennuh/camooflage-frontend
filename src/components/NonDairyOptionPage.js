@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 const baseURL = 'http://localhost:3001/'
 const nonDairyOptionsURL = baseURL + 'non_dairy_options'
-// const boardPinsURL = baseURL + 'board_pins'
-// const boardsURL = baseURL + 'boards'
+const categoriesURL = baseURL + 'categories'
+const brandsURL = baseURL + 'brands'
 
 export default class NonDairyOptionPage extends Component {
 
@@ -15,7 +15,10 @@ export default class NonDairyOptionPage extends Component {
     allergens: "",
     image: "",
     categoryID: "",
-    brandID: ""
+    categoryName: "",
+    categoryType: "",
+    brandID: "",
+    brand: ""
   }
 
   componentDidMount = () => {
@@ -35,28 +38,55 @@ export default class NonDairyOptionPage extends Component {
         categoryID: nonDairyOption.category_id,
         brandID: nonDairyOption.brand_id
       })
+      this.fetchBrand()
+      this.fetchCategory()
     })
+  }
+
+  fetchBrand = () => {
+    fetch(brandsURL + `/${this.state.brandID}`)
+    .then(resp => resp.json())
+    .then(brand => this.setState({
+      ...this.state,
+      brand: brand.name
+    }))
+  }
+
+  fetchCategory = () => {
+    fetch(categoriesURL + `/${this.state.categoryID}`)
+    .then(resp => resp.json())
+    .then(category => this.setState({
+      ...this.state,
+      categoryName: category.name,
+      categoryType: category.product_type
+    }))
   }
 
   render(){
 
-    let {nonDairyOptionID, name, allergens, description, image, brandID, categoryID} = this.state
+    let {nonDairyOptionID, name, allergens, description, image, categoryID, categoryName, categoryType, brandID, brand} = this.state
 
     return(
       <div className="non-dairy-option-page">
-        <div>
-          <h4>NON-DAIRY OPTION PAGE</h4>
+        <button onClick={() => this.props.changeToAllOptions()}>Back to all options</button>
+        <h1>{`NON-DAIRY OPTION PAGE FOR: ${name.toUpperCase()}`}</h1>
+
+        <div className="non-dairy-option-main-info">
+
           <div className="non-dairy-option-info">
-            <p>ID # {nonDairyOptionID}</p>
-            <p>Brand ID # {brandID}</p>
-            <p>Category ID # {categoryID}</p>
-            <p>{name}</p>
-            <p>{description}</p>
-            <p>{allergens}</p>
             <img src={image} alt="Non Dairy Option"></img>
+            <p>Non-Dairy Option ID # {nonDairyOptionID} - {name}</p>
+            <p>Brand ID # {brandID} - {brand}</p>
+            <p>Category ID # {categoryID} - {categoryName}; Type: {categoryType}</p>
+            <p>Description: {description}</p>
+            <p>Allergen(s): {allergens}</p>
           </div>
 
-          <button onClick={() => this.props.changeToAllOptions()}>Back to all options</button>
+          <div className="non-dairy-personalized-notes">
+            <p>Add personalized description, notes, and recommendations here!</p>
+            <p>Add link for where to buy product here!</p>
+          </div>
+
 
          </div>
       </div>
