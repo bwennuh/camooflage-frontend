@@ -98,6 +98,8 @@ export default class NonDairyOptionCard extends Component {
             <img src={image} alt="Non Dairy Option"></img>
           </div>
 
+          <button onClick={() => this.props.changeToNonDairyOptionPage(id)}>View Page</button>
+
           { boardCard ? 
             <div className="board-non-dairy-option-cards">
               { editable ? 

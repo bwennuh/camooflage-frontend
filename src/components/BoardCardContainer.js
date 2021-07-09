@@ -140,7 +140,8 @@ export default class BoardCardContainer extends Component {
 
   changeToAllBoards = () => {
     this.setState({
-      showAllBoards: true
+      showAllBoards: true,
+      boardPageID: 0
     })
   }
 

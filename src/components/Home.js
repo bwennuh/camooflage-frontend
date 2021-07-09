@@ -113,6 +113,7 @@ export default class Home extends Component {
           changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} 
           changeToBoardsPage={this.changeToBoardsPage} 
           changeToProfilePage={this.changeToProfilePage}
+          changeToLogin={this.props.changeToLogin}
         />
         <div>
           <h1>HOME PAGE</h1>
@@ -125,6 +126,7 @@ export default class Home extends Component {
                 boards={this.state.boards}
                 getAllUserBoards={this.getAllUserBoards}
                 changeToBoardsPage={this.changeToBoardsPage}
+                changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} 
               /> 
             : null }
           </div>
