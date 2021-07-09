@@ -4,6 +4,7 @@ import BoardPage from './BoardPage.js';
 
 const baseURL = 'http://localhost:3001/'
 const boardsURL = baseURL + 'boards'
+const boardPinsURL = baseURL + 'board_pins'
 
 export default class BoardCardContainer extends Component {
 
@@ -14,7 +15,8 @@ export default class BoardCardContainer extends Component {
     userID: this.props.user.id,
     showCreateBoardForm: false,
     showAllBoards: true,
-    boardPageID: 0
+    boardPageID: 0,
+    pinsToBeDeleted: []
   }
 
   componentDidMount = () => {
@@ -83,21 +85,55 @@ export default class BoardCardContainer extends Component {
     return searchBoards
   }
 
-  deleteBoard = (event) => {
-    let boardID = +event.target.value
+  deleteBoardPins = (boardID, pins) => {
+
+    if (pins.length > 0){
+      // pins.map(pin => console.log(pin.id))
+      pins.map(pin => {
+        fetch(boardPinsURL + `/${pin.id}`, {method: "DELETE"})
+        .then(() => {
+          this.setState({
+            pinsToBeDeleted: pins
+          })
+          // this.deleteBoard(boardID)
+        })
+      })
+      this.deleteBoard(boardID)
+    }
+  }
+
+  deleteBoard = (boardID) => {
 
     const updatedBoards = this.state.boards.filter(board => board.id !== boardID)
-
+    // debugger
     fetch(boardsURL + `/${boardID}`, {method: "DELETE"})
     .then(() => {
-      this.props.removeDeletedBoard(updatedBoards)
-      this.setState({ 
-      ...this.state,
-      boards: updatedBoards,
-      showAllBoards: true
+        this.props.removeDeletedBoard(updatedBoards)
+        this.setState({ 
+        ...this.state,
+        boards: updatedBoards,
+        showAllBoards: true
+      })
     })
-  })
   }
+  
+
+  // deleteBoard = (event) => {
+  //   let boardID = +event.target.value
+  //   this.deleteBoardPins(boardID)
+
+  //   const updatedBoards = this.state.boards.filter(board => board.id !== boardID)
+  //   debugger
+  //   // fetch(boardsURL + `/${boardID}`, {method: "DELETE"})
+  //   // .then(() => {
+  //   //     this.props.removeDeletedBoard(updatedBoards)
+  //   //     this.setState({ 
+  //   //     ...this.state,
+  //   //     boards: updatedBoards,
+  //   //     showAllBoards: true
+  //   //   })
+  //   // })
+  // }
 
   changeToBoardPage = (id) => {
     this.setState({
@@ -173,6 +209,7 @@ export default class BoardCardContainer extends Component {
           changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
           changeToBoardPage={this.changeToBoardPage}
           deleteBoard={this.deleteBoard}
+          deleteBoardPins={this.deleteBoardPins}
           getEditedBoards={this.getEditedBoards}
           getAllUserBoards={this.props.getAllUserBoards}
           removeDeletedBoard={this.props.removeDeletedBoard} 
