@@ -13,9 +13,15 @@ export default class NonDairyOptionCardContainer extends Component {
     // userID: this.props.userID
   }
 
-  // componentDidMount = () => {
-  //   this.fetchUserBoards()
-  // }
+  componentDidMount = () => {
+    this.fetchNonDairyOptions()
+  }
+
+  fetchNonDairyOptions = () => {
+    fetch(nonDairyOptionsURL)
+    .then(resp => resp.json())
+    .then(nonDairyOptions => this.setState({ ...this.state, nonDairyOptions: nonDairyOptions }))
+  }
 
   // findUserBoards = (boards) => {
   //   let userID = this.state.userID
@@ -35,21 +41,6 @@ export default class NonDairyOptionCardContainer extends Component {
   //     })
   //   })
   // }
-
-  componentDidMount = () => {
-    this.fetchNonDairyOptions()
-    // this.fetchUserBoards()
-    // this.setState({
-    //   ...this.state,
-    //   boards: this.props.boards
-    // })
-  }
-
-  fetchNonDairyOptions = () => {
-    fetch(nonDairyOptionsURL)
-    .then(resp => resp.json())
-    .then(nonDairyOptions => this.setState({ ...this.state, nonDairyOptions: nonDairyOptions }))
-  }
 
   render(){
 
