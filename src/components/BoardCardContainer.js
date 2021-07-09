@@ -80,11 +80,6 @@ export default class BoardCardContainer extends Component {
      this.props.updateBoards(newBoard)
   }
 
-  searchBoards = () => {
-    const searchBoards = this.state?.boards.filter(board => board.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
-    return searchBoards
-  }
-
   deleteBoardPins = (boardID, pins) => {
 
     if (pins.length > 0){
@@ -105,7 +100,6 @@ export default class BoardCardContainer extends Component {
   }
 
   deleteBoard = (boardID) => {
-
     const updatedBoards = this.state.boards.filter(board => board.id !== boardID)
     // debugger
     fetch(boardsURL + `/${boardID}`, {method: "DELETE"})
@@ -119,7 +113,6 @@ export default class BoardCardContainer extends Component {
     })
   }
   
-
   // deleteBoard = (event) => {
   //   let boardID = +event.target.value
   //   this.deleteBoardPins(boardID)
@@ -162,9 +155,18 @@ export default class BoardCardContainer extends Component {
     })
   }
 
+  // searchBoards = () => {
+  //   const searchBoards = this.state?.boards.filter(board => board.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
+  //   return searchBoards
+  // }
+
   render(){
 
-    return(
+    const boards = this.state.boards
+
+    const searchBoards = this.state?.boards.filter(board => board.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
+
+    return boards.length > 0 ? (
       <div className="boards-displays">
       { this.state.showAllBoards === true ?
       <div className="board-card-conatiner">
@@ -186,7 +188,8 @@ export default class BoardCardContainer extends Component {
            : null }
 
           {/* {this.state.boards.map(board =>  */}
-          {this.searchBoards()?.map(board => 
+          {/* {this.searchBoards()?.map(board =>  */}
+          { searchBoards.map(board => 
             <BoardCard 
               key={board.id} 
               id={board.id} 
@@ -220,6 +223,6 @@ export default class BoardCardContainer extends Component {
       }
 
       </div>
-    )
+    ) : ((<span>~ Loading boards ~</span>))
   }
 }
