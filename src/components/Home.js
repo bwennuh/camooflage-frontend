@@ -82,11 +82,11 @@ export default class Home extends Component {
     })
   }
 
-  editBoards = (editedBoard) => {
-    let updatedBoards = this.state.boards.filter(board => board.id !== editedBoard.id)
-    console.log(updatedBoards)
-    updatedBoards.push(editedBoard)
-    console.log(updatedBoards.push(editedBoard))
+  removeDeletedBoard = (remainingBoards) => {
+    this.setState({
+      ...this.state,
+      boards: remainingBoards
+    })
   }
 
   getAllUserBoards = () => {
@@ -120,9 +120,11 @@ export default class Home extends Component {
           <div className="non-dairy-options-page">
             { this.state.display === "home" ? 
               <NonDairyOptionCardContainer 
+                userID={this.state.user.id}
                 searchText={this.state.searchText} 
                 boards={this.state.boards}
                 getAllUserBoards={this.getAllUserBoards}
+                changeToBoardsPage={this.changeToBoardsPage}
               /> 
             : null }
           </div>
@@ -136,8 +138,9 @@ export default class Home extends Component {
               changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} 
               updateBoards={this.updateBoards} 
               changeToBoardsPage={this.changeToBoardsPage} 
-              editBoards={this.editBoards}
-              getAllUserBoards={this.getAllUserBoards} 
+              // editBoards={this.editBoards}
+              getAllUserBoards={this.getAllUserBoards}
+              removeDeletedBoard={this.removeDeletedBoard} 
             /> 
             : null }
           </div>
