@@ -66,14 +66,14 @@
   color: red
 }
 
-.non-dairy-option-main-info {
+.non-dairy-option-main-info, .profile-page-containers {
   display: flex;
   flex-flow: row wrap;
   align-items: stretch;
   justify-content: space-around;
 }
 
-.non-dairy-personalized-notes {
+.non-dairy-personalized-notes, .profile-boards-favorites {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
