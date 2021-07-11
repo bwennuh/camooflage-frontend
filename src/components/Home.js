@@ -19,6 +19,7 @@ export default class Home extends Component {
   state = {
     user: this.props.user,
     searchText: "",
+    searchFilters: [],
     display: "home",
     boards: []
     // nonDairyOptions: []
@@ -51,6 +52,13 @@ export default class Home extends Component {
   handleSearchText = (text) => {
     this.setState({
       searchText: text
+    })
+  }
+
+  handleSearchFilters = (filters) => {
+    this.setState({
+      ...this.state,
+      searchFilters: filters
     })
   }
 
@@ -108,7 +116,8 @@ export default class Home extends Component {
       <div className="home-page">
         <Navbar 
           user={this.props.user} 
-          handleSearchText={this.handleSearchText} 
+          handleSearchText={this.handleSearchText}
+          handleSearchFilters={this.handleSearchFilters} 
           display={this.state.display} 
           changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} 
           changeToBoardsPage={this.changeToBoardsPage} 

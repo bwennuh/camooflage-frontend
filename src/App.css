@@ -99,3 +99,8 @@
   box-shadow: 10px 10px #df7ac0, -10px -10px #000000;
   background-color: white;
 }
+
+.profile-favorite-card-info img {
+  height: 75px;
+  width: auto;
+}

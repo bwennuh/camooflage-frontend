@@ -250,6 +250,7 @@ export default class BoardPage extends Component {
               getAllUserBoards={this.props.getAllUserBoards}
               // viewNonDairyOptionPage={this.viewNonDairyOptionPage}
               fetchNonDairyOption={this.fetchNonDairyOption}
+              boardPin={this.state.boardPins.find(boardPin => boardPin.non_dairy_option_id === nonDairyOption.id)}
               />)}
             <br></br>
             <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add more options</button>
@@ -298,6 +299,8 @@ export default class BoardPage extends Component {
               userID={this.state.userID} 
               boards={this.props.boards}
               boardPage={true}
+              boardID={this.state.boardID}
+              boardPin={this.state.boardPins.find(boardPin => boardPin.non_dairy_option_id === nonDairyOption.id)}
             />
 
           </div>
