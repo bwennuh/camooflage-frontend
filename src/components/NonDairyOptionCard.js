@@ -98,19 +98,24 @@ export default class NonDairyOptionCard extends Component {
             <img src={image} alt="Non Dairy Option"></img>
           </div>
 
-          <button onClick={() => this.props.changeToNonDairyOptionPage(id)}>View Page</button>
-
           { boardCard ? 
             <div className="board-non-dairy-option-cards">
               { editable ? 
                 <div className="non-dairy-option-board-card-buttons">
                   { boards.filter(board => board.id !== this.props.boardID).length === 0 ? null :
                   <div className="edit-buttons">
-                  <button value={id} onClick={() => this.editOption()}>Edit option</button>
+                    <button value={id} onClick={() => this.editOption()}>Edit option</button>
                   </div> }
+
                   <div className="delete-buttons">
-                  <button value={id} onClick={(event) => this.props.removeOptionFromBoard(event)}>Remove option</button>
+                    <button value={id} onClick={(event) => this.props.removeOptionFromBoard(event)}>Remove option</button>
                   </div>
+
+                  <div className="view-non-dairy-option-page-buttons">  
+                    {/* <button onClick={() => this.props.viewNonDairyOptionPage(id)}>View Page</button> */}
+                    <button onClick={() => this.props.fetchNonDairyOption(id)}>View Page</button>
+                  </div>
+
                 </div>
               : null }
 
@@ -155,6 +160,11 @@ export default class NonDairyOptionCard extends Component {
                     
                 </span> 
               : <button onClick={() => this.props.changeToBoardsPage()}>Create new board</button> }
+
+
+                  <div className="view-non-dairy-option-page-buttons">  
+                    <button onClick={() => this.props.changeToNonDairyOptionPage(id)}>View Page</button>
+                  </div>
 
             </div> }
 

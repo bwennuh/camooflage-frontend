@@ -79,3 +79,23 @@
   justify-content: space-around;
   /* justify-content: center; */
 }
+
+.profile-boards-displays {
+  border: #df7ac0 solid 10px;
+  border-radius: 3em;
+  padding: 10px;
+  width: 750px;
+  height: auto;
+}
+
+.profile-board-card, .profile-favorite-card {
+  text-align: center;
+  border: #000000 solid 5px;
+  padding: 5px;
+  width: 250px;
+  height: auto;
+  display: inline-grid;
+  margin: 25px;
+  box-shadow: 10px 10px #df7ac0, -10px -10px #000000;
+  background-color: white;
+}

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ProfileBoardCardContainer from './ProfileBoardCardContainer';
+import ProfileFavoriteCardContainer from './ProfileFavoriteCardContainer';
 
 const baseURL = 'http://localhost:3001/'
 const usersURL = baseURL + 'users'
@@ -416,10 +418,12 @@ export default class ProfilePage extends Component {
 
             <div className="profile-boards">
               <p>Profile boards go here</p>
+              <ProfileBoardCardContainer userID={this.state.id} />
             </div>
 
             <div className="profile-favorites">
               <p>Profile favorites go here</p>
+              <ProfileFavoriteCardContainer userID={this.state.id} />
             </div>
 
           </div>

@@ -149,7 +149,7 @@ export default class Home extends Component {
 
           <div className="profile-page">
             { this.state.display === "profile" ? 
-            <ProfilePage userID={this.state.user.id}/> 
+            <ProfilePage userID={this.state.user.id} /> 
             : null }
 
           </div>

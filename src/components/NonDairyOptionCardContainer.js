@@ -102,12 +102,13 @@ export default class NonDairyOptionCardContainer extends Component {
           </div>
         </div>
         : 
-        <div className="board-card-page">
-          <h1>BOARD CARD PAGE</h1>
+        <div className="non-dairy-option-page">
+          <h1>NON DAIRY OPTION PAGE</h1>
           <NonDairyOptionPage 
             id={this.state.nonDairyOptionPageID} 
             userID={this.state.userID} 
             boards={this.props.boards}
+            boardPage={false}
             changeToAllOptions={this.changeToAllOptions} 
           />
         </div> }

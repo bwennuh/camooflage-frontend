@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NonDairyOptionCard from './NonDairyOptionCard.js';
+import NonDairyOptionPage from './NonDairyOptionPage.js';
 
 const baseURL = 'http://localhost:3001/'
 const boardsURL = baseURL + 'boards'
@@ -18,7 +19,10 @@ export default class BoardPage extends Component {
     boardPins: [],
     nonDairyOptions: [],
     deleteBoard: false,
-    editBoard: false
+    editBoard: false,
+    viewNonDairyOptionPage: false,
+    nonDairyOptionPageID: 0,
+    nonDairyOption: {}
   }
 
   componentDidMount = () => {
@@ -177,78 +181,129 @@ export default class BoardPage extends Component {
     })
   }
 
+  viewNonDairyOptionPage = (id) => {
+    // this.fetchNonDairyOption(id)
+    this.setState({
+      ...this.state,
+      viewNonDairyOptionPage: true,
+      nonDairyOptionPageID: id
+    })
+  }
+
+  viewBoardPage = () => {
+    this.setState({
+      ...this.state,
+      viewNonDairyOptionPage: false,
+      nonDairyOptionPageID: 0
+    })
+  }
+
+  fetchNonDairyOption = (id) => {
+    fetch(nonDairyOptionsURL + `/${id}`)
+    .then(resp => resp.json())
+    .then(nonDairyOption => {
+      this.setState({
+        ...this.state,
+        nonDairyOption: nonDairyOption
+      })
+      this.viewNonDairyOptionPage(id)
+    })
+  }
+
   render(){
 
-    let { boardID, name, description, boardPins, nonDairyOptions } = this.state
+    let { boardID, name, description, boardPins, nonDairyOptions, nonDairyOption } = this.state
 
     return(
       <div className="board-page">
+        { this.state.viewNonDairyOptionPage === false ? 
+        <div className="board-page-containers">
 
-        <div className="board-info">
-          <h1> ~ BOARD INFO HERE ~</h1>
+          <div className="board-info">
+            <h1> ~ BOARD INFO HERE ~</h1>
 
-          <p>{`Board id: ${boardID}`}</p>
-          <p>{`Board name: ${name}`}</p>
-          <p>{`Board description: ${description}`}</p>
-        </div>
-
-        <button onClick={() => this.props.changeToAllBoards()}>Go back to boards</button>
-
-        <div className="board-page-non-dairy-options">
-
-          { nonDairyOptions.map(nonDairyOption => 
-            <NonDairyOptionCard 
-            key={nonDairyOption.id} 
-            id={nonDairyOption.id} 
-            name={nonDairyOption.name} 
-            description={nonDairyOption.description} 
-            allergens={nonDairyOption.allergens} 
-            image={nonDairyOption.image}
-            brandID={nonDairyOption.brand_id} 
-            categoryID={nonDairyOption.category_id}
-            boards={this.props.boards}
-            boardID={boardID}
-            boardCard={true}
-            editable={true}
-            removeOptionFromBoard={this.removeOptionFromBoard}
-            moveOptionToNewBoard={this.moveOptionToNewBoard}
-            getAllUserBoards={this.props.getAllUserBoards}
-            />)}
-          <br></br>
-          <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add more options</button>
-
-        </div>
-
-        <div className="edit-board">
-          <button value={boardID} onClick={(event) => this.editBoard(event)}>Edit Board</button>
-
-          {this.state.editBoard ? 
-          <form onSubmit={(event) => this.saveBoardChanges(event)}>
-            <label>Board name:</label><br></br>
-                <input type="text" onChange={(event) => this.editBoardName(event)}  placeholder="Board Name"></input><br></br>
-
-                <label>Board description:</label><br></br>
-                <input type="text" onChange={(event) => this.editBoardDescription(event)}  placeholder="Board Description"></input><br></br>
-
-            <button type="submit">Save changes</button>
-            <button onClick={() => this.cancelBoardChanges()}>Cancel changes</button>
-          </form> 
-          : null }
-        </div>
-        
-        <div className="delete-board">
-          { this.state.deleteBoard === false ? 
-          <button onClick={() => this.toggleDeleteBoard()}>Delete Board</button> 
-          : 
-          <div className="delete-board-options">
-            <label>Are you sure?</label><br></br>
-            {/* <button value={boardID} onClick={(event) => this.props.deleteBoard(event)}>Yes</button> */}
-            {/* <button value={boardID} onClick={(event) => this.props.deleteBoardPins(event)}>Yes</button> */}
-            <button value={boardID} onClick={() => this.props.deleteBoardPins(boardID, this.state.boardPins)}>Yes</button>
-            <button onClick={() => this.toggleDeleteBoard()}>No</button>
+            <p>{`Board id: ${boardID}`}</p>
+            <p>{`Board name: ${name}`}</p>
+            <p>{`Board description: ${description}`}</p>
           </div>
-           }
+
+          <button onClick={() => this.props.changeToAllBoards()}>Go back to boards</button>
+
+          <div className="board-page-non-dairy-options">
+
+            { nonDairyOptions.map(nonDairyOption => 
+              <NonDairyOptionCard 
+              key={nonDairyOption.id} 
+              id={nonDairyOption.id} 
+              name={nonDairyOption.name} 
+              description={nonDairyOption.description} 
+              allergens={nonDairyOption.allergens} 
+              image={nonDairyOption.image}
+              brandID={nonDairyOption.brand_id} 
+              categoryID={nonDairyOption.category_id}
+              boards={this.props.boards}
+              boardID={boardID}
+              boardCard={true}
+              editable={true}
+              removeOptionFromBoard={this.removeOptionFromBoard}
+              moveOptionToNewBoard={this.moveOptionToNewBoard}
+              getAllUserBoards={this.props.getAllUserBoards}
+              // viewNonDairyOptionPage={this.viewNonDairyOptionPage}
+              fetchNonDairyOption={this.fetchNonDairyOption}
+              />)}
+            <br></br>
+            <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add more options</button>
+
+          </div>
+
+          <div className="edit-board">
+            <button value={boardID} onClick={(event) => this.editBoard(event)}>Edit Board</button>
+
+            { this.state.editBoard ? 
+            <form onSubmit={(event) => this.saveBoardChanges(event)}>
+              <label>Board name:</label><br></br>
+                  <input type="text" onChange={(event) => this.editBoardName(event)}  placeholder="Board Name"></input><br></br>
+
+                  <label>Board description:</label><br></br>
+                  <input type="text" onChange={(event) => this.editBoardDescription(event)}  placeholder="Board Description"></input><br></br>
+
+              <button type="submit">Save changes</button>
+              <button onClick={() => this.cancelBoardChanges()}>Cancel changes</button>
+            </form> 
+            : null }
+          </div>
+          
+          <div className="delete-board">
+            { this.state.deleteBoard === false ? 
+            <button onClick={() => this.toggleDeleteBoard()}>Delete Board</button> 
+            : 
+            <div className="delete-board-options">
+              <label>Are you sure?</label><br></br>
+              {/* <button value={boardID} onClick={(event) => this.props.deleteBoard(event)}>Yes</button> */}
+              {/* <button value={boardID} onClick={(event) => this.props.deleteBoardPins(event)}>Yes</button> */}
+              <button value={boardID} onClick={() => this.props.deleteBoardPins(boardID, this.state.boardPins)}>Yes</button>
+              <button onClick={() => this.toggleDeleteBoard()}>No</button>
+            </div>
+            }
+          </div>
         </div>
+        :
+        <div className="non-dairy-option-page-containers">
+
+          <div className="non-dairy-option-page">
+            <button onClick={() => this.viewBoardPage()}>Back to board</button>
+
+            <NonDairyOptionPage 
+              id={nonDairyOption.id} 
+              userID={this.state.userID} 
+              boards={this.props.boards}
+              boardPage={true}
+            />
+
+          </div>
+
+        </div>
+        }
 
 
       </div>
