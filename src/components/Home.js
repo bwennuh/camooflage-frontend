@@ -8,7 +8,7 @@ const baseURL = 'http://localhost:3001/'
 // const usersURL = baseURL + 'users'
 const boardsURL = baseURL + 'boards'
 // const recipesURL = baseURL + 'recipes'
-// const nonDairyOptionsURL = baseURL + 'non_dairy_options'
+const nonDairyOptionsURL = baseURL + 'non_dairy_options'
 // const boardPinsURL = baseURL + 'board_pins'
 // const recipePinsURL = baseURL + 'recipe_pins'
 // const categoriesURL = baseURL + 'categories'
@@ -21,12 +21,14 @@ export default class Home extends Component {
     searchText: "",
     searchFilters: [],
     display: "home",
-    boards: []
+    boards: [],
+    allAllergens: []
     // nonDairyOptions: []
   }
 
   componentDidMount = () => {
     this.fetchUserBoards()
+    this.getAllAllergens()
   }
 
   findUserBoards = (boards) => {
@@ -51,35 +53,50 @@ export default class Home extends Component {
 
   handleSearchText = (text) => {
     this.setState({
+      ...this.state,
       searchText: text
     })
   }
 
-  handleSearchFilters = (filters) => {
+  addSearchFilter = (searchFilter) => {
     this.setState({
       ...this.state,
-      searchFilters: filters
+      searchFilters: [...this.state.searchFilters, searchFilter]
+    })
+  }
+
+  removeSearchFilter = (searchFilter) => {
+    let updatedSearchFilters = this.state.searchFilters.filter(filter => filter !== searchFilter)
+    this.setState({
+      ...this.state,
+      searchFilters: updatedSearchFilters
     })
   }
 
   changeToNonDairyOptionsPage = () => {
     this.setState({
+      ...this.state,
       display: "home",
-      searchText: ""
+      searchText: "",
+      searchFilters: []
     })
   }
 
   changeToBoardsPage = () => {
     this.setState({
+      ...this.state,
       display: "boards",
-      searchText: ""
+      searchText: "",
+      searchFilters: []
     })
   }
 
   changeToProfilePage = () => {
     this.setState({
+      ...this.state,
       display: "profile",
-      searchText: ""
+      searchText: "",
+      searchFilters: []
     })
   }
 
@@ -110,6 +127,18 @@ export default class Home extends Component {
     })
   }
 
+  getAllAllergens = () => {
+    fetch(nonDairyOptionsURL)
+    .then(resp => resp.json())
+    .then(nonDairyOptions => {
+      let allergens = nonDairyOptions.map(nonDairyOption => nonDairyOption.allergens.toLowerCase()).flat()
+      this.setState({
+        ...this.state,
+        allAllergens: allergens
+      })
+    })
+  }
+
   render(){
 
     return(
@@ -135,7 +164,10 @@ export default class Home extends Component {
                 boards={this.state.boards}
                 getAllUserBoards={this.getAllUserBoards}
                 changeToBoardsPage={this.changeToBoardsPage}
-                changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} 
+                changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage}
+                allAllergens={this.state.allAllergens}
+                addSearchFilter={this.addSearchFilter} 
+                removeSearchFilter={this.removeSearchFilter}  
               /> 
             : null }
           </div>

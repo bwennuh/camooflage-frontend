@@ -13,7 +13,9 @@ export default class NonDairyOptionCardContainer extends Component {
     showAllOptions: true,
     nonDairyOptionPageID: 0,
     // boards: []
-    userID: this.props.userID
+    userID: this.props.userID,
+    allAllergens: this.props.allAllergens,
+    applyFilter: false
   }
 
   componentDidMount = () => {
@@ -41,6 +43,23 @@ export default class NonDairyOptionCardContainer extends Component {
     })
   }
 
+  applyFilters = () => {
+    this.setState({
+      ...this.state,
+      applyFilter: true
+    })
+  }
+
+  toggleFilter = (allergen) => {
+    let allergenInput = document.getElementById(allergen + "-allergen-input")
+
+    if (allergenInput.checked){
+      this.props.addSearchFilter(allergen)
+    } else {
+      this.props.removeSearchFilter(allergen)
+    }
+  }
+
   render(){
 
     const nonDairyOptions = this.state.nonDairyOptions
@@ -54,12 +73,28 @@ export default class NonDairyOptionCardContainer extends Component {
       searchOptions = []
     }
 
+    let filteredOptions
+
     return nonDairyOptions.length > 0 ? (
       <div className="non-dairy-options-displays">
       { this.state.showAllOptions === true ?
         <div className="non-dairy-card-container">
           <div>
             <h1>NON-DAIRY OPTION CARD CONTAINER</h1>
+
+            { this.state.applyFilter === false ? <button onClick={() => this.applyFilters()}>Apply filters</button> :
+            <div className="filter-checkboxes">
+              <p>Allergens to avoid:</p>
+              { this.props.allAllergens.map( allergen => (
+                <div className="filter-checkbox">
+                  <label>{allergen}</label>
+                  <input id={`${allergen}-allergen-input`} value={allergen} type="checkbox" onChange={() => this.toggleFilter(allergen)}/>
+                </div>
+              ))}
+
+            </div> }
+            <br></br>
+
             {/* {this.searchNonDairyOptions()?.map(nonDairyOption =>  */}
             { searchOptions.map(nonDairyOption => 
               <NonDairyOptionCard 
