@@ -19,7 +19,7 @@ export default class Home extends Component {
   state = {
     user: this.props.user,
     searchText: "",
-    searchFilters: [],
+    // searchFilters: [],
     display: "home",
     boards: [],
     allAllergens: []
@@ -58,20 +58,20 @@ export default class Home extends Component {
     })
   }
 
-  addSearchFilter = (searchFilter) => {
-    this.setState({
-      ...this.state,
-      searchFilters: [...this.state.searchFilters, searchFilter]
-    })
-  }
+  // addSearchFilter = (searchFilter) => {
+  //   this.setState({
+  //     ...this.state,
+  //     searchFilters: [...this.state.searchFilters, searchFilter]
+  //   })
+  // }
 
-  removeSearchFilter = (searchFilter) => {
-    let updatedSearchFilters = this.state.searchFilters.filter(filter => filter !== searchFilter)
-    this.setState({
-      ...this.state,
-      searchFilters: updatedSearchFilters
-    })
-  }
+  // removeSearchFilter = (searchFilter) => {
+  //   let updatedSearchFilters = this.state.searchFilters.filter(filter => filter !== searchFilter)
+  //   this.setState({
+  //     ...this.state,
+  //     searchFilters: updatedSearchFilters
+  //   })
+  // }
 
   changeToNonDairyOptionsPage = () => {
     this.setState({
@@ -146,7 +146,6 @@ export default class Home extends Component {
         <Navbar 
           user={this.props.user} 
           handleSearchText={this.handleSearchText}
-          handleSearchFilters={this.handleSearchFilters} 
           display={this.state.display} 
           changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage} 
           changeToBoardsPage={this.changeToBoardsPage} 
@@ -167,7 +166,8 @@ export default class Home extends Component {
                 changeToNonDairyOptionsPage={this.changeToNonDairyOptionsPage}
                 allAllergens={this.state.allAllergens}
                 addSearchFilter={this.addSearchFilter} 
-                removeSearchFilter={this.removeSearchFilter}  
+                removeSearchFilter={this.removeSearchFilter}
+                searchFilters={this.state.searchFilters}  
               /> 
             : null }
           </div>
