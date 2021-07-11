@@ -18,7 +18,8 @@ export default class NonDairyOptionPage extends Component {
     categoryName: "",
     categoryType: "",
     brandID: "",
-    brand: ""
+    brand: "",
+    boardPage: this.props.boardPage
   }
 
   componentDidMount = () => {
@@ -64,11 +65,12 @@ export default class NonDairyOptionPage extends Component {
 
   render(){
 
-    let {nonDairyOptionID, name, allergens, description, image, categoryID, categoryName, categoryType, brandID, brand} = this.state
+    let {nonDairyOptionID, name, allergens, description, image, categoryID, categoryName, categoryType, brandID, brand, boardPage} = this.state
 
     return(
       <div className="non-dairy-option-page">
-        <button onClick={() => this.props.changeToAllOptions()}>Back to all options</button>
+        { boardPage === false ? <button onClick={() => this.props.changeToAllOptions()}>Back to all options</button> : null }
+
         <h1>{`NON-DAIRY OPTION PAGE FOR: ${name.toUpperCase()}`}</h1>
 
         <div className="non-dairy-option-main-info">

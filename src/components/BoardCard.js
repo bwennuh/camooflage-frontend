@@ -81,6 +81,7 @@ export default class BoardCard extends Component {
             boardID={id}
             boardCard={true}
             editable={false}
+            changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
             // removeOptionFromBoard={this.removeOptionFromBoard}
             // moveOptionToNewBoard={this.moveOptionToNewBoard} 
             />)}
