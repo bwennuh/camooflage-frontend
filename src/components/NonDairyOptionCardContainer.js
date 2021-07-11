@@ -13,7 +13,10 @@ export default class NonDairyOptionCardContainer extends Component {
     showAllOptions: true,
     nonDairyOptionPageID: 0,
     // boards: []
-    userID: this.props.userID
+    userID: this.props.userID,
+    allAllergens: this.props.allAllergens,
+    applyFilter: false,
+    searchFilters: []
   }
 
   componentDidMount = () => {
@@ -41,15 +44,71 @@ export default class NonDairyOptionCardContainer extends Component {
     })
   }
 
+  applyFilters = () => {
+    this.setState({
+      ...this.state,
+      applyFilter: true
+    })
+  }
+
+  addSearchFilter = (searchFilter) => {
+    this.setState({
+      ...this.state,
+      searchFilters: [...this.state.searchFilters, searchFilter]
+    })
+  }
+
+  removeSearchFilter = (searchFilter) => {
+    let updatedSearchFilters = this.state.searchFilters.filter(filter => filter !== searchFilter)
+    this.setState({
+      ...this.state,
+      searchFilters: updatedSearchFilters
+    })
+  }
+
+  toggleFilter = (allergen) => {
+    let allergenInput = document.getElementById(allergen + "-allergen-input")
+
+    if (allergenInput.checked){
+      this.addSearchFilter(allergen)
+    } else {
+      this.removeSearchFilter(allergen)
+    }
+  }
+
+  // toggleFilter = (allergen) => {
+  //   let allergenInput = document.getElementById(allergen + "-allergen-input")
+
+  //   if (allergenInput.checked){
+  //     this.props.addSearchFilter(allergen)
+  //   } else {
+  //     this.props.removeSearchFilter(allergen)
+  //   }
+  // }
+
   render(){
 
     const nonDairyOptions = this.state.nonDairyOptions
+    let searchFilters = this.state.searchFilters
 
     // const searchOptions = nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
     let searchOptions
+    let filteredOptions
+
 
     if (nonDairyOptions.length > 0){
       searchOptions = nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
+
+      // filteredOptions = searchOptions.filter(nonDairyOption => searchFilters.map(filter => !nonDairyOption.allergens.includes(filter)))
+
+      if (searchFilters.length > 0){
+        // debugger
+        filteredOptions = searchOptions.filter(option => !searchFilters.includes(option.allergens.toLowerCase()))
+        // filteredOptions = searchFilters.map(searchFilter => searchOptions.filter(nonDairyOption => !nonDairyOption.allergens.includes(searchFilter)))
+      } else {
+        filteredOptions = searchOptions
+      }
+
     } else {
       searchOptions = []
     }
@@ -60,8 +119,23 @@ export default class NonDairyOptionCardContainer extends Component {
         <div className="non-dairy-card-container">
           <div>
             <h1>NON-DAIRY OPTION CARD CONTAINER</h1>
+
+            { this.state.applyFilter === false ? <button onClick={() => this.applyFilters()}>Apply filters</button> :
+            <div className="filter-checkboxes">
+              <p>Allergens to avoid:</p>
+              { this.props.allAllergens.map( allergen => (
+                <div className="filter-checkbox">
+                  <label>{allergen}</label>
+                  <input id={`${allergen}-allergen-input`} value={allergen} type="checkbox" onChange={() => this.toggleFilter(allergen)}/>
+                </div>
+              ))}
+
+            </div> }
+            <br></br>
+
             {/* {this.searchNonDairyOptions()?.map(nonDairyOption =>  */}
-            { searchOptions.map(nonDairyOption => 
+            {/* { searchOptions.map(nonDairyOption =>  */}
+              { filteredOptions.map(nonDairyOption => 
               <NonDairyOptionCard 
                 key={nonDairyOption.id} 
                 id={nonDairyOption.id} 
