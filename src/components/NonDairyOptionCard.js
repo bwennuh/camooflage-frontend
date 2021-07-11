@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const baseURL = 'http://localhost:3001/'
-// const nonDairyOptionsURL = baseURL + 'non_dairy_options'
+const nonDairyOptionsURL = baseURL + 'non_dairy_options'
 const boardPinsURL = baseURL + 'board_pins'
 const boardsURL = baseURL + 'boards'
 
@@ -9,24 +9,14 @@ export default class NonDairyOptionCard extends Component {
 
   state = {
     addToBoardID: undefined,
-    // addToBoardID: this.props.boards[0]?.id,
-    editable: false
-    // removeFromBoardID: 0,
-    // moveToBoardID: 0,
-    // boardPinToBeUpdated: {}
+    editable: false,
+    boardPin: this.props.boardPin,
+    allergens: []
   }
 
-  // componentDidMount = () => {
-  //   this.setInitialBoardID()
-  // }
-  
-  // setInitialBoardID = () => {
-  //   if (this.props.boards.length > 0){
-  //     this.setState({
-  //       addToBoardID: this.props.boards[0]?.id
-  //     })
-  //   }
-  // }
+  componentDidMount = () => {
+    this.getAllergenTags()
+  }
 
   getBoardSelection = (event) => {
     this.props.getAllUserBoards()
@@ -45,7 +35,8 @@ export default class NonDairyOptionCard extends Component {
     } else {
       const newBoardPin = {
         board_id: this.state.addToBoardID, 
-        non_dairy_option_id: this.props.id
+        non_dairy_option_id: this.props.id,
+        favorite: false
       }
   
       const reqObj = {}
@@ -58,25 +49,52 @@ export default class NonDairyOptionCard extends Component {
       .then(resp => resp.json())
       .then(newBoardPin => this.setState({ addToBoardID: undefined }))
     }
-    // const newBoardPin = {
-    //   board_id: this.state.addToBoardID, 
-    //   non_dairy_option_id: this.props.id
-    // }
-
-    // const reqObj = {}
-
-    // reqObj.headers = {"Content-Type": "application/json"}
-    // reqObj.method = "POST"
-    // reqObj.body = JSON.stringify(newBoardPin)
-
-    // fetch(boardPinsURL, reqObj)
-    // .then(resp => resp.json())
-    // .then(newBoardPin => this.setState({ addToBoardID: 0 }))
   }
 
   editOption = () => {
     this.setState({
       editable: !this.state.editable
+    })
+  }
+
+  fetchBoardPin = (id) => {
+    fetch(boardPinsURL)
+    .then(resp => resp.json())
+    .then(boardPins => {
+      let foundBoardPin = boardPins.find(boardPin => boardPin.non_dairy_option_id === id && boardPin.board_id === this.props.boardID)
+      this.favoriteOption(foundBoardPin)
+    })
+  }
+
+  favoriteOption = (pin) => {
+    const favoriteBoardPin = {
+      board_id: pin.board_id, 
+      non_dairy_option_id: pin.non_dairy_option_id,
+      favorite: true
+    }
+
+    console.log(pin)
+    console.log(favoriteBoardPin)
+
+    const reqObj = {}
+
+    reqObj.headers = {"Content-Type": "application/json"}
+    reqObj.method = "PATCH"
+    reqObj.body = JSON.stringify(favoriteBoardPin)
+
+    fetch(boardPinsURL + `/${pin.id}`, reqObj)
+    .then(resp => resp.json())
+    .then(boardPin => this.setState({
+      boardPin: favoriteBoardPin
+    }))
+  }
+
+  getAllergenTags = () => {
+    let allergens = this.props.allergens
+    let allergensArray = allergens.split(", ").map(allergen => allergen.toLowerCase())
+    this.setState({
+      ...this.state,
+      allergens: allergensArray
     })
   }
 
@@ -87,6 +105,17 @@ export default class NonDairyOptionCard extends Component {
     return(
       <div className="non-dairy-option-card">
         <div>
+          { boardCard ? 
+          <div>
+            { editable ? 
+            <div>
+              { this.state.boardPin.hasOwnProperty("favorite") ?
+                <div>
+                { this.state.boardPin.favorite === false ? <button onClick={() => this.fetchBoardPin(id)}>Add to favorites 🌟</button> : <button>🌟</button> }
+                </div> : null }
+            </div> : null }
+          </div> : null }
+
           <h4>NON-DAIRY OPTION CARD</h4>
           <div className="non-dairy-option-info">
             <p>ID # {id}</p>

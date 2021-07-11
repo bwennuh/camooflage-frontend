@@ -60,13 +60,14 @@ export default class ProfileFavoriteCardContainer extends Component {
 
   render(){
 
-    const favorites = this.state.favorites
+    const allFavorites = this.state.favorites
+    let favorites = [...new Set(allFavorites)]
 
     return (
       <div className="profile-boards-displays">
         <h1>PROFILE FAVORITES CONTAINER</h1>
         {/* <ProfileFavoriteCard /> */}
-        { favorites.map(favorite => <ProfileFavoriteCard />)}
+        { favorites.map(favorite => <ProfileFavoriteCard key={favorite.id} id={favorite.id} boardID={favorite.board_id} nonDairyOptionID={favorite.non_dairy_option_id} favorite={favorite.favorite} />)}
       </div>
     )
   }

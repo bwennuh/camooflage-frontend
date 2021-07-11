@@ -7,23 +7,35 @@ const boardPinsURL = baseURL + 'board_pins'
 export default class ProfileFavoriteCard extends Component {
 
   state = {
-    // id: this.props.id,
-    // name: this.props.name,
-    // description: this.props.description
+    id: this.props.id,
+    nonDairyOption: {}
+  }
+
+  componentDidMount = () => {
+    this.fetchNonDairyOption()
+  }
+
+  fetchNonDairyOption = () => {
+    fetch(nonDairyOptionsURL + `/${this.props.nonDairyOptionID}`)
+    .then(resp => resp.json())
+    .then(nonDairyOption => this.setState({
+      ...this.state,
+      nonDairyOption: nonDairyOption
+    }))
   }
 
   render(){
 
-    // let {id, name, description} = this.state
+    let {name, allergens, description, image, brand_id, category_id} = this.state.nonDairyOption
 
     return(
       <div className="profile-favorite-card">
 
         <div className="profile-favorite-card-info">
           <h1>FAVORITE CARD</h1>
-            {/* <p>ID # {id}</p>
             <p>{name}</p>
-            <p>{description}</p> */}
+            <img src={image} alt="non-dairy option"></img>
+            <p>{description}</p>
         </div>
 
       </div>

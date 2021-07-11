@@ -41,25 +41,6 @@ export default class NonDairyOptionCardContainer extends Component {
     })
   }
 
-  // findUserBoards = (boards) => {
-  //   let userID = this.state.userID
-  //   let filteredBoards = boards.filter(board => board.user_id === userID)
-  //   return filteredBoards
-  // }
-
-  // fetchUserBoards = () => {
-  //   fetch(boardsURL)
-  //   .then(resp => resp.json())
-  //   .then(boards => {
-  //     let filteredBoards = this.findUserBoards(boards)
-      
-  //     this.setState({
-  //       ...this.state,
-  //       boards: filteredBoards
-  //     })
-  //   })
-  // }
-
   render(){
 
     const nonDairyOptions = this.state.nonDairyOptions
@@ -92,6 +73,7 @@ export default class NonDairyOptionCardContainer extends Component {
                 categoryID={nonDairyOption.category_id}
                 boards={this.props.boards}
                 // boards={this.state.boards}
+                boardPin={{}}
                 boardID={0}
                 boardCard={false}
                 getAllUserBoards={this.props.getAllUserBoards}
