@@ -28,7 +28,8 @@ export default class ProfilePage extends Component {
     avatar: "",
     id: this.props.userID,
     display: "profile-page",
-    editProfile: false
+    editProfile: false,
+    editAvatar: false
   }
 
   componentDidMount = () => {
@@ -339,6 +340,40 @@ export default class ProfilePage extends Component {
     })
   }
 
+  toggleAvatarEditButton = () => {
+    let toggle = !this.state.editAvatar
+    this.setState({
+      ...this.state,
+      editAvatar: toggle
+    })
+  }
+
+  updateAvatar = (event) => {
+    let flavor = event.target.value
+
+    if (flavor === "Vanilla"){
+      this.setState({
+        avatar: "https://i.imgur.com/g9BiZSa.png",
+        editAvatar: false
+      })
+    } else if (flavor === "Strawberry"){
+      this.setState({
+        avatar: "https://i.imgur.com/3A9cBvp.png",
+        editAvatar: false
+      })
+    } else if (flavor === "Chocolate"){
+      this.setState({
+        avatar: "https://i.imgur.com/NyYQJBC.png",
+        editAvatar: false
+      })
+    } else {
+      this.setState({
+        avatar: "https://i.imgur.com/0s5Q1Ie.png",
+        editAvatar: false
+      })
+    }
+
+  }
   render(){
 
     let {username, password, reconfirmPassword, firstName, lastName, email, phoneNumber, address, bio, avatar, id} = this.state
@@ -352,10 +387,15 @@ export default class ProfilePage extends Component {
 
             <div className="profile-avatar">
               <p>Profile avatar:</p>
-              <img src={avatar} alt="avatar"></img><br></br>
+              <img id="avatar-picture" src={avatar} alt="avatar"></img><br></br>
               <br></br>
-              <p>Placeholder avatar:</p>
-              <img src="https://image.shutterstock.com/image-vector/illustration-cute-cow-260nw-347317901.jpg" alt="default-avatar"></img>
+              { this.state.editAvatar === false ? <button onClick={() => this.toggleAvatarEditButton()}>Edit Avatar</button> :
+              <select onChange={(event) => this.updateAvatar(event)}>
+                <option value="">Select new avatar:</option>
+                <option value="Vanilla">Vanilla</option>
+                <option value="Strawberry">Strawberry</option>
+                <option value="Chocolate">Chocolate</option>
+              </select> }
             </div>
 
             <div className="profile-main-info">
