@@ -13,6 +13,7 @@ export default class SignUp extends Component {
     firstName: "",
     lastName: "",
     email: "",
+    avatar: "https://i.imgur.com/0s5Q1Ie.png",
     display: "sign-up",
     validUsername: false,
     validPassword: false
@@ -52,6 +53,30 @@ export default class SignUp extends Component {
     this.setState({
       email: event.target.value
     })
+  }
+
+  getAvatar = (event) => {
+
+    let flavor = event.target.value
+
+    if (flavor === "Vanilla"){
+      this.setState({
+        avatar: "https://i.imgur.com/g9BiZSa.png"
+      })
+    } else if (flavor === "Strawberry"){
+      this.setState({
+        avatar: "https://i.imgur.com/3A9cBvp.png"
+      })
+    } else if (flavor === "Chocolate"){
+      this.setState({
+        avatar: "https://i.imgur.com/NyYQJBC.png"
+      })
+    } else {
+      this.setState({
+        avatar: "https://i.imgur.com/0s5Q1Ie.png"
+      })
+    }
+
   }
 
   changeToUserInfo = () => {
@@ -167,7 +192,7 @@ export default class SignUp extends Component {
       username: this.state.username, 
       password: this.state.password, 
       bio: "", 
-      avatar: ""
+      avatar: this.state.avatar
     }
 
     const reqObj = {}
@@ -185,7 +210,8 @@ export default class SignUp extends Component {
         password: "",
         first_name: "", 
         last_name: "", 
-        email: ""
+        email: "",
+        avatar: "https://i.imgur.com/0s5Q1Ie.png"
       })
       this.createDefaultBoardForNewUser(newUser.id)
     })
@@ -254,6 +280,15 @@ export default class SignUp extends Component {
 
               <label>Email:</label><br></br>
               <input id="email-input" type="email" onChange={(event) => this.getEmail(event)} placeholder="example@example.com" required></input><br></br>
+
+              {/* <label>Pick your favorite flavor:</label> */}
+              <br></br>
+              <select onChange={(event) => this.getAvatar(event)}>
+                <option value="">Select a flavor:</option>
+                <option value="Vanilla">Vanilla</option>
+                <option value="Strawberry">Strawberry</option>
+                <option value="Chocolate">Chocolate</option>
+              </select>
 
               {/* <button id="submit-personal-info-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button> */}
               {/* <button id="submit-personal-info-button" type="submit" onClick={() => this.renderLoginContinueButton()}>Submit</button> */}

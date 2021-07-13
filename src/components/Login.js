@@ -105,6 +105,7 @@ export default class Login extends Component {
         <div className="login-header">
 
           <h1>CAMOOFLAGE LOGIN PAGE</h1>
+          <img src="https://i.imgur.com/0s5Q1Ie.png" alt="Camooflage Cow"></img>
           <h2>Login Form</h2>
           <form onSubmit={(event) => this.loginFormSubmitHandler(event)}>
             <label>Username:</label><br></br>
