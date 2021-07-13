@@ -104,3 +104,22 @@
   height: 75px;
   width: auto;
 }
+
+.non-dairy-card-displays {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  /* justify-content: center; */
+}
+
+.non-dairy-cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  /* justify-content: center; */
+}
+
+.filters {
+  padding-left: 50px;
+  width: auto;
+}

@@ -6,6 +6,7 @@ const baseURL = 'http://localhost:3001/'
 const nonDairyOptionsURL = baseURL + 'non_dairy_options'
 // const boardsURL = baseURL + 'boards'
 const brandsURL = baseURL + 'brands'
+const categoriesURL = baseURL + 'categories'
 
 export default class NonDairyOptionCardContainer extends Component {
 
@@ -17,14 +18,18 @@ export default class NonDairyOptionCardContainer extends Component {
     userID: this.props.userID,
     allAllergens: this.props.allAllergens,
     allBrands: [],
+    allCategories: [],
     applyFilter: false,
     searchFilters: [],
-    brandIDFilters: []
+    brandIDFilters: [],
+    categoryFilters: [],
+    categoryIDFilters: []
   }
 
   componentDidMount = () => {
     this.fetchNonDairyOptions()
     this.fetchBrands()
+    this.fetchCategories()
   }
 
   fetchNonDairyOptions = () => {
@@ -44,6 +49,18 @@ export default class NonDairyOptionCardContainer extends Component {
       this.setState({
        ...this.state, 
        allBrands: brands
+      })
+    })
+  }
+
+  fetchCategories = () => {
+    fetch(categoriesURL)
+    .then(resp => resp.json())
+    .then(categories => {
+      let categoryNames = categories.map(category => category.name)
+      this.setState({
+       ...this.state, 
+       allCategories: categories
       })
     })
   }
@@ -120,15 +137,44 @@ export default class NonDairyOptionCardContainer extends Component {
     }
   }
 
+  addCategorySearchFilter = (category) => {
+    this.setState({
+      ...this.state,
+      categoryFilters: [...this.state.categoryFilters, category],
+      categoryIDFilters: [...this.state.categoryIDFilters, category.id]
+    })
+  }
+
+  removeCategorySearchFilter = (category) => {
+    let updatedCategoryFilters = this.state.categoryFilters.filter(filter => filter !== category)
+    let updatedCategoryIDFilters = this.state.categoryIDFilters.filter(filter => filter !== category.id)
+    this.setState({
+      ...this.state,
+      categoryFilters: updatedCategoryFilters,
+      categoryIDFilters: updatedCategoryIDFilters
+    })
+  }
+
+  toggleCategoryFilter = (category) => {
+    let categoryInput = document.getElementById(category.name + "-id-" + category.id + "-category-input")
+
+    if (categoryInput.checked){
+      this.addCategorySearchFilter(category)
+    } else {
+      this.removeCategorySearchFilter(category)
+    }
+  }
+
   render(){
 
-    const nonDairyOptions = this.state.nonDairyOptions
-    let searchFilters = this.state.searchFilters
-    let brandFilters = this.state.brandIDFilters
+    const nonDairyOptions = this.state.nonDairyOptions;
+    let searchFilters = this.state.searchFilters;
+    let brandFilters = this.state.brandIDFilters;
+    let categoryFilters = this.state.categoryIDFilters;
 
     // const searchOptions = nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
-    let searchOptions
-    let filteredOptions
+    let searchOptions;
+    let filteredOptions;
 
 
     if (nonDairyOptions.length > 0){
@@ -136,18 +182,69 @@ export default class NonDairyOptionCardContainer extends Component {
 
       // filteredOptions = searchOptions.filter(nonDairyOption => searchFilters.map(filter => !nonDairyOption.allergens.includes(filter)))
 
-      if (searchFilters.length > 0 && brandFilters.length === 0){
-        // debugger
-        filteredOptions = searchOptions.filter(option => !searchFilters.includes(option.allergens.toLowerCase()))
+      // if (searchFilters.length > 0 && brandFilters.length === 0){
+      //   // debugger
+      //   // filteredOptions = searchOptions.filter(option => !searchFilters.includes(option.allergens.toLowerCase()))
 
-      } else if (searchFilters.length === 0 && brandFilters.length > 0){
+      //   filteredOptions = searchOptions.filter(option => !option.allergens.toLowerCase().includes(searchFilters.map(filter => filter)))
+
+
+      // } else if (searchFilters.length === 0 && brandFilters.length > 0){
+
+      //   filteredOptions = searchOptions.filter(option => brandFilters.includes(option.brand_id))
+
+      // } else if (searchFilters.length > 0 && brandFilters.length > 0) {
+
+      //   // filteredOptions = searchOptions.filter(option => !searchFilters.includes(option.allergens.toLowerCase()))
+      //   filteredOptions = searchOptions.filter(option => !option.allergens.toLowerCase().includes(searchFilters.map(filter => filter)))
+
+      //   filteredOptions = filteredOptions.filter(option => brandFilters.includes(option.brand_id))
+
+      // } else {
+      //   filteredOptions = searchOptions
+      // }
+
+      if (searchFilters.length > 0 && brandFilters.length === 0 && categoryFilters.length === 0){
+        // debugger
+        // filteredOptions = searchOptions.filter(option => !searchFilters.includes(option.allergens.toLowerCase()))
+
+        filteredOptions = searchOptions.filter(option => !option.allergens.toLowerCase().includes(searchFilters.map(filter => filter)))
+
+
+      } else if (searchFilters.length === 0 && brandFilters.length > 0 && categoryFilters.length === 0){
 
         filteredOptions = searchOptions.filter(option => brandFilters.includes(option.brand_id))
 
-      } else if (searchFilters.length > 0 && brandFilters.length > 0) {
+      } else if (searchFilters.length > 0 && brandFilters.length > 0 && categoryFilters.length === 0) {
 
-        filteredOptions = searchOptions.filter(option => !searchFilters.includes(option.allergens.toLowerCase()))
+        // filteredOptions = searchOptions.filter(option => !searchFilters.includes(option.allergens.toLowerCase()))
+        filteredOptions = searchOptions.filter(option => !option.allergens.toLowerCase().includes(searchFilters.map(filter => filter)))
+
         filteredOptions = filteredOptions.filter(option => brandFilters.includes(option.brand_id))
+
+      } else if (searchFilters.length === 0 && brandFilters.length == 0 && categoryFilters.length > 0) {
+
+        filteredOptions = searchOptions.filter(option => categoryFilters.includes(option.category_id))
+
+      } else if (searchFilters.length === 0 && brandFilters.length > 0 && categoryFilters.length > 0) {
+
+        filteredOptions = searchOptions.filter(option => brandFilters.includes(option.brand_id))
+
+        filteredOptions = filteredOptions.filter(option => categoryFilters.includes(option.category_id))
+
+      } else if (searchFilters.length > 0 && brandFilters.length === 0 && categoryFilters.length > 0) {
+
+        filteredOptions = searchOptions.filter(option => !option.allergens.toLowerCase().includes(searchFilters.map(filter => filter)))
+
+        filteredOptions = filteredOptions.filter(option => categoryFilters.includes(option.category_id))
+
+      } else if (searchFilters.length > 0 && brandFilters.length > 0 && categoryFilters.length > 0) {
+
+        filteredOptions = searchOptions.filter(option => !option.allergens.toLowerCase().includes(searchFilters.map(filter => filter)))
+
+        filteredOptions = filteredOptions.filter(option => brandFilters.includes(option.brand_id))
+
+        filteredOptions = filteredOptions.filter(option => categoryFilters.includes(option.category_id))
 
       } else {
         filteredOptions = searchOptions
@@ -161,11 +258,13 @@ export default class NonDairyOptionCardContainer extends Component {
       <div className="non-dairy-options-displays">
       { this.state.showAllOptions === true ?
         <div className="non-dairy-card-container">
-          <div>
-            <h1>NON-DAIRY OPTION CARD CONTAINER</h1>
+          <h1>NON-DAIRY OPTION CARD CONTAINER</h1>
 
+          <div className="non-dairy-card-displays">
+            <div className="filters">
             { this.state.applyFilter === false ? <button onClick={() => this.applyFilters()}>Apply filters</button> :
               <div className="filter-checkboxes">
+                
                 <div className="filter-allergen-checkboxes">
                 <h2>Allergens to avoid:</h2>
                 { this.props.allAllergens.map( allergen => (
@@ -186,10 +285,21 @@ export default class NonDairyOptionCardContainer extends Component {
                   ))}
                 </div> 
 
+                <div className="filter-category-checkboxes">
+                <h2>Categories:</h2>
+                { this.state.allCategories.map(category => (
+                  <div className="filter-checkbox">
+                    <label>{category.name} - {category.product_type}</label>
+                    <input id={`${category.name}-id-${category.id}-category-input`} value={category.name + ` - ` + category.product_type} type="checkbox" onChange={() => this.toggleCategoryFilter(category)}/>
+                  </div>
+                  ))}
+                </div> 
+
               </div>
             }
+            </div>
             <br></br>
-
+            <div className="non-dairy-cards">
             {/* {this.searchNonDairyOptions()?.map(nonDairyOption =>  */}
             {/* { searchOptions.map(nonDairyOption =>  */}
               { filteredOptions.map(nonDairyOption => 
@@ -212,6 +322,7 @@ export default class NonDairyOptionCardContainer extends Component {
                 changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
                 changeToNonDairyOptionPage={this.changeToNonDairyOptionPage} 
               />) }
+            </div>
           </div>
         </div>
         : 

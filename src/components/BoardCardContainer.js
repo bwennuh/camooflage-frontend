@@ -75,9 +75,9 @@ export default class BoardCardContainer extends Component {
       description: "",
       userID: this.props.user.id,
       showCreateBoardForm: false
-     }))
+    }))
 
-     this.props.updateBoards(newBoard)
+    this.props.updateBoards(newBoard)
   }
 
   deleteBoardPins = (boardID, pins) => {
