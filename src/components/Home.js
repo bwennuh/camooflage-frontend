@@ -144,6 +144,7 @@ export default class Home extends Component {
 
     return(
       <div className="home-page">
+        <div className="nav-bar-component">
         <Navbar 
           user={this.props.user} 
           handleSearchText={this.handleSearchText}
@@ -153,10 +154,12 @@ export default class Home extends Component {
           changeToProfilePage={this.changeToProfilePage}
           changeToLogin={this.props.changeToLogin}
         />
-        <div>
-          <h1>HOME PAGE</h1>
+        </div>
 
-          <div className="non-dairy-options-page">
+        <div className="home-page-components">
+          {/* <h1>HOME PAGE</h1> */}
+
+          <div className="non-dairy-options-component">
             { this.state.display === "home" ? 
               <NonDairyOptionCardContainer 
                 userID={this.state.user.id}
@@ -173,7 +176,7 @@ export default class Home extends Component {
             : null }
           </div>
 
-          <div className="boards-page">
+          <div className="boards-component">
             { this.state.display === "boards" ? 
             <BoardCardContainer 
               user={this.props.user} 
@@ -189,7 +192,7 @@ export default class Home extends Component {
             : null }
           </div>
 
-          <div className="profile-page">
+          <div className="profile-component">
             { this.state.display === "profile" ? 
             <ProfilePage userID={this.state.user.id} /> 
             : null }

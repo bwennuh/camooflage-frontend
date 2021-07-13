@@ -380,13 +380,13 @@ export default class ProfilePage extends Component {
 
     return(
       <div className="profile-page">
-        <h1>Profile Page</h1>
+        {/* <h1>Profile Page</h1> */}
         <div className="profile-page-containers">
           
           <div className="profile-info">
 
             <div className="profile-avatar">
-              <p>Profile avatar:</p>
+              <p>{username}</p>
               <img id="avatar-picture" src={avatar} alt="avatar"></img><br></br>
               <br></br>
               { this.state.editAvatar === false ? <button onClick={() => this.toggleAvatarEditButton()}>Edit Avatar</button> :
@@ -399,14 +399,14 @@ export default class ProfilePage extends Component {
             </div>
 
             <div className="profile-main-info">
-              <p>Name: {firstName + ' ' + lastName}</p>
+              <p>{firstName + ' ' + lastName}</p>
               <p>Bio: {bio}</p>
               <p>Email: {email}</p>
               <p>Address: {address}</p>
               <p>Phone number: {phoneNumber}</p>
-              <p>Username: {username}</p>
+{/* 
               <p>Password: {password}</p>
-              <p>User Id: {id}</p>
+              <p>User Id: {id}</p> */}
             </div>
 
             <div className="edit-profile">
@@ -457,12 +457,10 @@ export default class ProfilePage extends Component {
           <div className="profile-boards-favorites">
 
             <div className="profile-boards">
-              <p>Profile boards go here</p>
               <ProfileBoardCardContainer userID={this.state.id} />
             </div>
 
             <div className="profile-favorites">
-              <p>Profile favorites go here</p>
               <ProfileFavoriteCardContainer userID={this.state.id} />
             </div>
 

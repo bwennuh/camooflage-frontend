@@ -180,30 +180,6 @@ export default class NonDairyOptionCardContainer extends Component {
     if (nonDairyOptions.length > 0){
       searchOptions = nonDairyOptions.filter(nonDairyOption => nonDairyOption.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
 
-      // filteredOptions = searchOptions.filter(nonDairyOption => searchFilters.map(filter => !nonDairyOption.allergens.includes(filter)))
-
-      // if (searchFilters.length > 0 && brandFilters.length === 0){
-      //   // debugger
-      //   // filteredOptions = searchOptions.filter(option => !searchFilters.includes(option.allergens.toLowerCase()))
-
-      //   filteredOptions = searchOptions.filter(option => !option.allergens.toLowerCase().includes(searchFilters.map(filter => filter)))
-
-
-      // } else if (searchFilters.length === 0 && brandFilters.length > 0){
-
-      //   filteredOptions = searchOptions.filter(option => brandFilters.includes(option.brand_id))
-
-      // } else if (searchFilters.length > 0 && brandFilters.length > 0) {
-
-      //   // filteredOptions = searchOptions.filter(option => !searchFilters.includes(option.allergens.toLowerCase()))
-      //   filteredOptions = searchOptions.filter(option => !option.allergens.toLowerCase().includes(searchFilters.map(filter => filter)))
-
-      //   filteredOptions = filteredOptions.filter(option => brandFilters.includes(option.brand_id))
-
-      // } else {
-      //   filteredOptions = searchOptions
-      // }
-
       if (searchFilters.length > 0 && brandFilters.length === 0 && categoryFilters.length === 0){
         // debugger
         // filteredOptions = searchOptions.filter(option => !searchFilters.includes(option.allergens.toLowerCase()))
@@ -258,9 +234,10 @@ export default class NonDairyOptionCardContainer extends Component {
       <div className="non-dairy-options-displays">
       { this.state.showAllOptions === true ?
         <div className="non-dairy-card-container">
-          <h1>NON-DAIRY OPTION CARD CONTAINER</h1>
+          {/* <h1>NON-DAIRY OPTION CARD CONTAINER</h1> */}
 
           <div className="non-dairy-card-displays">
+
             <div className="filters">
             { this.state.applyFilter === false ? <button onClick={() => this.applyFilters()}>Apply filters</button> :
               <div className="filter-checkboxes">
