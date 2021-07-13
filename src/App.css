@@ -123,3 +123,8 @@
   padding-left: 50px;
   width: auto;
 }
+
+#avatar-picture {
+  width: 300px;
+  height: auto;
+}
