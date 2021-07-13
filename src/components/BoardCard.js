@@ -59,15 +59,16 @@ export default class BoardCard extends Component {
       <div className="board-card">
 
         <div className="board-card-info">
-          <h1>BOARD CARD</h1>
-            <p>ID # {id}</p>
-            <p>{name}</p>
+          <h1>{name.toUpperCase()}</h1>
+            {/* <p>ID # {id}</p>
+            <p>{name}</p> */}
             <p>{description}</p>
         </div>
 
         <div className="board-non-dairy-options">
 
           { this.state.nonDairyOptions.map(nonDairyOption => 
+          <div className="board-non-dairy-option">
             <NonDairyOptionCard 
             key={nonDairyOption.id} 
             id={nonDairyOption.id} 
@@ -84,14 +85,15 @@ export default class BoardCard extends Component {
             changeToNonDairyOptionsPage={this.props.changeToNonDairyOptionsPage}
             // removeOptionFromBoard={this.removeOptionFromBoard}
             // moveOptionToNewBoard={this.moveOptionToNewBoard} 
-            />)}
+            />
+            </div>)}
           <br></br>
           {/* <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add options</button> */}
 
         </div>
 
         <div className="view-board">
-          <button value={id} onClick={() => this.props.changeToBoardPage(id)}>View Board</button>
+          <button className="view-board-button" value={id} onClick={() => this.props.changeToBoardPage(id)}>View Board</button>
         </div>
 
         {/* <div className="edit-board">

@@ -87,6 +87,13 @@ export default class NonDairyOptionCardContainer extends Component {
     })
   }
 
+  closeFilters = () => {
+    this.setState({
+      ...this.state,
+      applyFilter: false
+    })
+  }
+
   addAllergenSearchFilter = (searchFilter) => {
     this.setState({
       ...this.state,
@@ -241,13 +248,17 @@ export default class NonDairyOptionCardContainer extends Component {
             <div className="filters">
             { this.state.applyFilter === false ? <button onClick={() => this.applyFilters()}>Apply filters</button> :
               <div className="filter-checkboxes">
+
+                <button onClick={() => this.closeFilters()}>Close filters</button>
                 
                 <div className="filter-allergen-checkboxes">
                 <h2>Allergens to avoid:</h2>
                 { this.props.allAllergens.map( allergen => (
                   <div className="filter-checkbox">
-                    <label>{allergen}</label>
-                    <input id={`${allergen}-allergen-input`} value={allergen} type="checkbox" onChange={() => this.toggleAllergenFilter(allergen)}/>
+                    <label>
+                      <input id={`${allergen}-allergen-input`} value={allergen} type="checkbox" onChange={() => this.toggleAllergenFilter(allergen)}/> {allergen}
+                    </label>
+                    
                   </div>
                   ))}
                 </div> 
@@ -256,8 +267,10 @@ export default class NonDairyOptionCardContainer extends Component {
                 <h2>Brands:</h2>
                 { this.state.allBrands.map( brand => (
                   <div className="filter-checkbox">
-                    <label>{brand.name}</label>
-                    <input id={`${brand.name}-brand-input`} value={brand.name} type="checkbox" onChange={() => this.toggleBrandFilter(brand)}/>
+                    <label>
+                      <input id={`${brand.name}-brand-input`} value={brand.name} type="checkbox" onChange={() => this.toggleBrandFilter(brand)}/> {brand.name}
+                    </label>
+
                   </div>
                   ))}
                 </div> 
@@ -266,8 +279,10 @@ export default class NonDairyOptionCardContainer extends Component {
                 <h2>Categories:</h2>
                 { this.state.allCategories.map(category => (
                   <div className="filter-checkbox">
-                    <label>{category.name} - {category.product_type}</label>
-                    <input id={`${category.name}-id-${category.id}-category-input`} value={category.name + ` - ` + category.product_type} type="checkbox" onChange={() => this.toggleCategoryFilter(category)}/>
+                    <label> 
+                      <input id={`${category.name}-id-${category.id}-category-input`} value={category.name + ` - ` + category.product_type} type="checkbox" onChange={() => this.toggleCategoryFilter(category)}/> {category.name} - {category.product_type}
+                    </label>
+
                   </div>
                   ))}
                 </div> 

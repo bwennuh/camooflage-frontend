@@ -216,21 +216,22 @@ export default class BoardPage extends Component {
 
     return(
       <div className="board-page">
+        <h1>{name.toUpperCase()}</h1>
         { this.state.viewNonDairyOptionPage === false ? 
         <div className="board-page-containers">
 
           <div className="board-info">
-            <h1> ~ BOARD INFO HERE ~</h1>
+            <h2>{description}</h2>
 
-            <p>{`Board id: ${boardID}`}</p>
+            {/* <p>{`Board id: ${boardID}`}</p>
             <p>{`Board name: ${name}`}</p>
-            <p>{`Board description: ${description}`}</p>
+            <p>{`Board description: ${description}`}</p> */}
           </div>
 
-          <button onClick={() => this.props.changeToAllBoards()}>Go back to boards</button>
+          <button className="back-to-boards-button" onClick={() => this.props.changeToAllBoards()}>Back to boards</button>
 
           <div className="board-page-non-dairy-options">
-
+            <div className="board-page-non-dairy-option">
             { nonDairyOptions.map(nonDairyOption => 
               <NonDairyOptionCard 
               key={nonDairyOption.id} 
@@ -252,13 +253,14 @@ export default class BoardPage extends Component {
               fetchNonDairyOption={this.fetchNonDairyOption}
               boardPin={this.state.boardPins.find(boardPin => boardPin.non_dairy_option_id === nonDairyOption.id)}
               />)}
+              </div>
             <br></br>
-            <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add more options</button>
+            <button className="add-more-options-button" onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add more options</button>
 
           </div>
 
           <div className="edit-board">
-            <button value={boardID} onClick={(event) => this.editBoard(event)}>Edit Board</button>
+            <button className="edit-board-button" value={boardID} onClick={(event) => this.editBoard(event)}>Edit Board</button>
 
             { this.state.editBoard ? 
             <form onSubmit={(event) => this.saveBoardChanges(event)}>
@@ -268,15 +270,15 @@ export default class BoardPage extends Component {
                   <label>Board description:</label><br></br>
                   <input type="text" onChange={(event) => this.editBoardDescription(event)}  placeholder="Board Description"></input><br></br>
 
-              <button type="submit">Save changes</button>
-              <button onClick={() => this.cancelBoardChanges()}>Cancel changes</button>
+              <button className="edit-board-buttons" type="submit">Save changes</button>
+              <button className="edit-board-buttons" onClick={() => this.cancelBoardChanges()}>Cancel changes</button>
             </form> 
             : null }
           </div>
           
           <div className="delete-board">
             { this.state.deleteBoard === false ? 
-            <button onClick={() => this.toggleDeleteBoard()}>Delete Board</button> 
+            <button className="delete-board-button" onClick={() => this.toggleDeleteBoard()}>Delete Board</button> 
             : 
             <div className="delete-board-options">
               <label>Are you sure?</label><br></br>

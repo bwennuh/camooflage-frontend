@@ -112,23 +112,6 @@ export default class BoardCardContainer extends Component {
       })
     })
   }
-  
-  // deleteBoard = (event) => {
-  //   let boardID = +event.target.value
-  //   this.deleteBoardPins(boardID)
-
-  //   const updatedBoards = this.state.boards.filter(board => board.id !== boardID)
-  //   debugger
-  //   // fetch(boardsURL + `/${boardID}`, {method: "DELETE"})
-  //   // .then(() => {
-  //   //     this.props.removeDeletedBoard(updatedBoards)
-  //   //     this.setState({ 
-  //   //     ...this.state,
-  //   //     boards: updatedBoards,
-  //   //     showAllBoards: true
-  //   //   })
-  //   // })
-  // }
 
   changeToBoardPage = (id) => {
     this.setState({
@@ -156,11 +139,6 @@ export default class BoardCardContainer extends Component {
     })
   }
 
-  // searchBoards = () => {
-  //   const searchBoards = this.state?.boards.filter(board => board.name.toLowerCase().includes(this.props.searchText.toLowerCase()))
-  //   return searchBoards
-  // }
-
   render(){
 
     const boards = this.state.boards
@@ -172,8 +150,8 @@ export default class BoardCardContainer extends Component {
       { this.state.showAllBoards === true ?
       <div className="board-card-conatiner">
         <div className="board-cards">
-          <h1>BOARD CARD CONTAINER</h1>
-          <button onClick={() => this.toggleCreateNewBoardForm()}>Add new board</button><br></br>
+          {/* <h1>BOARD CARD CONTAINER</h1> */}
+          <button className="add-new-board-button" onClick={() => this.toggleCreateNewBoardForm()}>Add new board</button><br></br>
           { this.state.showCreateBoardForm ? 
             <div className="create-board-form">
               <form onSubmit={(event) => this.createNewUserBoard(event)}>
@@ -206,7 +184,7 @@ export default class BoardCardContainer extends Component {
       </div>
       : 
       <div className="board-card-page">
-        <h1>BOARD CARD PAGE</h1>
+        {/* <h1>BOARD CARD PAGE</h1> */}
         <BoardPage 
           id={this.state.boardPageID} 
           userID={this.state.userID} 
