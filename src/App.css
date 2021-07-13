@@ -124,7 +124,61 @@
   width: auto;
 }
 
-#avatar-picture {
+#avatar-picture, #login-logo {
   width: 300px;
   height: auto;
 }
+
+#login-logo {
+  position: absolute;
+  right: 100px;
+  bottom: 10px;
+}
+
+.camooflage-title {
+  padding:100px 5px 100px 5px;
+  /* padding-top: 100px; */
+  font-size: 50pt;
+  font-weight: 750;
+}
+
+.moo {
+  color: white;
+  background-color: black;
+}
+
+.login-button, .sign-up-button {
+  background-color: #df7ac0;
+  padding: 10px;
+  width: 150px;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: all .4s;
+}
+
+.login-form-container {
+  align-content: center;
+
+}
+/* 
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 200px;
+  height: 50px;
+  background-color: #df7ac0;
+  border-radius: 25px;
+  font-size: 15px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: all .4s;
+} */
+
