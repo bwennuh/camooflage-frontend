@@ -19,7 +19,9 @@ export default class NonDairyOptionPage extends Component {
     categoryType: "",
     brandID: "",
     brand: "",
-    boardPage: this.props.boardPage
+    boardPage: this.props.boardPage,
+    link: "",
+    recommendations: ""
   }
 
   componentDidMount = () => {
@@ -37,7 +39,9 @@ export default class NonDairyOptionPage extends Component {
         allergens: nonDairyOption.allergens,
         image: nonDairyOption.image,
         categoryID: nonDairyOption.category_id,
-        brandID: nonDairyOption.brand_id
+        brandID: nonDairyOption.brand_id,
+        link: nonDairyOption.link,
+        recommendations: nonDairyOption.recommendations
       })
       this.fetchBrand()
       this.fetchCategory()
@@ -65,7 +69,7 @@ export default class NonDairyOptionPage extends Component {
 
   render(){
 
-    let {nonDairyOptionID, name, allergens, description, image, categoryID, categoryName, categoryType, brandID, brand, boardPage} = this.state
+    let {nonDairyOptionID, name, allergens, description, image, categoryID, categoryName, categoryType, brandID, brand, boardPage, link, recommendations} = this.state
 
     return(
       <div className="non-dairy-option-page">
@@ -85,8 +89,8 @@ export default class NonDairyOptionPage extends Component {
           </div>
 
           <div className="non-dairy-personalized-notes">
-            <p>Add personalized description, notes, and recommendations here!</p>
-            <p>Add link for where to buy product here!</p>
+            <p>Recommendations:<br></br>{recommendations}</p>
+            <p>Link: <br></br><a href={link}>Where to buy!</a></p>
           </div>
 
 

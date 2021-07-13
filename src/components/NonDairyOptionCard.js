@@ -4,6 +4,8 @@ const baseURL = 'http://localhost:3001/'
 const nonDairyOptionsURL = baseURL + 'non_dairy_options'
 const boardPinsURL = baseURL + 'board_pins'
 const boardsURL = baseURL + 'boards'
+const categoriesURL = baseURL + 'categories'
+const brandsURL = baseURL + 'brands'
 
 export default class NonDairyOptionCard extends Component {
 
@@ -11,11 +13,35 @@ export default class NonDairyOptionCard extends Component {
     addToBoardID: undefined,
     editable: false,
     boardPin: this.props.boardPin,
-    allergens: []
+    allergens: [],
+    brand: "",
+    categoryName: "",
+    categoryProductType: ""
   }
 
   componentDidMount = () => {
     this.getAllergenTags()
+    this.getBrand()
+    this.getCategory()
+  }
+
+  getBrand = () => {
+    fetch(brandsURL + `/${this.props.brandID}`)
+    .then(resp => resp.json())
+    .then(brand => this.setState({
+      ...this.state,
+      brand: brand.name
+    }))
+  }
+
+  getCategory = () => {
+    fetch(categoriesURL + `/${this.props.categoryID}`)
+    .then(resp => resp.json())
+    .then(category => this.setState({
+      ...this.state,
+      categoryName: category.name,
+      categoryProductType: category.product_type
+    }))
   }
 
   getBoardSelection = (event) => {
@@ -119,11 +145,11 @@ export default class NonDairyOptionCard extends Component {
           <h4>NON-DAIRY OPTION CARD</h4>
           <div className="non-dairy-option-info">
             <p>ID # {id}</p>
-            <p>Brand ID # {brandID}</p>
-            <p>Category ID # {categoryID}</p>
+            <p>Brand ID # {brandID} - {this.state.brand}</p>
+            <p>Category ID # {categoryID} - {this.state.categoryName} ({this.state.categoryProductType})</p>
             <p>{name}</p>
-            <p>{description}</p>
-            <p>{allergens}</p>
+            {/* <p>{description}</p> */}
+            <p>Allergens: {allergens}</p>
             <img src={image} alt="Non Dairy Option"></img>
           </div>
 

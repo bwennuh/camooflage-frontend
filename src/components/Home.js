@@ -131,7 +131,8 @@ export default class Home extends Component {
     fetch(nonDairyOptionsURL)
     .then(resp => resp.json())
     .then(nonDairyOptions => {
-      let allergens = nonDairyOptions.map(nonDairyOption => nonDairyOption.allergens.toLowerCase()).flat()
+      let allAllergens = nonDairyOptions.map(nonDairyOption => nonDairyOption.allergens.toLowerCase().split(", ")).flat()
+      let allergens = [...new Set(allAllergens)]
       this.setState({
         ...this.state,
         allAllergens: allergens
