@@ -65,7 +65,7 @@ export default class ProfileFavoriteCardContainer extends Component {
 
     return (
       <div className="profile-boards-displays">
-        <h1>PROFILE FAVORITES CONTAINER</h1>
+        { favorites.length === 0 ? <h1>You don't have any favorites!</h1> : null }
         {/* <ProfileFavoriteCard /> */}
         { favorites.map(favorite => <ProfileFavoriteCard key={favorite.id} id={favorite.id} boardID={favorite.board_id} nonDairyOptionID={favorite.non_dairy_option_id} favorite={favorite.favorite} />)}
       </div>

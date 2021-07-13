@@ -1,39 +1,4 @@
-.app {
-  text-align: center;
-}
-
-/* .logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
-.app-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.non-dairy-option-card {
+/* .non-dairy-option-card {
   text-align: center;
   border: #000000 solid 5px;
   padding: 5px;
@@ -43,6 +8,29 @@
   margin: 25px;
   box-shadow: 10px 10px #df7ac0, -10px -10px #000000;
   background-color: white;
+} */
+
+.non-dairy-option-card {
+  background-color: white;
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+  border: #000000 solid 5px;
+  border-radius: 50px;
+  padding: 5px;
+  margin: 5px;
+}
+
+/* .non-dairy-cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  /* justify-content: center; 
+}*/
+
+.non-dairy-cards {
+  column-count: 5;
+  column-gap: 2em;
 }
 
 .board-card {
@@ -112,16 +100,13 @@
   /* justify-content: center; */
 }
 
-.non-dairy-cards {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  /* justify-content: center; */
-}
-
 .filters {
   padding-left: 50px;
   width: auto;
+}
+
+.login-page {
+  text-align: center;
 }
 
 #avatar-picture, #login-logo {
@@ -148,7 +133,7 @@
 }
 
 .login-button, .sign-up-button {
-  background-color: #df7ac0;
+  background-color: rgb(233, 147, 197);
   padding: 10px;
   width: 150px;
   color: white;
@@ -161,24 +146,75 @@
   transition: all .4s;
 }
 
-.login-form-container {
-  align-content: center;
-
-}
-/* 
-.login-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
-  width: 200px;
-  height: 50px;
+.login-button:hover, .sign-up-button:hover{
   background-color: #df7ac0;
+  cursor:pointer;
+}
+
+.login-form-container {
+  width: 382px;  
+  overflow: hidden;  
+  margin: auto;  
+  margin: 20 0 0 450px;  
+  padding: 80px;  
+  background: #23463f;  
+  border-radius: 15px ; 
+}
+
+.login-form input {
+  width: 300px;
+  padding:15px;
+  margin:5px;
+  border-radius:1px;
+  border:1px solid #ccc;
+  font-family:inherit;
+}
+
+.login-title, .sign-up {
+  /* text-transform: uppercase; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.view-non-dairy-page-button, .add-to-board-button {
+  background-color: rgb(233, 147, 197);
+  padding: 10px;
+  width: 150px;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 20px;
   border-radius: 25px;
   font-size: 15px;
-  color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
-} */
+}
+
+.view-non-dairy-page-button:hover, .add-to-board-button:hover{
+  background-color: #df7ac0;
+  cursor:pointer;
+}
+
+.navbar {
+  background-color: #df7ac0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.navbar-displays {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar-displays button:hover:not(.active) {
+  background-color: white;
+}
+
+.active {
+  background-color: darkmagenta;
+}
 

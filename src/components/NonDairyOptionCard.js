@@ -16,7 +16,8 @@ export default class NonDairyOptionCard extends Component {
     allergens: [],
     brand: "",
     categoryName: "",
-    categoryProductType: ""
+    categoryProductType: "",
+    addToBoard: false
   }
 
   componentDidMount = () => {
@@ -137,20 +138,28 @@ export default class NonDairyOptionCard extends Component {
             <div>
               { this.state.boardPin.hasOwnProperty("favorite") ?
                 <div>
-                { this.state.boardPin.favorite === false ? <button onClick={() => this.fetchBoardPin(id)}>Add to favorites 🌟</button> : <button>🌟</button> }
+                { this.state.boardPin.favorite === false ? <button onClick={() => this.fetchBoardPin(id)}>Add to favorites</button> : <button>⭐️</button> }
                 </div> : null }
             </div> : null }
           </div> : null }
 
-          <h4>NON-DAIRY OPTION CARD</h4>
+          {/* <h4>NON-DAIRY OPTION CARD</h4> */}
           <div className="non-dairy-option-info">
-            <p>ID # {id}</p>
-            <p>Brand ID # {brandID} - {this.state.brand}</p>
-            <p>Category ID # {categoryID} - {this.state.categoryName} ({this.state.categoryProductType})</p>
             <p>{name}</p>
+
+            {/* <img src={image} alt="Non Dairy Option"></img> */}
+
+            <picture>
+              <img width="100" height="200" src={image} alt="Non Dairy Option"></img>
+            </picture>
+
+            {/* <p>ID # {id}</p> */}
+            {/* <p>Brand ID # {brandID} - {this.state.brand}</p> */}
+            <p>{this.state.brand}</p>
+            {/* <p>Category ID # {categoryID} - {this.state.categoryName} ({this.state.categoryProductType})</p> */}
+
             {/* <p>{description}</p> */}
-            <p>Allergens: {allergens}</p>
-            <img src={image} alt="Non Dairy Option"></img>
+            {/* <p>Allergens: {allergens}</p> */}
           </div>
 
           { boardCard ? 
@@ -179,9 +188,6 @@ export default class NonDairyOptionCard extends Component {
 
                   <div className="main-feed-non-dairy-option-cards">
                     
-                    {/* <label htmlFor={`${name}-select-board`}>Move to board:</label><br></br> */}
-                    {/* <button value={id} onClick={() => this.props.moveOptionToNewBoard(id, this.state.addToBoardID, this.props.boardID)}>Move to new board</button><br></br> */}
-
                     { boards.length > 0 ?
                       <div>
                         { boards.filter(board => board.id !== this.props.boardID).length === 0 ? null : 
@@ -195,7 +201,7 @@ export default class NonDairyOptionCard extends Component {
                         }
                       </div> 
                       : null }
-                    {/* <button value={id} onClick={() => this.props.moveOptionToNewBoard(id, this.state.addToBoardID, this.props.boardID)}>Move to board</button> */}
+
                   </div>
                   
                 </div> 
@@ -204,22 +210,30 @@ export default class NonDairyOptionCard extends Component {
             </div> 
             :
             <div className="main-feed-non-dairy-option-cards">
+
+              <div className="view-non-dairy-option-page-buttons"> 
+
+                <button className="view-non-dairy-page-button" onClick={() => this.props.changeToNonDairyOptionPage(id)}>View Page</button><br></br>
+              
+
               { boards.length > 0 ? 
                 <span>
                   {/* <label htmlFor={`${name}-select-board`}>Add to board:</label><br></br> */}
-                    <button onClick={() => this.addOptionToBoard()}>Add to board</button><br></br>
+
                     <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} defaultValue="">
                     <option disabled value="">Select a board:</option>
                       { boards.map(board => <option value={board.name}>Board: {board.name}</option>) }
                     </select><br></br>
+                    <button className="add-to-board-button" onClick={() => this.addOptionToBoard()}>Add to board</button><br></br>
                     
                 </span> 
-              : <button onClick={() => this.props.changeToBoardsPage()}>Create new board</button> }
+                : <button onClick={() => this.props.changeToBoardsPage()}>Create new board</button> }
 
 
-                  <div className="view-non-dairy-option-page-buttons">  
+                  {/* <div className="view-non-dairy-option-page-buttons">  
                     <button onClick={() => this.props.changeToNonDairyOptionPage(id)}>View Page</button>
-                  </div>
+                  </div> */}
+              </div>
 
             </div> }
 

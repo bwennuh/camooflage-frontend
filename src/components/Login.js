@@ -101,32 +101,34 @@ export default class Login extends Component {
   render(){
     return(
       <div className="login-page">
+
       { this.state.display === "login" ?
-        <div className="login-header">
+        <div className="login">
 
-          <div className="camooflage-title">CA<span className="moo">MOO</span>FLAGE</div>
-          <img id="login-logo" src="https://i.imgur.com/0s5Q1Ie.png" alt="Camooflage Cow"></img>
-          {/* <h2>Login</h2> */}
-
-          <div className="login-form-containers">
-
-            <div clasName="login-form-container">
-              <form className="login-form" onSubmit={(event) => this.loginFormSubmitHandler(event)}>
-                <span className="login-title">LOGIN</span><br></br>
-                <label>Username:</label><br></br>
-                <input type="text" onChange={(event) => this.getUsername(event)} placeholder="username" required></input><br></br>
-                <label>Password:</label><br></br>
-                <input type="password" onChange={(event) => this.getPassword(event)} placeholder="password" autoComplete="on" required></input><br></br><br></br>
-                { this.state.showErrors ? <p className="login-errors">Username or password is not correct.</p> : null }
-                <button className="login-button" type="submit">Log In</button><br></br>
-              </form>
-            </div>
-
+          <div className="login-header">
+            <div className="camooflage-title">CA<span className="moo">MOO</span>FLAGE</div>
+            <img id="login-logo" src="https://i.imgur.com/0s5Q1Ie.png" alt="Camooflage Cow"></img>
+            {/* <h2>Login</h2> */}
           </div>
 
-          <h3>Don't have an account with us?</h3>
+          <div clasName="login-form-container">
+            <form className="login-form" onSubmit={(event) => this.loginFormSubmitHandler(event)}>
+              <span className="login-title">SIGN IN</span><br></br>
+              {/* <label>Username:</label><br></br> */}
+              <input type="text" onChange={(event) => this.getUsername(event)} placeholder="username" required></input><br></br>
+              {/* <label>Password:</label><br></br> */}
+              <input type="password" onChange={(event) => this.getPassword(event)} placeholder="password" autoComplete="on" required></input><br></br><br></br>
+              { this.state.showErrors ? <p className="login-errors">Username or password is not correct.</p> : null }
+              <button className="login-button" type="submit">Log In</button><br></br>
+            </form>
+          </div>
 
-          <button className="sign-up-button" onClick={() => this.changeToSignUp()}>Sign Up!</button>
+          <div className="sign-up-container">
+            <span className="sign-up">Don't have an account with us?</span><br></br>
+
+            <button className="sign-up-button" onClick={() => this.changeToSignUp()}>Sign Up!</button>
+          </div>
+
         </div>
         : null }
 
