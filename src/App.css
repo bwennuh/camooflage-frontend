@@ -1,36 +1,54 @@
-/* .non-dairy-option-card {
-  text-align: center;
-  border: #000000 solid 5px;
-  padding: 5px;
-  width: 400px;
-  height: auto;
-  display: inline-grid;
-  margin: 25px;
-  box-shadow: 10px 10px #df7ac0, -10px -10px #000000;
-  background-color: white;
-} */
+.non-dairy-cards {
+  column-count: 5;
+  column-gap: 5em;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: 350px;
+}
+
+@media screen and (max-width: 2000px) {
+  .non-dairy-cards {
+    column-count: 4;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .non-dairy-cards {
+    column-count: 3;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .non-dairy-cards {
+    column-count: 2;
+  }
+}
 
 .non-dairy-option-card {
   background-color: white;
   display: inline-block;
-  margin: 0 0 1em;
   width: 100%;
   border: #000000 solid 5px;
   border-radius: 50px;
-  padding: 5px;
-  margin: 5px;
+  padding: 10px;
+  margin: 10px;
+  /* box-shadow: 10px 10px black */
 }
 
-/* .non-dairy-cards {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  /* justify-content: center; 
-}*/
+/* .non-dairy-card-main {
+  background-color: white;
+  display: inline-block;
+  width: 100%;
+  border: #000000 solid 5px;
+  border-radius: 50px;
+  padding: 10px;
+  margin: 10px;
+} */
 
-.non-dairy-cards {
-  column-count: 5;
-  column-gap: 2em;
+.filters {
+  margin-left: 100px;
+  padding-right: 250px;
+  margin-right: auto;
 }
 
 .board-card {
@@ -46,8 +64,10 @@
 }
 
 .non-dairy-option-card img {
-  width: 100px;
-  height: auto;
+  /* width: 100px;
+  height: auto; */
+  width: auto;
+  height: 200px;
 }
 
 .login-errors, .form-errors {
@@ -125,11 +145,14 @@
   /* padding-top: 100px; */
   font-size: 50pt;
   font-weight: 750;
+  letter-spacing: 0.25em;
 }
 
 .moo {
   color: white;
   background-color: black;
+  padding-left: 10px;
+  margin-right: 10px;
 }
 
 .login-button, .sign-up-button {
@@ -175,7 +198,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
-.view-non-dairy-page-button, .add-to-board-button {
+.view-non-dairy-page-button, .add-to-board-button, .view-board-button, .edit-board-button, .add-more-options-button, .delete-board-button {
   background-color: rgb(233, 147, 197);
   padding: 10px;
   width: 150px;
@@ -187,34 +210,163 @@
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
+  font-weight: 600;
 }
 
-.view-non-dairy-page-button:hover, .add-to-board-button:hover{
-  background-color: #df7ac0;
+.edit-board-buttons {
+  background-color: white;
+  color: black;
+  border: solid 2px black;
+  padding: 10px;
+  width: 150px;
+  text-transform: uppercase;
+  border-radius: 25px;
+  font-size: 13px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: all .4s;
+  font-weight: 500;
+}
+
+.edit-board-buttons:hover {
+  background-color: black;
+  color: white;
+}
+
+.view-non-dairy-page-button:hover, .add-to-board-button:hover, .view-board-button:hover, .edit-board-button:hover, .add-more-options-button:hover, .delete-board-button:hover {
+  background-color: #c44392;
   cursor:pointer;
 }
 
 .navbar {
-  background-color: #df7ac0;
+  /* background-color: #df7ac0; */
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-.navbar-displays {
-  float: left;
-  display: block;
+.navbar-displays > div {
+  display: flex;
+  align-items: center;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
+#navbar-logo, .home-button, .my-boards-button {
+  /* float: left;
+  display: block; */
+  color: white;
+  text-align: center;
+  padding: 6px 10px;
+  /* margin-top: 8px; */
+  margin-right: 16px;
+  text-decoration: none;
+}
+
+.my-boards-button {
+  margin-right: auto;
+}
+
+.navbar input {
+  /* float: right; */
+  width: 300px;
+  padding: 6px 10px;
+  /* margin-left: auto; */
+  margin-right: 16px;
+  background: white;
+  font-size: 17px;
+  border: solid 2px black;
+  border-radius: 25px;
+  height: 25px;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+.add-new-board-button {
+  background-color: black;
+  padding: 10px;
+  width: 200px;
+  color: white;
+  text-transform: uppercase;
+  /* margin-bottom: 20px;
+  margin-top: 40px; */
+  border: solid 2px white;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: all .4s;
+}
+
+.add-new-board-button:hover {
+  background-color: white;
+  color: black;
+  border: solid 2px black;
+}
+
+.navbar input:focus {
+  outline: none;
+}
+
 .navbar-displays button:hover:not(.active) {
   background-color: white;
+  color: black;
+  border: solid 2px black;
+}
+
+.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button {
+  background-color: black;
+  padding: 10px;
+  width: 150px;
+  color: white;
+  text-transform: uppercase;
+  /* margin-bottom: 20px;
+  margin-top: 40px; */
+  border: solid 2px white;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: all .4s;
+}
+
+.back-to-boards-button {
+  width: 200px;
+}
+
+.back-to-boards-button:hover {
+  background-color: white;
+  color: black;
+  border: solid 2px black;
+}
+
+.log-out-button {
+  margin-left: 15px;
 }
 
 .active {
-  background-color: darkmagenta;
+  background-color: rgb(233, 147, 197);
+  color: black;
 }
 
+.board-non-dairy-option {
+  background-color: white;
+  display: inline-block;
+  width: 200px;
+  padding: 10px;
+  margin: 10px 50px 10px 10px;
+  /* box-shadow: 10px 10px black */
+}
+
+.board-select {
+  border: solid 1px black;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 14px;
+}

@@ -58,7 +58,7 @@ export default class NonDairyOptionCard extends Component {
   addOptionToBoard = () => {
 
     if (typeof this.state.addToBoardID === "undefined"){
-      alert ("Please select a board to continue")
+      console.log("Please select a board to continue")
     } else {
       const newBoardPin = {
         board_id: this.state.addToBoardID, 
@@ -131,6 +131,7 @@ export default class NonDairyOptionCard extends Component {
 
     return(
       <div className="non-dairy-option-card">
+        <div className="non-dairy-card-main">
         <div>
           { boardCard ? 
           <div>
@@ -191,9 +192,9 @@ export default class NonDairyOptionCard extends Component {
                     { boards.length > 0 ?
                       <div>
                         { boards.filter(board => board.id !== this.props.boardID).length === 0 ? null : 
-                        <div>
+                        <div className="board-selection-container">
                           <button value={id} onClick={() => this.props.moveOptionToNewBoard(id, this.state.addToBoardID, this.props.boardID)}>Move to new board</button><br></br>
-                          <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} defaultValue="">
+                          <select className="board-select" name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} defaultValue="">
                             <option disabled value="">Select a board:</option>
                             { boards.filter(board => board.id !== this.props.boardID).map(board => <option value={board.name}>Board: {board.name}</option>) }
                           </select><br></br>
@@ -220,7 +221,7 @@ export default class NonDairyOptionCard extends Component {
                 <span>
                   {/* <label htmlFor={`${name}-select-board`}>Add to board:</label><br></br> */}
 
-                    <select name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} defaultValue="">
+                    <select className="board-select" name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} defaultValue="">
                     <option disabled value="">Select a board:</option>
                       { boards.map(board => <option value={board.name}>Board: {board.name}</option>) }
                     </select><br></br>
@@ -237,6 +238,7 @@ export default class NonDairyOptionCard extends Component {
 
             </div> }
 
+        </div>
         </div>
       </div>
     )
