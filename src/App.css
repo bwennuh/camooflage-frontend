@@ -362,20 +362,37 @@
   font-weight: 500;
 }
 
-.edit-board-buttons:hover, .delete-button:hover {
+.close-filters-button {
+  background-color: white;
+  padding: 10px;
+  width: 150px;
+  color: black;
+  text-transform: uppercase;
+  /* margin-bottom: 20px;
+  margin-top: 40px; */
+  border: solid 2px black;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: all .4s;
+}
+
+.edit-board-buttons:hover, .delete-button:hover, .delete-board-button:hover, .close-filters-button:hover {
   background-color: black;
   color: white;
   border-color: black;
   cursor: pointer;
 }
 
-.view-non-dairy-page-button:hover, .add-to-board-button:hover, .view-board-button:hover, .edit-board-button:hover, .add-more-options-button:hover, .delete-board-button:hover {
+.view-non-dairy-page-button:hover, .add-to-board-button:hover, .view-board-button:hover, .add-more-options-button:hover {
   background-color: #c44392;
   cursor: pointer;
   border-color: black;
 }
 
-.edit-button:hover, .move-option-button:hover {
+.edit-button:hover, .move-option-button:hover, .edit-board-button:hover {
   background-color: white;
   color: black;
   cursor: pointer;
@@ -461,7 +478,7 @@
   border: solid 2px black;
 }
 
-.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button, .back-to-all-options-button {
+.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button, .back-to-all-options-button, .apply-filters-button {
   background-color: black;
   padding: 10px;
   width: 150px;
@@ -525,7 +542,7 @@
   width: 200px;
 }
 
-.back-to-boards-button:hover, .back-to-all-options-button:hover {
+.back-to-boards-button:hover, .back-to-all-options-button:hover, .apply-filters-button:hover {
   background-color: white;
   color: black;
   border: solid 2px black;
@@ -549,27 +566,27 @@
   /* box-shadow: 10px 10px black */
 }
 
+.board-page-non-dairy-options {
+  display: flex;
+  flex-flow: column wrap;
+
+  justify-content: center;
+  /* align-content: center; */
+  margin-left: 100px;
+  margin-right: auto;
+}
+
 .board-page-non-dairy-option {
   display: flex;
   /* justify-content: center;
   align-content: center; */
-
-  column-count: 5;
-  column-gap: 5em;
-  padding: 10px;
-  margin-left: auto;
-  margin-right: 350px;
+  width: 300px;
+  margin: 25px;
 }
 
-.board-page-non-dairy-options {
-  display: flex;
-  flex-flow: column;
 
-  /* justify-content: center; */
-  /* align-content: center; */
-}
 
-.board-select {
+.board-select, .avatar-select {
   border: solid 1px black;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -618,3 +635,56 @@
   top: -25px;
   right: 0px;
 }
+
+/* .edit-avatar-button {
+  background-color: rgb(233, 147, 197);
+  padding: 10px;
+  width: 150px;
+  color: black;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  border-color: black;
+  border-radius: 25px;
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  font-weight: 600;
+} */
+
+.edit-avatar-button {
+  border-color: black;
+  text-transform: uppercase;
+  /* font-family: "Arial Black", sans-serif; */
+  text-align: center;
+  letter-spacing: 2px;
+  color: black;
+  display: flex auto;
+
+  background-size: 200% auto;
+  width: 150px;
+  border-radius: 25px;
+  border-width: 2px;
+  padding: 10px;
+  margin-bottom: 20px;
+
+  font-size: 15px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.edit-avatar-button:hover{
+  transition: 1s;
+  background-position: right center; 
+}
+
+.icecream-background {
+  background-image: linear-gradient(to right, #c44392, #F7DAD9, #FFF5DA, #D6D2C4, #5D534A);
+}
+
+/* .icecream-background:hover{
+  transition: 2s;
+  background-image: linear-gradient(to right, #F7DAD9, #FFF5DA, #D6D2C4, #5D534A);
+} */

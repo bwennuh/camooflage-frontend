@@ -216,12 +216,15 @@ export default class BoardPage extends Component {
 
     return(
       <div className="board-page">
+        
         <button className="back-to-boards-button" onClick={() => this.props.changeToAllBoards()}>Back to boards</button>
-        <h1>{name.toUpperCase()}</h1>
+        
+
         { this.state.viewNonDairyOptionPage === false ? 
         <div className="board-page-containers">
 
           <div className="board-info">
+            <h1>{name.toUpperCase()}</h1>
             <h2>{description}</h2>
 
             {/* <p>{`Board id: ${boardID}`}</p>
@@ -254,11 +257,12 @@ export default class BoardPage extends Component {
               />)}
               </div>
             <br></br>
-            <button className="add-more-options-button" onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add more options</button>
 
           </div>
 
           <div className="edit-board">
+            <button className="add-more-options-button" onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add more options</button><br></br>
+
             <button className="edit-board-button" value={boardID} onClick={(event) => this.editBoard(event)}>Edit Board</button>
 
             { this.state.editBoard ? 
