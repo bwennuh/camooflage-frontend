@@ -330,7 +330,7 @@
   border: solid 2px black;
 }
 
-.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button {
+.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button, .back-to-all-options-button {
   background-color: black;
   padding: 10px;
   width: 150px;
@@ -345,6 +345,10 @@
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
+}
+
+.back-to-all-options-button {
+  width: 225px;
 }
 
 .move-option-button {
@@ -390,7 +394,7 @@
   width: 200px;
 }
 
-.back-to-boards-button:hover {
+.back-to-boards-button:hover, .back-to-all-options-button:hover {
   background-color: white;
   color: black;
   border: solid 2px black;

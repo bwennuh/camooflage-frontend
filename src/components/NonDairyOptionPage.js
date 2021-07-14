@@ -73,19 +73,19 @@ export default class NonDairyOptionPage extends Component {
 
     return(
       <div className="non-dairy-option-page">
-        { boardPage === false ? <button onClick={() => this.props.changeToAllOptions()}>Back to all options</button> : null }
+        { boardPage === false ? <button className="back-to-all-options-button" onClick={() => this.props.changeToAllOptions()}>Back to all options</button> : null }
 
-        <h1>{`NON-DAIRY OPTION PAGE FOR: ${name.toUpperCase()}`}</h1>
+        <h1>{name.toUpperCase()}</h1>
+        <h2>{brand}</h2>
 
         <div className="non-dairy-option-main-info">
 
           <div className="non-dairy-option-info">
             <img src={image} alt="Non Dairy Option"></img>
-            <p>Non-Dairy Option ID # {nonDairyOptionID} - {name}</p>
-            <p>Brand ID # {brandID} - {brand}</p>
-            <p>Category ID # {categoryID} - {categoryName}; Type: {categoryType}</p>
-            <p>Description: {description}</p>
+            {/* <p>Category ID # {categoryID} - {categoryName}; Type: {categoryType}</p> */}
             <p>Allergen(s): {allergens}</p>
+            <p>{description}</p>
+
           </div>
 
           <div className="non-dairy-personalized-notes">
