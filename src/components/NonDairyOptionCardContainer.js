@@ -318,7 +318,7 @@ export default class NonDairyOptionCardContainer extends Component {
           </div>
         </div>
         : 
-        <div className="non-dairy-option-page">
+        <div className="non-dairy-option-page-component">
           {/* <h1>NON DAIRY OPTION PAGE</h1> */}
           <NonDairyOptionPage 
             id={this.state.nonDairyOptionPageID} 

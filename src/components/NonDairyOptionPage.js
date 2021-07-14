@@ -78,19 +78,32 @@ export default class NonDairyOptionPage extends Component {
         <h1>{name.toUpperCase()}</h1>
         <h2>{brand}</h2>
 
-        <div className="non-dairy-option-main-info">
+        <div className="non-dairy-option-page-main-info">
 
-          <div className="non-dairy-option-info">
+          <div className="non-dairy-page-option-info">
             <img src={image} alt="Non Dairy Option"></img>
             {/* <p>Category ID # {categoryID} - {categoryName}; Type: {categoryType}</p> */}
-            <p>Allergen(s): {allergens}</p>
-            <p>{description}</p>
+            <div className="text-info">
+              <p>Allergen(s): <b>{allergens}</b></p>
+
+              <div className="description">
+                <p>{description}</p>
+              </div>
+            </div>
 
           </div>
 
           <div className="non-dairy-personalized-notes">
-            <p>Recommendations:<br></br>{recommendations}</p>
-            <p>Link: <br></br><a href={link}>Where to buy!</a></p>
+            <div className="recommendations">
+              <h1>Recommendations</h1>
+              <p>{recommendations}</p>
+            </div>
+
+            <div className="product-link">
+              <h1>Check out the website <a href={link}>here!</a></h1>
+              {/* <p><a href={link}>Where to buy!</a></p> */}
+            </div>
+
           </div>
 
 
