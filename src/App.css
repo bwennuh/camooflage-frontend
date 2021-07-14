@@ -46,9 +46,14 @@
 } */
 
 .filters {
-  margin-left: 100px;
-  padding-right: 250px;
-  margin-right: auto;
+  margin-left: 50px;
+  padding-right: 100px;
+}
+
+.filter-checkbox {
+  text-align: justify;
+  width: 275px;
+  text-transform: capitalize;
 }
 
 .board-card {
@@ -116,13 +121,8 @@
 .non-dairy-card-displays {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   /* justify-content: center; */
-}
-
-.filters {
-  padding-left: 50px;
-  width: auto;
 }
 
 .login-page {
