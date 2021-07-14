@@ -138,8 +138,8 @@ export default class NonDairyOptionCard extends Component {
             { editable ? 
             <div>
               { this.state.boardPin.hasOwnProperty("favorite") ?
-                <div>
-                { this.state.boardPin.favorite === false ? <button onClick={() => this.fetchBoardPin(id)}>Add to favorites</button> : <button>⭐️</button> }
+                <div className="favorite-button-wrapper">
+                { this.state.boardPin.favorite === false ? <button className="add-favorite-button" onClick={() => this.fetchBoardPin(id)}>Add to favorites</button> : <button className="favorite-button">🤍</button> }
                 </div> : null }
             </div> : null }
           </div> : null }
@@ -167,19 +167,15 @@ export default class NonDairyOptionCard extends Component {
             <div className="board-non-dairy-option-cards">
               { editable ? 
                 <div className="non-dairy-option-board-card-buttons">
-                  { boards.filter(board => board.id !== this.props.boardID).length === 0 ? null :
-                  <div className="edit-buttons">
-                    <button value={id} onClick={() => this.editOption()}>Edit option</button>
-                  </div> }
-
-                  <div className="delete-buttons">
-                    <button value={id} onClick={(event) => this.props.removeOptionFromBoard(event)}>Remove option</button>
-                  </div>
 
                   <div className="view-non-dairy-option-page-buttons">  
-                    {/* <button onClick={() => this.props.viewNonDairyOptionPage(id)}>View Page</button> */}
-                    <button onClick={() => this.props.fetchNonDairyOption(id)}>View Page</button>
+                    <button className="view-board-button" onClick={() => this.props.fetchNonDairyOption(id)}>View Page</button>
                   </div>
+
+                  { boards.filter(board => board.id !== this.props.boardID).length === 0 ? null :
+                  <div className="edit-buttons">
+                    <button className="edit-button" value={id} onClick={() => this.editOption()}>Edit option</button>
+                  </div> }
 
                 </div>
               : null }
@@ -193,12 +189,19 @@ export default class NonDairyOptionCard extends Component {
                       <div>
                         { boards.filter(board => board.id !== this.props.boardID).length === 0 ? null : 
                         <div className="board-selection-container">
-                          <button value={id} onClick={() => this.props.moveOptionToNewBoard(id, this.state.addToBoardID, this.props.boardID)}>Move to new board</button><br></br>
+
                           <select className="board-select" name="Boards" id={`${name}-select-board`} onChange={(event) => this.getBoardSelection(event)} defaultValue="">
                             <option disabled value="">Select a board:</option>
                             { boards.filter(board => board.id !== this.props.boardID).map(board => <option value={board.name}>Board: {board.name}</option>) }
                           </select><br></br>
+                          <button className="move-option-button" value={id} onClick={() => this.props.moveOptionToNewBoard(id, this.state.addToBoardID, this.props.boardID)}>Move to new board</button><br></br>
+
+                          <div className="delete-buttons">
+                            <button className="delete-button" value={id} onClick={(event) => this.props.removeOptionFromBoard(event)}>Remove option</button>
+                          </div>
                         </div>
+
+                        
                         }
                       </div> 
                       : null }

@@ -12,13 +12,13 @@
   }
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1600px) {
   .non-dairy-cards {
     column-count: 3;
   }
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1200px) {
   .non-dairy-cards {
     column-count: 2;
   }
@@ -151,7 +151,7 @@
 .moo {
   color: white;
   background-color: black;
-  padding-left: 10px;
+  padding-left: 15px;
   margin-right: 10px;
 }
 
@@ -162,15 +162,18 @@
   color: white;
   text-transform: uppercase;
   margin-bottom: 20px;
+  border-color: black;
   border-radius: 25px;
   font-size: 15px;
+  font-style: bold;
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
+  font-weight: 600;
 }
 
 .login-button:hover, .sign-up-button:hover{
-  background-color: #df7ac0;
+  background-color: #c44392;
   cursor:pointer;
 }
 
@@ -198,7 +201,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif
 }
 
-.view-non-dairy-page-button, .add-to-board-button, .view-board-button, .edit-board-button, .add-more-options-button, .delete-board-button {
+.view-non-dairy-page-button, .add-to-board-button, .view-board-button, .edit-board-button, .add-more-options-button, .delete-board-button, .edit-button, .delete-button {
   background-color: rgb(233, 147, 197);
   padding: 10px;
   width: 150px;
@@ -228,14 +231,24 @@
   font-weight: 500;
 }
 
-.edit-board-buttons:hover {
+.edit-board-buttons:hover, .delete-button:hover {
   background-color: black;
   color: white;
+  border-color: black;
+  cursor: pointer;
 }
 
 .view-non-dairy-page-button:hover, .add-to-board-button:hover, .view-board-button:hover, .edit-board-button:hover, .add-more-options-button:hover, .delete-board-button:hover {
   background-color: #c44392;
-  cursor:pointer;
+  cursor: pointer;
+  border-color: black;
+}
+
+.edit-button:hover, .move-option-button:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border-color: black;
 }
 
 .navbar {
@@ -317,7 +330,7 @@
   border: solid 2px black;
 }
 
-.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button {
+.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button {
   background-color: black;
   padding: 10px;
   width: 150px;
@@ -334,6 +347,45 @@
   transition: all .4s;
 }
 
+.move-option-button {
+  font-weight: normal;
+  font-size: 13px;
+}
+
+.add-favorite-button {
+  background-color: white;
+  padding: 10px;
+  width: 150px;
+  color: rgb(207, 30, 113);
+  text-transform: uppercase;
+  border: solid 2px rgb(207, 30, 113);
+  border-radius: 25px;
+  font-size: 13px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: all .4s;
+}
+
+.add-favorite-button:hover {
+  cursor: pointer;
+  background-color: rgb(207, 30, 113);
+  color: white;
+}
+
+.favorite-button {
+  background-color: rgb(207, 30, 113);
+  padding: 10px;
+  width: 40px;
+  color: white;
+  text-transform: uppercase;
+  border: solid 2px rgb(207, 30, 113);
+  border-radius: 25px;
+  font-size: 13px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transition: all .4s;
+}
+
 .back-to-boards-button {
   width: 200px;
 }
@@ -344,7 +396,7 @@
   border: solid 2px black;
 }
 
-.log-out-button {
+.log-out-button, .navbar input {
   margin-left: 15px;
 }
 
@@ -362,6 +414,26 @@
   /* box-shadow: 10px 10px black */
 }
 
+.board-page-non-dairy-option {
+  display: flex;
+  /* justify-content: center;
+  align-content: center; */
+
+  column-count: 5;
+  column-gap: 5em;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: 350px;
+}
+
+.board-page-non-dairy-options {
+  display: flex;
+  flex-flow: column;
+
+  /* justify-content: center; */
+  /* align-content: center; */
+}
+
 .board-select {
   border: solid 1px black;
   margin-top: 5px;
@@ -370,3 +442,4 @@
   border-radius: 5px;
   font-size: 14px;
 }
+

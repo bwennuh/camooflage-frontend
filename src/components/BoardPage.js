@@ -216,6 +216,7 @@ export default class BoardPage extends Component {
 
     return(
       <div className="board-page">
+        <button className="back-to-boards-button" onClick={() => this.props.changeToAllBoards()}>Back to boards</button>
         <h1>{name.toUpperCase()}</h1>
         { this.state.viewNonDairyOptionPage === false ? 
         <div className="board-page-containers">
@@ -227,8 +228,6 @@ export default class BoardPage extends Component {
             <p>{`Board name: ${name}`}</p>
             <p>{`Board description: ${description}`}</p> */}
           </div>
-
-          <button className="back-to-boards-button" onClick={() => this.props.changeToAllBoards()}>Back to boards</button>
 
           <div className="board-page-non-dairy-options">
             <div className="board-page-non-dairy-option">
