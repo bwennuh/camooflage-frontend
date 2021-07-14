@@ -20,9 +20,9 @@ export default class ProfileBoardCard extends Component {
       <div className="profile-board-card">
 
         <div className="profile-board-card-info">
-          <h1>BOARD CARD</h1>
-            <p>ID # {id}</p>
-            <p>{name}</p>
+          {/* <h1>BOARD CARD</h1> */}
+            {/* <p>ID # {id}</p> */}
+            <h1>{name}</h1>
             <p>{description}</p>
         </div>
 

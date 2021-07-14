@@ -457,10 +457,12 @@ export default class ProfilePage extends Component {
           <div className="profile-boards-favorites">
 
             <div className="profile-boards">
+              <h1>BOARDS</h1>
               <ProfileBoardCardContainer userID={this.state.id} />
             </div>
 
             <div className="profile-favorites">
+              <h1>FAVORITES</h1>
               <ProfileFavoriteCardContainer userID={this.state.id} />
             </div>
 

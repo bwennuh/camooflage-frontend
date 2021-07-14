@@ -30,12 +30,20 @@ export default class ProfileFavoriteCard extends Component {
 
     return(
       <div className="profile-favorite-card">
+        
+
+        {/* <div className="heart-container">
+          <div className="heart-shape">
+          </div>
+        </div> */}
 
         <div className="profile-favorite-card-info">
-          <h1>FAVORITE CARD</h1>
+          {/* <h1>FAVORITE CARD</h1> */}
             <p>{name}</p>
+            <div className="heart-shape">
+            </div>
             <img src={image} alt="non-dairy option"></img>
-            <p>{description}</p>
+            {/* <p>{description}</p> */}
         </div>
 
       </div>
