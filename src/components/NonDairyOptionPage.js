@@ -75,12 +75,14 @@ export default class NonDairyOptionPage extends Component {
       <div className="non-dairy-option-page">
         { boardPage === false ? <button className="back-to-all-options-button" onClick={() => this.props.changeToAllOptions()}>Back to all options</button> : null }
 
-        <h1>{name.toUpperCase()}</h1>
-        <h2>{brand}</h2>
-
         <div className="non-dairy-option-page-main-info">
 
           <div className="non-dairy-page-option-info">
+            <div className="product-title-info">
+              <h1>{name.toUpperCase()}</h1>
+              <h2>{brand}</h2>
+            </div>
+
             <img src={image} alt="Non Dairy Option"></img>
             {/* <p>Category ID # {categoryID} - {categoryName}; Type: {categoryType}</p> */}
             <div className="text-info">

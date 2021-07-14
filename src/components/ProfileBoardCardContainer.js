@@ -36,7 +36,7 @@ export default class ProfileBoardCardContainer extends Component {
 
     return (
       <div className="profile-boards-displays">
-        <h1>PROFILE BOARD CONTAINER</h1>
+        {/* <h1>PROFILE BOARD CONTAINER</h1> */}
         { boards.map(board => <ProfileBoardCard key={board.id} id={board.id} name={board.name} description={board.description} />)}
       </div>
     )
