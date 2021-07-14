@@ -389,13 +389,15 @@ export default class ProfilePage extends Component {
               <p>{username}</p>
               <img id="avatar-picture" src={avatar} alt="avatar"></img><br></br>
               <br></br>
-              { this.state.editAvatar === false ? <button onClick={() => this.toggleAvatarEditButton()}>Edit Avatar</button> :
-              <select onChange={(event) => this.updateAvatar(event)}>
+              { this.state.editAvatar === false ? <button className="edit-avatar-button icecream-background" onClick={() => this.toggleAvatarEditButton()}>Edit Avatar</button> :
+              <div className="custom-avatar-select">
+              <select className="avatar-select" onChange={(event) => this.updateAvatar(event)}>
                 <option value="">Select new avatar:</option>
-                <option value="Vanilla">Vanilla</option>
-                <option value="Strawberry">Strawberry</option>
-                <option value="Chocolate">Chocolate</option>
-              </select> }
+                <option id="vanilla-option" value="Vanilla">Vanilla</option>
+                <option id="strawberry-option" value="Strawberry">Strawberry</option>
+                <option id="chocolate-option" value="Chocolate">Chocolate</option>
+              </select>
+              </div> }
             </div>
 
             <div className="profile-main-info">

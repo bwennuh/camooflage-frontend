@@ -246,10 +246,10 @@ export default class NonDairyOptionCardContainer extends Component {
           <div className="non-dairy-card-displays">
 
             <div className="filters">
-            { this.state.applyFilter === false ? <button onClick={() => this.applyFilters()}>Apply filters</button> :
+            { this.state.applyFilter === false ? <button className="apply-filters-button" onClick={() => this.applyFilters()}>Apply filters</button> :
               <div className="filter-checkboxes">
 
-                <button onClick={() => this.closeFilters()}>Close filters</button>
+                <button className="close-filters-button" onClick={() => this.closeFilters()}>Close filters</button>
                 
                 <div className="filter-allergen-checkboxes">
                 <h2>Allergen(s) to avoid:</h2>
