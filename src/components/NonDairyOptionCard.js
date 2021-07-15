@@ -156,7 +156,7 @@ export default class NonDairyOptionCard extends Component {
 
             {/* <p>ID # {id}</p> */}
             {/* <p>Brand ID # {brandID} - {this.state.brand}</p> */}
-            <h4>{this.state.brand}</h4>
+            <h4>{this.state.brand.toUpperCase()}</h4>
             {/* <p>Category ID # {categoryID} - {this.state.categoryName} ({this.state.categoryProductType})</p> */}
 
             {/* <p>{description}</p> */}
