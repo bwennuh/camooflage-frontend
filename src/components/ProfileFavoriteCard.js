@@ -39,7 +39,7 @@ export default class ProfileFavoriteCard extends Component {
 
         <div className="profile-favorite-card-info">
           {/* <h1>FAVORITE CARD</h1> */}
-            <p>{name}</p>
+            <h3>{name}</h3>
             <div className="heart-shape">
             </div>
             <img src={image} alt="non-dairy option"></img>

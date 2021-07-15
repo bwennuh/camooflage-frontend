@@ -412,7 +412,7 @@ export default class ProfilePage extends Component {
             </div>
 
             <div className="edit-profile">
-              <button onClick={() => this.editProfile()}>Edit profile</button>
+              <button className="edit-profile-button" onClick={() => this.editProfile()}>Edit profile</button>
 
               { this.state.editProfile === true ? 
                 <div className="edit-profile-form">
@@ -448,7 +448,7 @@ export default class ProfilePage extends Component {
                     <label>Phone number:</label><br></br>
                     <input id="phone-number-input" type="text" onChange={(event) => this.updatePhoneNumber(event)} placeholder={phoneNumber} autoComplete="on"></input><br></br>
 
-                    <button type="submit">Update profile</button>
+                    <button className="update-profile-button" type="submit">Update profile</button>
                   </form>
                 </div> 
               : null }

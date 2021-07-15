@@ -252,7 +252,7 @@ export default class NonDairyOptionCardContainer extends Component {
                 <button className="close-filters-button" onClick={() => this.closeFilters()}>Close filters</button>
                 
                 <div className="filter-allergen-checkboxes">
-                <h2>Allergen(s) to avoid:</h2>
+                <h3>Allergen(s) to avoid:</h3>
                 { this.props.allAllergens.map( allergen => (
                   <div className="filter-checkbox">
                     <label>
@@ -264,7 +264,7 @@ export default class NonDairyOptionCardContainer extends Component {
                 </div> 
 
                 <div className="filter-brand-checkboxes">
-                <h2>Brands:</h2>
+                <h3>Brands:</h3>
                 { this.state.allBrands.map( brand => (
                   <div className="filter-checkbox">
                     <label>
@@ -276,7 +276,7 @@ export default class NonDairyOptionCardContainer extends Component {
                 </div> 
 
                 <div className="filter-category-checkboxes">
-                <h2>Categories:</h2>
+                <h3>Categories:</h3>
                 { this.state.allCategories.map(category => (
                   <div className="filter-checkbox">
                     <label> 
