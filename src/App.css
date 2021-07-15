@@ -132,14 +132,15 @@ h4 {
 
 .board-card {
   text-align: center;
-  border: #000000 solid 5px;
+  border: #000000 solid 10px;
   padding: 5px;
   width: 800px;
   height: auto;
   display: inline-grid;
   margin: 25px;
-  box-shadow: 10px 10px #df7ac0, -10px -10px #000000;
+  box-shadow: #c44392 10px 10px, rgba(240, 46, 170, 0.4) 10px 10px, rgba(240, 46, 170, 0.3) 20px 20px, rgba(240, 46, 170, 0.2) 30px 30px, rgba(240, 46, 170, 0.1) 40px 40px, rgba(240, 46, 170, 0.05) 50px 50px;
   background-color: white;
+  border-radius: 100px;
 }
 
 .non-dairy-option-card img {
@@ -282,13 +283,14 @@ h4 {
 
 .profile-board-card {
   text-align: center;
-  border: #000000 solid 5px;
+  border: #000000 solid 10px;
   padding: 5px;
   width: 250px;
   height: auto;
   display: inline-grid;
   margin: 25px;
-  box-shadow: 10px 10px #df7ac0, -10px -10px #000000;
+  /* box-shadow: 10px 10px #df7ac0, -10px -10px #000000; */
+  box-shadow: #c44392 10px 10px, rgba(240, 46, 170, 0.4) 10px 10px, rgba(240, 46, 170, 0.3) 20px 20px, rgba(240, 46, 170, 0.2) 30px 30px, rgba(240, 46, 170, 0.1) 40px 40px, rgba(240, 46, 170, 0.05) 50px 50px;
   background-color: white;
 }
 
