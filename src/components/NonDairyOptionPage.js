@@ -79,30 +79,37 @@ export default class NonDairyOptionPage extends Component {
 
           <div className="non-dairy-page-option-info">
             <div className="product-title-info">
-              <h1>{name.toUpperCase()}</h1>
-              <h2>{brand}</h2>
+              <h1 className="smaller-h1">{name.toUpperCase()}</h1>
+              <h3>{brand}</h3>
             </div>
 
-            <img src={image} alt="Non Dairy Option"></img>
+            <img id="main-product-pic" width="400" src={image} alt="Non Dairy Option"></img>
             {/* <p>Category ID # {categoryID} - {categoryName}; Type: {categoryType}</p> */}
-            <div className="text-info">
-              <p>Allergen(s): <b>{allergens}</b></p>
+            <p id="allergens">Allergen(s): <b>{allergens}</b></p>
 
+            {/* <div className="text-info">
+              <div className="description">
+                <p>{description}</p>
+              </div>
+            </div> */}
+
+          </div>
+
+          <div className="non-dairy-personalized-notes">
+            <h2 id="description" className="no-margin-h2">Description</h2>
+            <div className="text-info">
               <div className="description">
                 <p>{description}</p>
               </div>
             </div>
 
-          </div>
-
-          <div className="non-dairy-personalized-notes">
-            <h1 className="smaller-h1">Recommendations</h1>
+            <h2 className="no-margin-h2">Recommendations</h2>
             <div className="recommendations">
               <p>{recommendations}</p>
             </div>
 
             <div className="product-link">
-              <h1 className="smaller-h1">Check out the website <span className="product-link-span" onClick={() => window.open(link)} href={link}>here!</span></h1>
+              <h2 className="no-margin-h2">Check out the website <span className="product-link-span" onClick={() => window.open(link)} href={link}>here!</span></h2>
 
               {/* <p><a href={link}>Where to buy!</a></p> */}
             </div>

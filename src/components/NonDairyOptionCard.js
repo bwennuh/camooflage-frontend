@@ -194,7 +194,7 @@ export default class NonDairyOptionCard extends Component {
                             <option disabled value="">Select a board:</option>
                             { boards.filter(board => board.id !== this.props.boardID).map(board => <option value={board.name}>Board: {board.name}</option>) }
                           </select><br></br>
-                          <button className="move-option-button" value={id} onClick={() => this.props.moveOptionToNewBoard(id, this.state.addToBoardID, this.props.boardID)}>Move to new board</button><br></br>
+                          <button className="move-option-button" value={id} onClick={() => this.props.moveOptionToNewBoard(id, this.state.addToBoardID, this.props.boardID)}>Move to board</button><br></br>
 
                           <div className="delete-buttons">
                             <button className="delete-button" value={id} onClick={(event) => this.props.removeOptionFromBoard(event)}>Remove option</button>
