@@ -13,22 +13,30 @@
 }
 
 @font-face {
-  font-family: 'scribble scrawl';
-  src: url('https://www.dafont.com/k26scribblescrawl.font');
+  font-family: 'handwriting';
+  src: url('https://www.dafont.com/handwriting-3.font');
 }
 
 p {
-  font-family: 'verdana';
+  font-family: 'handwriting';
+  font-size: 30px;
+}
+
+.big-p-tag {
+  font-family: 'handwriting';
+  font-size: 40px;
 }
 
 h1 {
   font-family: 'chalk dash';
   font-size: 80px;
+  font-weight: normal;
 }
 
 h2 {
   font-family: 'chalk dash';
   font-size: 50px;
+  font-weight: normal;
 }
 
 .smaller-h1 {
@@ -38,11 +46,13 @@ h2 {
 h3 {
   font-family: 'chalk dash';
   font-size: 30px;
+  font-weight: normal;
 }
 
 h4 {
   font-family: 'chalk dash';
   font-size: 25px;
+  font-weight: normal;
 }
 
 .non-dairy-cards {
@@ -75,7 +85,7 @@ h4 {
   background-color: white;
   display: inline-block;
   width: 100%;
-  border: #000000 solid 5px;
+  border: #000000 solid 10px;
   border-radius: 50px;
   padding: 10px;
   margin: 10px;
@@ -98,10 +108,11 @@ h4 {
 }
 
 .filter-checkbox, .profile-info {
-  text-align: justify;
-  width: 275px;
+  text-align: left;
+  width: 350px;
   text-transform: capitalize;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'handwriting';
+  font-size: 24px;
   padding: 2px;
 }
 
@@ -164,7 +175,7 @@ h4 {
 }
 
 .description {
-  text-align: justify;
+  text-align: left;
   width: 400px;
 }
 
@@ -202,7 +213,7 @@ h4 {
 }
 
 .recommendations p {
-  text-align: justify;
+  text-align: left;
 }
 
 .product-link {
@@ -219,6 +230,15 @@ h4 {
   width: 75%;
   border: #df7ac0 5px solid;
   border-radius: 25px;
+}
+
+.product-link-span {
+  color: #df7ac0;
+}
+
+.product-link-span:hover {
+  cursor: pointer;
+  color: #c44392;
 }
 
 /** xxx ------------------ */
@@ -286,12 +306,12 @@ h4 {
   padding: 20px 75px;
 } */
 
-.heart-container {
+/* .heart-container {
   /* grid-column: 1 / 2;
   grid-row: 1 / 2; */
-  /* padding: 100px 50px 50px 250px; */
+  /* padding: 100px 50px 50px 250px;
 
-} 
+}  */
 
 .profile-favorite-card-info img {
   height: 200px;
@@ -326,13 +346,16 @@ h4 {
   font-size: 50pt;
   font-weight: 750;
   letter-spacing: 0.25em;
+  font-family: 'handwriting';
 }
 
 .moo {
   color: white;
   background-color: black;
   padding-left: 15px;
+  padding-top: 10px;
   margin-right: 10px;
+  font-family: 'handwriting';
 }
 
 .login-button, .sign-up-button {
@@ -344,16 +367,24 @@ h4 {
   margin-bottom: 20px;
   border-color: black;
   border-radius: 25px;
-  font-size: 15px;
-  font-style: bold;
+  font-size: 24px;
+  /* font-style: bold; */
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
-  font-weight: 600;
+  font-weight: 800;
+  /* font-weight: bold; */
+  font-family: 'handwriting';
 }
 
-.login-button:hover, .sign-up-button:hover{
+.login-button:hover {
   background-color: #c44392;
+  cursor:pointer;
+}
+
+.sign-up-button:hover {
+  background-color: white;
+  color: black;
   cursor:pointer;
 }
 
@@ -378,22 +409,25 @@ h4 {
 
 .login-title, .sign-up {
   /* text-transform: uppercase; */
-  font-family: Verdana, Geneva, Tahoma, sans-serif
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif */
+  font-family: 'handwriting';
+  font-size: 28px;
 }
 
-.view-non-dairy-page-button, .add-to-board-button, .view-board-button, .edit-board-button, .add-more-options-button, .delete-board-button, .edit-button, .delete-button {
+.view-non-dairy-page-button, .add-to-board-button, .view-board-button, .edit-board-button, .add-more-options-button, .delete-board-button, .edit-button, .delete-button, #create-board-button {
   background-color: rgb(233, 147, 197);
   padding: 10px;
-  width: 150px;
+  width: 175px;
   color: white;
   text-transform: uppercase;
   margin-bottom: 20px;
   border-radius: 25px;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
   font-weight: 600;
+  font-family: 'handwriting';
 }
 
 .edit-board-buttons {
@@ -414,7 +448,7 @@ h4 {
 .close-filters-button {
   background-color: white;
   padding: 10px;
-  width: 150px;
+  width: 200px;
   color: black;
   text-transform: uppercase;
   /* margin-bottom: 20px;
@@ -422,10 +456,11 @@ h4 {
   border: solid 2px black;
   border-radius: 25px;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
+  font-family: 'handwriting';
 }
 
 .edit-board-buttons:hover, .delete-button:hover, .delete-board-button:hover, .close-filters-button:hover {
@@ -435,7 +470,7 @@ h4 {
   cursor: pointer;
 }
 
-.view-non-dairy-page-button:hover, .add-to-board-button:hover, .view-board-button:hover, .add-more-options-button:hover {
+.view-non-dairy-page-button:hover, .add-to-board-button:hover, .view-board-button:hover, .add-more-options-button:hover, #create-board-button:hover {
   background-color: #c44392;
   cursor: pointer;
   border-color: black;
@@ -491,7 +526,9 @@ h4 {
   border-radius: 25px;
   height: 25px;
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 20px;
+  font-family: 'handwriting';
+  font-weight: bold;
 }
 
 .add-new-board-button {
@@ -500,15 +537,16 @@ h4 {
   width: 200px;
   color: white;
   text-transform: uppercase;
-  /* margin-bottom: 20px;
-  margin-top: 40px; */
+  margin-bottom: 20px;
+  /* margin-top: 40px; */
   border: solid 2px white;
   border-radius: 25px;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
+  font-family: 'handwriting';
 }
 
 .add-new-board-button:hover {
@@ -530,31 +568,39 @@ h4 {
 .home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button, .back-to-all-options-button, .apply-filters-button, .edit-profile-button, .update-profile-button {
   background-color: black;
   padding: 10px;
-  width: 150px;
+  width: 160px;
   color: white;
   text-transform: uppercase;
   /* margin-bottom: 20px;
   margin-top: 40px; */
   border: solid 2px white;
   border-radius: 25px;
-  font-weight: bold;
-  font-size: 15px;
+  font-weight: bolder;
+  font-size: 20px;
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
+  font-family: 'handwriting';
+}
+
+.apply-filters-button {
+  width: 200px;
 }
 
 .edit-profile-button {
   padding: 12px;
   letter-spacing: 1px;
+  margin-bottom: 10px;
+  width: 175px;
 }
 
 .update-profile-button {
   width: 200px;
-  position: absolute;
-  left: 365px;
+  /* position: absolute; */
+  /* left: 365px; */
   margin-top: 10px;
   padding: 12px;
+  margin-left: -5px;
   letter-spacing: 1px;
 }
 
@@ -703,21 +749,23 @@ h4 {
   text-transform: uppercase;
   /* font-family: "Arial Black", sans-serif; */
   text-align: center;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   color: black;
   display: flex auto;
 
   background-size: 200% auto;
-  width: 150px;
+  width: 175px;
   border-radius: 25px;
   border-width: 2px;
   padding: 10px;
   margin-bottom: 20px;
+  margin-left: 10px;
 
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.2;
   text-transform: uppercase;
   font-weight: 600;
+  font-family: 'handwriting';
 
   cursor: pointer;
 }
@@ -735,3 +783,48 @@ h4 {
   transition: 2s;
   background-image: linear-gradient(to right, #F7DAD9, #FFF5DA, #D6D2C4, #5D534A);
 } */
+
+.edit-profile-form input, .add-new-board-form input {
+  padding: 6px 10px;
+  /* margin-right: 16px; */
+  background: white;
+  font-size: 17px;
+  height: 35px;
+  width: 200px;
+  /* text-transform: uppercase; */
+  font-size: 20px;
+  font-family: 'handwriting';
+  /* font-weight: bold; */
+}
+
+.add-new-board-form input {
+  margin: 10px 0px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.add-new-board-form label {
+  margin-top: 20px;
+}
+
+.edit-profile-form label {
+  font-size: 22px;
+  font-family: 'handwriting';
+  font-weight: bold;
+  padding: 5px;
+}
+
+.add-new-board-form label {
+  font-size: 26px;
+  font-family: 'handwriting';
+  font-weight: bold;
+  padding: 5px;
+}
+
+.non-password-profile-input {
+  margin-bottom: 30px;
+}
+
+#username {
+  margin-left: 30px;
+}

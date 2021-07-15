@@ -386,7 +386,7 @@ export default class ProfilePage extends Component {
           <div className="profile-info">
 
             <div className="profile-avatar">
-              <p>{username}</p>
+              <p id="username" className="big-p-tag"><b>{username}</b></p>
               <img id="avatar-picture" src={avatar} alt="avatar"></img><br></br>
               <br></br>
               { this.state.editAvatar === false ? <button className="edit-avatar-button icecream-background" onClick={() => this.toggleAvatarEditButton()}>Edit Avatar</button> :
@@ -401,11 +401,11 @@ export default class ProfilePage extends Component {
             </div>
 
             <div className="profile-main-info">
-              <p>{firstName + ' ' + lastName}</p>
-              <p>Bio: {bio}</p>
-              <p>Email: {email}</p>
-              <p>Address: {address}</p>
-              <p>Phone number: {phoneNumber}</p>
+              <p><b>{firstName + ' ' + lastName}</b></p>
+              <p><b>Bio:</b> {bio}</p>
+              <p><b>Email:</b> {email}</p>
+              <p><b>Address:</b> {address}</p>
+              <p><b>Phone number:</b> {phoneNumber}</p>
 {/* 
               <p>Password: {password}</p>
               <p>User Id: {id}</p> */}
@@ -415,8 +415,8 @@ export default class ProfilePage extends Component {
               <button className="edit-profile-button" onClick={() => this.editProfile()}>Edit profile</button>
 
               { this.state.editProfile === true ? 
-                <div className="edit-profile-form">
-                  <form onSubmit={(event) => this.updateProfile(event)}>
+                <div className="edit-profile-form-container">
+                  <form className="edit-profile-form" onSubmit={(event) => this.updateProfile(event)}>
 
                     {/* <label>Username:</label><br></br>
                     <input type="text" onChange={(event) => this.updateUsername(event)}  placeholder={username}></input><br></br>
@@ -431,22 +431,22 @@ export default class ProfilePage extends Component {
                     <p id="re-enter-updated-password-error" className="form-errors"></p>
 
                     <label>First Name:</label><br></br>
-                    <input id="first-name-input" type="text" onChange={(event) => this.updateFirstName(event)} placeholder={firstName} autoComplete="on"></input><br></br>
+                    <input className="non-password-profile-input" id="first-name-input" type="text" onChange={(event) => this.updateFirstName(event)} placeholder={firstName} autoComplete="on"></input><br></br>
 
                     <label>Last Name:</label><br></br>
-                    <input id="last-name-input" type="text" onChange={(event) => this.updateLastName(event)} placeholder={lastName} autoComplete="on"></input><br></br>
+                    <input className="non-password-profile-input"  id="last-name-input" type="text" onChange={(event) => this.updateLastName(event)} placeholder={lastName} autoComplete="on"></input><br></br>
 
                     <label>Bio:</label><br></br>
-                    <input id="bio-input" type="text" onChange={(event) => this.updateBio(event)} placeholder={bio} autoComplete="on"></input><br></br>
+                    <input className="non-password-profile-input" id="bio-input" type="text" onChange={(event) => this.updateBio(event)} placeholder={bio} autoComplete="on"></input><br></br>
 
                     <label>Email:</label><br></br>
-                    <input id="email-input" type="email" onChange={(event) => this.updateEmail(event)} placeholder={email} autoComplete="on"></input><br></br>
+                    <input className="non-password-profile-input" id="email-input" type="email" onChange={(event) => this.updateEmail(event)} placeholder={email} autoComplete="on"></input><br></br>
 
                     <label>Address:</label><br></br>
-                    <input id="address-input" type="text" onChange={(event) => this.updateAddress(event)} placeholder={address} autoComplete="on"></input><br></br>
+                    <input className="non-password-profile-input" id="address-input" type="text" onChange={(event) => this.updateAddress(event)} placeholder={address} autoComplete="on"></input><br></br>
 
                     <label>Phone number:</label><br></br>
-                    <input id="phone-number-input" type="text" onChange={(event) => this.updatePhoneNumber(event)} placeholder={phoneNumber} autoComplete="on"></input><br></br>
+                    <input className="non-password-profile-input" id="phone-number-input" type="text" onChange={(event) => this.updatePhoneNumber(event)} placeholder={phoneNumber} autoComplete="on"></input><br></br>
 
                     <button className="update-profile-button" type="submit">Update profile</button>
                   </form>

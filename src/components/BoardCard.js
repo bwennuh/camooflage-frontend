@@ -62,7 +62,7 @@ export default class BoardCard extends Component {
           <h1>{name.toUpperCase()}</h1>
             {/* <p>ID # {id}</p>
             <p>{name}</p> */}
-            <p>{description}</p>
+            <p className="big-p-tag">{description}</p>
         </div>
 
         <div className="board-non-dairy-options">
