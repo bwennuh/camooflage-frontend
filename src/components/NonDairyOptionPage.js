@@ -96,13 +96,13 @@ export default class NonDairyOptionPage extends Component {
           </div>
 
           <div className="non-dairy-personalized-notes">
+            <h1 className="smaller-h1">Recommendations</h1>
             <div className="recommendations">
-              <h1>Recommendations</h1>
               <p>{recommendations}</p>
             </div>
 
             <div className="product-link">
-              <h1>Check out the website <a href={link}>here!</a></h1>
+              <h1 className="smaller-h1">Check out the website <a href={link}>here!</a></h1>
               {/* <p><a href={link}>Where to buy!</a></p> */}
             </div>
 

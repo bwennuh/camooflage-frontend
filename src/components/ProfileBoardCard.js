@@ -22,7 +22,7 @@ export default class ProfileBoardCard extends Component {
         <div className="profile-board-card-info">
           {/* <h1>BOARD CARD</h1> */}
             {/* <p>ID # {id}</p> */}
-            <h1>{name}</h1>
+            <h2>{name}</h2>
             <p>{description}</p>
         </div>
 

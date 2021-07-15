@@ -1,3 +1,50 @@
+/* body {
+  background-image: url('https://i.imgur.com/bKiVnD5.png');
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+@font-face {
+  font-family: 'chalk dash';
+  src: url('https://www.dafont.com/chalk-dash.font?fpp=200')
+}
+
+@font-face {
+  font-family: 'scribble scrawl';
+  src: url('https://www.dafont.com/k26scribblescrawl.font');
+}
+
+p {
+  font-family: 'verdana';
+}
+
+h1 {
+  font-family: 'chalk dash';
+  font-size: 80px;
+}
+
+h2 {
+  font-family: 'chalk dash';
+  font-size: 50px;
+}
+
+.smaller-h1 {
+  font-size: 65px;
+}
+
+h3 {
+  font-family: 'chalk dash';
+  font-size: 30px;
+}
+
+h4 {
+  font-family: 'chalk dash';
+  font-size: 25px;
+}
+
 .non-dairy-cards {
   column-count: 5;
   column-gap: 5em;
@@ -50,10 +97,12 @@
   padding-right: 100px;
 }
 
-.filter-checkbox {
+.filter-checkbox, .profile-info {
   text-align: justify;
   width: 275px;
   text-transform: capitalize;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 2px;
 }
 
 .board-card {
@@ -392,7 +441,7 @@
   border-color: black;
 }
 
-.edit-button:hover, .move-option-button:hover, .edit-board-button:hover {
+.edit-button:hover, .move-option-button:hover, .edit-board-button:hover, .update-profile-button:hover {
   background-color: white;
   color: black;
   cursor: pointer;
@@ -478,7 +527,7 @@
   border: solid 2px black;
 }
 
-.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button, .back-to-all-options-button, .apply-filters-button {
+.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button, .back-to-all-options-button, .apply-filters-button, .edit-profile-button, .update-profile-button {
   background-color: black;
   padding: 10px;
   width: 150px;
@@ -493,6 +542,20 @@
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
+}
+
+.edit-profile-button {
+  padding: 12px;
+  letter-spacing: 1px;
+}
+
+.update-profile-button {
+  width: 200px;
+  position: absolute;
+  left: 365px;
+  margin-top: 10px;
+  padding: 12px;
+  letter-spacing: 1px;
 }
 
 .back-to-all-options-button {
@@ -542,7 +605,7 @@
   width: 200px;
 }
 
-.back-to-boards-button:hover, .back-to-all-options-button:hover, .apply-filters-button:hover {
+.back-to-boards-button:hover, .back-to-all-options-button:hover, .apply-filters-button:hover, .edit-profile-button:hover {
   background-color: white;
   color: black;
   border: solid 2px black;
@@ -560,7 +623,8 @@
 .board-non-dairy-option {
   background-color: white;
   display: inline-block;
-  width: 200px;
+  width: 300px;
+  align-items: stretch;
   padding: 10px;
   margin: 10px 50px 10px 10px;
   /* box-shadow: 10px 10px black */
@@ -583,8 +647,6 @@
   width: 300px;
   margin: 25px;
 }
-
-
 
 .board-select, .avatar-select {
   border: solid 1px black;
@@ -611,7 +673,7 @@
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
   background-color: rgb(233, 147, 197);
-  top: 45px;
+  top: 70px;
   right: 300px;
   box-shadow: 0px 0px 10px 5px white;
 }
@@ -636,27 +698,12 @@
   right: 0px;
 }
 
-/* .edit-avatar-button {
-  background-color: rgb(233, 147, 197);
-  padding: 10px;
-  width: 150px;
-  color: black;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  border-color: black;
-  border-radius: 25px;
-  font-size: 15px;
-  line-height: 1.2;
-  text-transform: uppercase;
-  font-weight: 600;
-} */
-
 .edit-avatar-button {
   border-color: black;
   text-transform: uppercase;
   /* font-family: "Arial Black", sans-serif; */
   text-align: center;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: black;
   display: flex auto;
 
@@ -675,7 +722,7 @@
   cursor: pointer;
 }
 
-.edit-avatar-button:hover{
+.edit-avatar-button:hover {
   transition: 1s;
   background-position: right center; 
 }
