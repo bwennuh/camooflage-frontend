@@ -154,7 +154,7 @@ export default class BoardCardContainer extends Component {
           <button className="add-new-board-button" onClick={() => this.toggleCreateNewBoardForm()}>Add new board</button><br></br>
           { this.state.showCreateBoardForm ? 
             <div className="create-board-form">
-              <form onSubmit={(event) => this.createNewUserBoard(event)}>
+              <form className="add-new-board-form" onSubmit={(event) => this.createNewUserBoard(event)}>
                 <label>Board name:</label><br></br>
                 <input type="text" onChange={(event) => this.getNewBoardName(event)}  placeholder="Board Name" required></input><br></br>
 

@@ -14,7 +14,7 @@ export default class Navbar extends Component {
               <img width="100" height="auto" id="navbar-logo" src="https://i.imgur.com/0s5Q1Ie.png" alt="Camooflage Cow"></img>
               <button className="active home-button">Home</button>
               <button className="my-boards-button" onClick={() => this.props.changeToBoardsPage()}>My Boards</button>
-              <input placeholder="search by product name..." onChange={(event) => this.props.handleSearchText(event.target.value)} className="search-bar"></input>
+              <input placeholder="search by product name" onChange={(event) => this.props.handleSearchText(event.target.value)} className="search-bar"></input>
               <button className="my-profile-button" onClick={() => this.props.changeToProfilePage()}>My Profile</button>
               <button className="log-out-button" onClick={() => this.props.changeToLogin()}>Log Out</button>
             </div> 
@@ -25,7 +25,7 @@ export default class Navbar extends Component {
               <img width="100" height="auto" id="navbar-logo" src="https://i.imgur.com/0s5Q1Ie.png" alt="Camooflage Cow"></img>
               <button className="home-button" onClick={() => this.props.changeToNonDairyOptionsPage()}>Home</button>
               <button className="active my-boards-button">My Boards</button>
-              <input placeholder="search by board name..." onChange={(event) => this.props.handleSearchText(event.target.value)} className="search-bar"></input>
+              <input placeholder="search by board name" onChange={(event) => this.props.handleSearchText(event.target.value)} className="search-bar"></input>
               <button className="my-profile-button" onClick={() => this.props.changeToProfilePage()}>My Profile</button>
               <button className="log-out-button" onClick={() => this.props.changeToLogin()}>Log Out</button>
             </div> 

@@ -102,7 +102,8 @@ export default class NonDairyOptionPage extends Component {
             </div>
 
             <div className="product-link">
-              <h1 className="smaller-h1">Check out the website <a href={link}>here!</a></h1>
+              <h1 className="smaller-h1">Check out the website <span className="product-link-span" onClick={() => window.open(link)} href={link}>here!</span></h1>
+
               {/* <p><a href={link}>Where to buy!</a></p> */}
             </div>
 
