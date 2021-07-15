@@ -86,32 +86,15 @@ export default class BoardCard extends Component {
             // removeOptionFromBoard={this.removeOptionFromBoard}
             // moveOptionToNewBoard={this.moveOptionToNewBoard} 
             />
-            </div>)}
+            </div>
+            )}
           <br></br>
-          {/* <button onClick={(id) => this.props.changeToNonDairyOptionsPage(id)}>Add options</button> */}
 
         </div>
 
         <div className="view-board">
           <button className="view-board-button" value={id} onClick={() => this.props.changeToBoardPage(id)}>View Board</button>
         </div>
-
-        {/* <div className="edit-board">
-          <button value={id} onClick={(event) => this.props.updateBoard(event)}>Edit Board</button>
-        </div>
-        
-        <div className="delete-board">
-          { this.state.deleteBoard === false ? 
-          <button onClick={() => this.toggleDeleteBoard()}>Delete Board</button> 
-          : 
-          <div className="delete-board-options">
-            <label>Are you sure?</label><br></br>
-            <button value={id} onClick={(event) => this.props.deleteBoard(event)}>Yes</button>
-            <button onClick={() => this.toggleDeleteBoard()}>No</button>
-          </div>
-           }
-        </div> */}
-
 
       </div>
     )

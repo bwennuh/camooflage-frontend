@@ -216,8 +216,9 @@ export default class BoardPage extends Component {
 
     return(
       <div className="board-page">
-        
+        { this.state.viewNonDairyOptionPage === false ? 
         <button className="back-to-boards-button" onClick={() => this.props.changeToAllBoards()}>Back to boards</button>
+        : null }
         
 
         { this.state.viewNonDairyOptionPage === false ? 
@@ -225,7 +226,7 @@ export default class BoardPage extends Component {
 
           <div className="board-info">
             <h1>{name.toUpperCase()}</h1>
-            <h2>{description}</h2>
+            <h3>{description}</h3>
 
             {/* <p>{`Board id: ${boardID}`}</p>
             <p>{`Board name: ${name}`}</p>
@@ -266,14 +267,14 @@ export default class BoardPage extends Component {
             <button className="edit-board-button" value={boardID} onClick={(event) => this.editBoard(event)}>Edit Board</button>
 
             { this.state.editBoard ? 
-            <form onSubmit={(event) => this.saveBoardChanges(event)}>
+            <form className="edit-board-form" onSubmit={(event) => this.saveBoardChanges(event)}>
               <label>Board name:</label><br></br>
                   <input type="text" onChange={(event) => this.editBoardName(event)}  placeholder="Board Name"></input><br></br>
 
                   <label>Board description:</label><br></br>
                   <input type="text" onChange={(event) => this.editBoardDescription(event)}  placeholder="Board Description"></input><br></br>
 
-              <button className="edit-board-buttons" type="submit">Save changes</button>
+              <button id="save-board-changes-button" className="edit-board-buttons" type="submit">Save changes</button>
               <button className="edit-board-buttons" onClick={() => this.cancelBoardChanges()}>Cancel changes</button>
             </form> 
             : null }
@@ -297,7 +298,7 @@ export default class BoardPage extends Component {
         <div className="non-dairy-option-page-containers">
 
           <div className="non-dairy-option-page">
-            <button onClick={() => this.viewBoardPage()}>Back to board</button>
+            <button className="back-to-board-button" onClick={() => this.viewBoardPage()}>Back to board</button>
 
             <NonDairyOptionPage 
               id={nonDairyOption.id} 
