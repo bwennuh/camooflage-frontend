@@ -288,8 +288,8 @@ export default class BoardPage extends Component {
               <label>Are you sure?</label><br></br>
               {/* <button value={boardID} onClick={(event) => this.props.deleteBoard(event)}>Yes</button> */}
               {/* <button value={boardID} onClick={(event) => this.props.deleteBoardPins(event)}>Yes</button> */}
-              <button value={boardID} onClick={() => this.props.deleteBoardPins(boardID, this.state.boardPins)}>Yes</button>
-              <button onClick={() => this.toggleDeleteBoard()}>No</button>
+              <button className="yes-button" value={boardID} onClick={() => this.props.deleteBoardPins(boardID, this.state.boardPins)}>Yes</button>
+              <button className="no-button" onClick={() => this.toggleDeleteBoard()}>No</button>
             </div>
             }
           </div>
