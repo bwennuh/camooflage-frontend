@@ -131,6 +131,15 @@ h4 {
   padding: 2px;
 }
 
+.delete-board-options label {
+  text-align: left;
+  width: 350px;
+  /* text-transform: capitalize; */
+  font-family: 'handwriting';
+  font-size: 24px;
+  padding: 2px;
+}
+
 .profile-info {
   margin-left: 250px;
   margin-right: 100px;
@@ -478,7 +487,7 @@ h4 {
   font-family: 'handwriting';
 }
 
-.edit-board-buttons {
+.edit-board-buttons, .yes-button, .no-button {
   background-color: white;
   color: black;
   border: solid 2px black;
@@ -513,14 +522,18 @@ h4 {
   font-family: 'handwriting';
 }
 
-.edit-board-buttons:hover, .delete-button:hover, .delete-board-button:hover, .close-filters-button:hover {
+.edit-board-buttons:hover, .delete-button:hover, .delete-board-button:hover, .close-filters-button:hover, .yes-button:hover {
   background-color: black;
   color: white;
   border-color: black;
   cursor: pointer;
 }
 
-.view-non-dairy-page-button:hover, .add-to-board-button:hover, .view-board-button:hover, .add-more-options-button:hover, #create-board-button:hover, #save-board-changes-button:hover {
+.no-button:hover {
+  color: white
+}
+
+.view-non-dairy-page-button:hover, .add-to-board-button:hover, .view-board-button:hover, .add-more-options-button:hover, #create-board-button:hover, #save-board-changes-button:hover, .no-button:hover {
   background-color: #c44392;
   cursor: pointer;
   border-color: black;
