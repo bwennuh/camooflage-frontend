@@ -234,7 +234,7 @@ export default class BoardPage extends Component {
           </div>
 
           <div className="board-page-non-dairy-options">
-            <div className="board-page-non-dairy-option">
+            {/* <div className="board-page-non-dairy-option"> */}
             { nonDairyOptions.map(nonDairyOption => 
               <NonDairyOptionCard 
               key={nonDairyOption.id} 
@@ -256,7 +256,7 @@ export default class BoardPage extends Component {
               fetchNonDairyOption={this.fetchNonDairyOption}
               boardPin={this.state.boardPins.find(boardPin => boardPin.non_dairy_option_id === nonDairyOption.id)}
               />)}
-              </div>
+              {/* </div> */}
             <br></br>
 
           </div>

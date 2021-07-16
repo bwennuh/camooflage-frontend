@@ -86,8 +86,7 @@ export default class BoardCard extends Component {
             // removeOptionFromBoard={this.removeOptionFromBoard}
             // moveOptionToNewBoard={this.moveOptionToNewBoard} 
             />
-            </div>
-            )}
+            </div>)}
           <br></br>
 
         </div>

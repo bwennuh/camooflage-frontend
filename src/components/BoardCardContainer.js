@@ -148,10 +148,10 @@ export default class BoardCardContainer extends Component {
     return boards.length > 0 ? (
       <div className="boards-displays">
       { this.state.showAllBoards === true ?
-      <div className="board-card-conatiner">
+      <div className="board-card-container">
+        <button className="add-new-board-button" onClick={() => this.toggleCreateNewBoardForm()}>Add new board</button>
         <div className="board-cards">
-          {/* <h1>BOARD CARD CONTAINER</h1> */}
-          <button className="add-new-board-button" onClick={() => this.toggleCreateNewBoardForm()}>Add new board</button><br></br>
+
           { this.state.showCreateBoardForm ? 
             <div className="create-board-form">
               <form className="add-new-board-form" onSubmit={(event) => this.createNewUserBoard(event)}>
