@@ -118,7 +118,8 @@ h4 {
 
 .filters {
   margin-left: 50px;
-  padding-right: 100px;
+  /* padding-right: 100px; */
+  flex: 0 0 355px;
 }
 
 .filter-checkbox, .profile-info {
@@ -130,14 +131,24 @@ h4 {
   padding: 2px;
 }
 
+.profile-info {
+  margin-left: 250px;
+  margin-right: 100px;
+}
+
+.board-cards {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
 .board-card {
   text-align: center;
   border: #000000 solid 10px;
   padding: 5px;
-  width: 800px;
+  /* width: 700px; */
   height: auto;
-  display: inline-grid;
-  margin: 25px;
+  margin-top: 25px;
+  margin-bottom: 100px;
   box-shadow: #c44392 10px 10px, rgba(240, 46, 170, 0.4) 10px 10px, rgba(240, 46, 170, 0.3) 20px 20px, rgba(240, 46, 170, 0.2) 30px 30px, rgba(240, 46, 170, 0.1) 40px 40px, rgba(240, 46, 170, 0.05) 50px 50px;
   background-color: white;
   border-radius: 100px;
@@ -154,11 +165,17 @@ h4 {
   color: red
 }
 
-.non-dairy-option-main-info, .profile-page-containers {
+.non-dairy-option-main-info {
   display: flex;
   flex-flow: row wrap;
   align-items: stretch;
   justify-content: space-around;
+}
+
+.profile-page-containers {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
 }
 
 /** Non Dairy Option Page ------------------ */
@@ -191,9 +208,7 @@ h4 {
 }
 
 #main-product-pic {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
+  align-self: center;
 }
 
 .description {
@@ -274,7 +289,9 @@ h4 {
 }
 
 .profile-boards-displays {
-  border: #df7ac0 solid 10px;
+  /* border: #df7ac0 solid 10px; */
+  display: flex;
+  flex-wrap: wrap;
   border-radius: 3em;
   padding: 10px;
   width: 750px;
@@ -316,9 +333,9 @@ h4 {
   margin-right: auto;
 }
 
-.favorite {
+/* .favorite {
   margin-right: 200px
-}
+} */
 
 /* .profile-favorite-card-info {
   grid-column: 2 / 3;
@@ -706,26 +723,16 @@ h4 {
   color: black;
 }
 
+.board-non-dairy-options {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 .board-non-dairy-option > .non-dairy-option-card {
   width: 300px;
   border: solid 3px black;
   height: 400px;
-  /* background-color: white;
-  display: inline-block;
-  width: 300px;
-  align-items: stretch;
-  padding: 10px;
-  margin: 10px 50px 10px 10px; */
-  /* box-shadow: 10px 10px black */
-
-  /* display: flex;
-  flex-flow: column wrap;
-
-  justify-content: center;
-  /* margin-left: 100px; */
-  /* margin-right: auto;
-  margin-right: auto;
-  align-items: stretch; */
 }
 
 .board-non-dairy-option > .non-dairy-option-card h4{
@@ -734,24 +741,12 @@ h4 {
 
 .board-page-non-dairy-options {
   display: flex;
-  flex-flow: column wrap;
-
   justify-content: center;
-  /* margin-left: 100px; */
   margin-right: auto;
   margin-right: auto;
-
-  /* column-count: 5;
-  column-gap: 5em;
-  padding: 10px;
-  margin-left: auto;
-  margin-right: 350px; */
 }
 
-.board-page-non-dairy-option div.non-dairy-option-card {
-  /* display: flex; */
-  /* justify-content: center;
-  align-content: center; */
+.board-page-non-dairy-options div.non-dairy-option-card {
   align-items: stretch;
   width: 300px;
   margin: 25px;
@@ -766,12 +761,6 @@ h4 {
   font-size: 14px;
 }
 
-/* .back-to-all-options-button {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-} */
-
 .heart-shape{
   position: absolute;
   width: 50px;
@@ -782,8 +771,8 @@ h4 {
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
   background-color: rgb(233, 147, 197);
-  top: 70px;
-  right: 300px;
+  top: 120px;
+  left: 50%;
   box-shadow: 0px 0px 10px 5px white;
 }
 .heart-shape:before,
