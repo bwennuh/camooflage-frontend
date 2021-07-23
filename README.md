@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Welcome to Camooflage!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="https://i.imgur.com/0s5Q1Ie.png"></img>
 
-## Available Scripts
+*This is Moo - Camooflage's logo and mascot, drawn and designed by me!*
 
-In the project directory, you can run:
+## About Camooflage
 
-### `yarn start`
+Are you someone who is lactose intolerant and have just tried to ignore that it was a thing, but deep down know you should really give up dairy? Well this app is for you!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+One of the main reasons it’s hard for people to give up dairy is because they don’t know what options there are out there for replacements. Especially nowadays, there are so many options to choose from, but there are also certain options better for certain culinary dairy needs.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Camooflage is a non-dairy replacement app. Think Pinterest, but for non-dairy milks, cheeses, ice cream, and more! It is designed to help users find non-dairy options to replace any dairy product that they need replacing for. If there's a dairy product you need a non-dairy replacement for, we can help you find it! This app is for those with allergies, lactose-intolerance, vegan lifestyles, plant-based diets, are looking to reduce their dairy consumption, or just want to know all about non-dairy options!
 
-### `yarn test`
+## How Camooflage Came to Be
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I have been vegan for over 12 years now. One of the hardest things for me to give up was dairy. So obviously, that meant I went searching for good vegan, non-dairy replacements for all of my old favorite dairy products. I tried about every vegan version of every dairy product I could find, and let's just say - some are a *lot* better than others.
 
-### `yarn build`
+You could imagine that in 12 years worth of time, I've tried a **lot** of non-dairy options. I don't necessarily claim to be an expert on which are the best (at least not yet!), but I definitely have strong opinions. Because of that, I've had a lot of friends and family over the past few years ask for which products I'd recommend if they wanted a non-dairy replacement. And to help explain _all_ of my opinions for _all_ of the different products and types, I created a Google doc outlining them. It's rather lengthy and wordy though (as it's essentially an essay about the pros and cons of various vegan cheeses), so I can't imagine that anyone actually wanted to read it.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+When I got into software development and needed a project idea, the first thing that came to mind was that Google doc. I wanted to figure out a way to make the Google doc into something a little more fun and give it a more user-friendly format for people to utilize (instead of people having to read paragraphs on why I will forever love Daiya cheese even though there are much better options out there nowadays and so they should at least give it a chance). And thus Camooflage was a born!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Signing Up
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If you don't have a log-in for our site, you can directly sign up right from the main page! You'll be prompted to create a username, password, and give us some information about yourself.
 
-### `yarn eject`
+New users will also be prompted to choose their favorite flavor between chocolate, vanilla, and strawberry. This choice will determine what color, or rather what flavor, Moo avatar their user profile will have (and don't worry - you'll have the option to change the flavor later too!).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+After a new user has successfully created a new account, they can log right in to the app and get started!
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Main Non-Dairy Product Feed
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The home page main feed displays all of the non-dairy products currently in the Camooflage database. Currently the app includes various non-dairy milks, cheeses, and ice cream, but is constantly being updated to include new products, including non-dairy yogurts, sour creams, butters, etc. The database has been curated by yours truly, so if there's an option you want to see included that's not on there - just let me know!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Users can browse all the various options in the database, filter based on allergens, brands, and/or product categories, or they can search for a specific item.
 
-## Learn More
+From there, they can click on an individual item to get more information about it, including allergen information, product description, a picture of the product, a link on where to buy the product, and a personalized product recommendation (written by me!).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Each item on the main feed can be added directly to a user's board(s). Each user is given a default board to start so that users can start saving non-dairy options right away! And, once a non-dairy option has been added to a board, that option can be "favorited" and will show up on the user's profile page!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Boards
 
-### Code Splitting
+To be able to save specific non-dairy options to more easily view later, users can create multiple boards that they can "pin" different options to.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Boards can be given a name and description, and users can search for specific boards of theirs by using the search bar in the navigation bar at the top of the page.
 
-### Analyzing the Bundle Size
+Boards can be created for any reason a user might want, and are included in order to help users sort and group their favorite non-dairy options to view at later times - perfect for meal prepping and grocery list planning.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## User Profile Page
 
-### Making a Progressive Web App
+The profile page is where a user can see an overview of their account's information - personal information, their Moo avatar color/flavor choice, a list of all the user's current boards, and a list of the user's favorited non-dairy products.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+If any of the user's personal information needs to be updated, this can be done within the profile page.
 
-### Advanced Configuration
+## Future Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+As the non-dairy option database continues to be filled out, one of the main features to be implemented later on is a Recipe Planning aspect. The intent will be for users to create recipe cards to keep track of their favorite recipes, but also be able to link them to the non-dairy options that they now want to include! Users will be able to upload or manually import recipes, and then edit the reipce as needed for the non-dairy options they want to replace. Additionally, similarly to the Boards, users will be able to "pin" various non-dairy options to the recipe so that they can easily view that info.
 
-### Deployment
+### Follow me on Instagram for more non-dairy recommendations
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+I mostly review vegan ice cream, but also try to do a lot of baking for vegan baked goods too!
 
-### `yarn build` fails to minify
+<a href="https://www.instagram.com/bwennuh/">You can find me here!</a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
