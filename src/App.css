@@ -896,6 +896,7 @@ h4 {
 
 #username {
   margin-left: 30px;
+  text-transform: lowercase;
 }
 
 #allergens {
