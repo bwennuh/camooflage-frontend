@@ -1,6 +1,6 @@
 # Welcome to Camooflage!
 
-<img src="https://i.imgur.com/0s5Q1Ie.png"></img>
+<img width="300" src="https://i.imgur.com/0s5Q1Ie.png"></img>
 
 *This is Moo - Camooflage's logo and mascot, drawn and designed by me!*
 
