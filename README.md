@@ -30,7 +30,7 @@ After a new user has successfully created a new account, they can log right in t
 
 ## Main Non-Dairy Product Feed
 
-The home page main feed displays all of the non-dairy products currently in the Camooflage database. Currently the app includes various non-dairy milks, cheeses, and ice cream, but is constantly being updated to include new products, including non-dairy yogurts, sour creams, butters, etc. The database has been curated by yours truly, so if there's an option you want to see included that's not on there - just let me know!
+The home page main feed displays all of the non-dairy products currently in the Camooflage database (which can be found <a href="https://github.com/bwennuh/camooflage-backend">here</a>). Currently the app includes various non-dairy milks, cheeses, and ice cream, but is constantly being updated to include new products, including non-dairy yogurts, sour creams, butters, etc. The database has been curated by yours truly, so if there's an option you want to see included that's not on there - just let me know!
 
 Users can browse all the various options in the database, filter based on allergens, brands, and/or product categories, or they can search for a specific item.
 
