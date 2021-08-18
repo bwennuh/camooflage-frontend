@@ -60,7 +60,7 @@ As the non-dairy option database continues to be filled out, one of the main fea
 
 Check out a video demo of the app <a href="https://youtu.be/vk3lmN5yTzw">here</a>!
 
-### Follow me on Instagram for more non-dairy recommendations
+## Follow me on Instagram for more non-dairy recommendations
 
 I mostly review vegan ice cream, but also try to do a lot of baking for vegan baked goods too!
 
