@@ -56,6 +56,10 @@ If any of the user's personal information needs to be updated, this can be done 
 
 As the non-dairy option database continues to be filled out, one of the main features to be implemented later on is a Recipe Planning aspect. The intent will be for users to create recipe cards to keep track of their favorite recipes, but also be able to link them to the non-dairy options that they now want to include! Users will be able to upload or manually import recipes, and then edit the reipce as needed for the non-dairy options they want to replace. Additionally, similarly to the Boards, users will be able to "pin" various non-dairy options to the recipe so that they can easily view that info.
 
+## App Demo
+
+Check out a video demo of the app <a href="https://youtu.be/vk3lmN5yTzw">here</a>!
+
 ### Follow me on Instagram for more non-dairy recommendations
 
 I mostly review vegan ice cream, but also try to do a lot of baking for vegan baked goods too!
