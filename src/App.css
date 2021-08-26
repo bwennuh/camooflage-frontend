@@ -628,7 +628,7 @@ h4 {
   border: solid 2px black;
 }
 
-.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button, .back-to-all-options-button, .apply-filters-button, .edit-profile-button, .update-profile-button, .back-to-board-button {
+.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button, .back-to-all-options-button, .apply-filters-button, .edit-profile-button, .update-profile-button, .back-to-board-button, .sign-up-button {
   background-color: black;
   padding: 10px;
   width: 160px;
@@ -654,7 +654,7 @@ h4 {
   margin-top: 20px;
 }
 
-.edit-profile-button {
+.edit-profile-button, .sign-up-button {
   padding: 12px;
   letter-spacing: 1px;
   margin-bottom: 10px;
@@ -721,7 +721,7 @@ h4 {
   width: 200px;
 }
 
-.back-to-boards-button:hover, .back-to-all-options-button:hover, .apply-filters-button:hover, .edit-profile-button:hover, .back-to-board-button:hover {
+.back-to-boards-button:hover, .back-to-all-options-button:hover, .apply-filters-button:hover, .edit-profile-button:hover, .back-to-board-button:hover, .sign-up-button:hover {
   background-color: white;
   color: black;
   border: solid 2px black;
@@ -849,7 +849,7 @@ h4 {
   background-image: linear-gradient(to right, #F7DAD9, #FFF5DA, #D6D2C4, #5D534A);
 } */
 
-.edit-profile-form input, .add-new-board-form input, .edit-board-form input  {
+.edit-profile-form input, .add-new-board-form input, .edit-board-form input, .sign-up-form input  {
   padding: 6px 10px;
   /* margin-right: 16px; */
   background: white;
@@ -876,7 +876,7 @@ h4 {
   margin-top: 20px;
 }
 
-.edit-profile-form label {
+.edit-profile-form label, .sign-up-form label {
   font-size: 22px;
   font-family: 'handwriting';
   font-weight: bold;
@@ -901,4 +901,9 @@ h4 {
 
 #allergens {
   padding: 10px;
+}
+
+#continue-button, #login-continue-button {
+  margin-left: auto;
+  margin-right: auto;
 }

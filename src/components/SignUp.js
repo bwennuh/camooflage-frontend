@@ -248,7 +248,7 @@ export default class SignUp extends Component {
 
           { this.state.display === "sign-up" ?
           <div className="username-password-form">
-            <form onSubmit={(event) => this.submitUsernamePasswordHandler(event)}>
+            <form className="sign-up-form" onSubmit={(event) => this.submitUsernamePasswordHandler(event)}>
               <label>Choose a username:</label><br></br>
               <input type="text" onChange={(event) => this.getUsername(event)}  placeholder="username" required></input><br></br>
               <p id="enter-username-error" className="form-errors"></p>
@@ -262,42 +262,45 @@ export default class SignUp extends Component {
               <p id="re-enter-password-error" className="form-errors"></p>
 
               {/* <button id="submit-username-password-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button> */}
-              <button id="submit-username-password-button" type="submit">Submit</button>
+              <button id="submit-username-password-button" className="sign-up-button" type="submit">Submit</button>
 
             </form>
 
-            <button style={{display: "none"}} id="continue-button" onClick={() => this.changeToUserInfo()}>Continue</button>
+            <button style={{display: "none"}} id="continue-button" className="sign-up-button" onClick={() => this.changeToUserInfo()}>Continue</button>
           </div>
           : null }
 
           { this.state.display === "user-info" ?
           <div className="user-info-form">
-            <form onSubmit={(event) => this.submitUserInfoHandler(event)}>
+            <form className="sign-up-form" onSubmit={(event) => this.submitUserInfoHandler(event)}>
               <label>First name:</label><br></br>
-              <input id="first-name-input" type="text" onChange={(event) => this.getFirstName(event)} placeholder="first name" required></input><br></br>
+              <input id="first-name-input" type="text" onChange={(event) => this.getFirstName(event)} placeholder="first name" required></input><br/>
+              <p></p>
 
               <label>Last name:</label><br></br>
-              <input id="last-name-input" type="text" onChange={(event) => this.getLastName(event)} placeholder="last name"></input><br></br>
+              <input id="last-name-input" type="text" onChange={(event) => this.getLastName(event)} placeholder="last name"></input><br/>
+              <p></p>
 
               <label>Email:</label><br></br>
-              <input id="email-input" type="email" onChange={(event) => this.getEmail(event)} placeholder="example@example.com" required></input><br></br>
+              <input id="email-input" type="email" onChange={(event) => this.getEmail(event)} placeholder="example@example.com" required></input><br/>
+              <p></p>
 
               {/* <label>Pick your favorite flavor:</label> */}
-              <br></br>
-              <select onChange={(event) => this.getAvatar(event)}>
+              <select className="avatar-select" onChange={(event) => this.getAvatar(event)}>
                 <option value="">Select a flavor:</option>
                 <option value="Vanilla">Vanilla</option>
                 <option value="Strawberry">Strawberry</option>
                 <option value="Chocolate">Chocolate</option>
               </select>
+              <br/><br/>
 
               {/* <button id="submit-personal-info-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button> */}
               {/* <button id="submit-personal-info-button" type="submit" onClick={() => this.renderLoginContinueButton()}>Submit</button> */}
-              <button id="submit-personal-info-button" type="submit">Submit</button>
+              <button id="submit-personal-info-button" className="sign-up-button" type="submit">Submit</button>
 
             </form>
 
-            <button style={{display: "none"}} id="login-continue-button" onClick={() => this.props.changeToLogin()}>Continue to log in page:</button>
+            <button style={{display: "none"}} id="login-continue-button" className="sign-up-button" onClick={() => this.props.changeToLogin()}>Continue to log in page:</button>
 
           </div>
           : null }
