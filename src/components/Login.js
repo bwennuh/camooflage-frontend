@@ -127,7 +127,7 @@ export default class Login extends Component {
           <div className="sign-up-container">
             <span className="sign-up">Don't have an account with us?</span><br></br>
 
-            <button className="sign-up-button" onClick={() => this.changeToSignUp()}>Sign Up!</button>
+            <button className="sign-up-button" onClick={() => this.changeToSignUp()}>Sign Up</button>
           </div>
 
         </div>
