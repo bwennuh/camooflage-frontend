@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import NonDairyOptionCard from './NonDairyOptionCard.js';
 import NonDairyOptionPage from './NonDairyOptionPage.js';
 
-const baseURL = 'http://localhost:3001/'
+// const baseURL = 'http://localhost:3001/'
+const baseURL = 'https://camooflage.herokuapp.com/'
 const boardsURL = baseURL + 'boards'
 const nonDairyOptionsURL = baseURL + 'non_dairy_options'
 const boardPinsURL = baseURL + 'board_pins'

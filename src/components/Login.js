@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Home from './Home.js';
 import SignUp from './SignUp.js';
 
-const baseURL = 'http://localhost:3001/'
+// const baseURL = 'http://localhost:3001/'
+const baseURL = 'https://camooflage.herokuapp.com/'
 const usersURL = baseURL + 'users'
 // const boardsURL = baseURL + 'boards'
 // const recipesURL = baseURL + 'recipes'

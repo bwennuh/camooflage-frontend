@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import BoardCard from './BoardCard.js';
 import BoardPage from './BoardPage.js';
 
-const baseURL = 'http://localhost:3001/'
+// const baseURL = 'http://localhost:3001/'
+const baseURL = 'https://camooflage.herokuapp.com/'
 const boardsURL = baseURL + 'boards'
 const boardPinsURL = baseURL + 'board_pins'
 

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ProfileBoardCardContainer from './ProfileBoardCardContainer';
 import ProfileFavoriteCardContainer from './ProfileFavoriteCardContainer';
 
-const baseURL = 'http://localhost:3001/'
+// const baseURL = 'http://localhost:3001/'
+const baseURL = 'https://camooflage.herokuapp.com/'
 const usersURL = baseURL + 'users'
 
 export default class ProfilePage extends Component {

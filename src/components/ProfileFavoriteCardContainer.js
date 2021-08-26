@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ProfileFavoriteCard from './ProfileFavoriteCard';
 
-const baseURL = 'http://localhost:3001/'
+// const baseURL = 'http://localhost:3001/'
+const baseURL = 'https://camooflage.herokuapp.com/'
 const boardsURL = baseURL + 'boards'
 const boardPinsURL = baseURL + 'board_pins'
 

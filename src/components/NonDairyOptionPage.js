@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-const baseURL = 'http://localhost:3001/'
+// const baseURL = 'http://localhost:3001/'
+const baseURL = 'https://camooflage.herokuapp.com/'
 const nonDairyOptionsURL = baseURL + 'non_dairy_options'
 const categoriesURL = baseURL + 'categories'
 const brandsURL = baseURL + 'brands'
