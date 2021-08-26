@@ -56,7 +56,9 @@ If any of the user's personal information needs to be updated, this can be done 
 
 As the non-dairy option database continues to be filled out, one of the main features to be implemented later on is a Recipe Planning aspect. The intent will be for users to create recipe cards to keep track of their favorite recipes, but also be able to link them to the non-dairy options that they now want to include! Users will be able to upload or manually import recipes, and then edit the reipce as needed for the non-dairy options they want to replace. Additionally, similarly to the Boards, users will be able to "pin" various non-dairy options to the recipe so that they can easily view that info.
 
-## App Demo
+## App Demos
+
+Check out a working demo of the app on Netlify <a href="https://camooflage.netlify.app/">here</a>!
 
 Check out a video demo of the app <a href="https://youtu.be/vk3lmN5yTzw">here</a>!
 
