@@ -120,14 +120,14 @@ export default class Login extends Component {
               {/* <label>Password:</label><br></br> */}
               <input type="password" onChange={(event) => this.getPassword(event)} placeholder="password" autoComplete="on" required></input><br></br><br></br>
               { this.state.showErrors ? <p className="login-errors">Username or password is not correct.</p> : null }
-              <button className="login-button" type="submit">Log In</button><br></br>
+              <button className="base-button pink-to-darkPink-button bottom-margin" type="submit">Log In</button>
             </form>
           </div>
 
           <div className="sign-up-container">
             <span className="sign-up">Don't have an account with us?</span><br></br>
 
-            <button className="sign-up-button" onClick={() => this.changeToSignUp()}>Sign Up</button>
+            <button className="base-button black-to-white-button" onClick={() => this.changeToSignUp()}>Sign Up</button>
           </div>
 
         </div>
