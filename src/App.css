@@ -56,29 +56,31 @@ h4 {
   font-weight: bold;
 }
 
+/** Non Dairy Cards ------------------ */
+
 .non-dairy-cards {
-  column-count: 5;
+  column-count: 4;
   column-gap: 5em;
   padding: 10px;
   margin-left: auto;
   margin-right: 350px;
 }
 
-@media screen and (max-width: 2100px) {
-  .non-dairy-cards {
-    column-count: 4;
-  }
-}
-
-@media screen and (max-width: 1700px) {
+@media screen and (max-width: 2250px) {
   .non-dairy-cards {
     column-count: 3;
   }
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1750px) {
   .non-dairy-cards {
     column-count: 2;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .non-dairy-cards {
+    column-count: 1;
   }
 }
 
@@ -102,8 +104,12 @@ h4 {
   width: 350px;
   text-transform: capitalize;
   font-family: 'Coming Soon', cursive;
-  font-size: 24px;
+  font-size: 20px;
   padding: 2px;
+}
+
+.profile-info {
+  font-size: 24px;
 }
 
 .delete-board-options label {
@@ -291,6 +297,37 @@ h4 {
   flex-flow: row nowrap;
 }
 
+/** Login Page ------------------ */
+
+.login-form-container {
+  width: 382px;  
+  overflow: hidden;  
+  margin: auto;  
+  margin: 20 0 0 450px;  
+  padding: 80px;  
+  background: #23463f;  
+  border-radius: 15px ; 
+}
+
+.login-form input {
+  width: 300px;
+  padding:15px;
+  margin:5px;
+  border-radius:1px;
+  border:1px solid #ccc;
+  font-family: 'Coming Soon', cursive;
+  font-size: 22px;
+}
+
+.login-title, .sign-up {
+  font-family: 'Coming Soon', cursive;
+  font-size: 28px;
+}
+
+.login-title {
+  font-weight: bold;
+}
+
 .login-page {
   text-align: center;
 }
@@ -326,64 +363,106 @@ h4 {
   border-radius: 3px;
 }
 
-.login-button, .sign-up-button {
-  background-color: rgb(233, 147, 197);
-  padding: 10px;
-  width: 150px;
-  color: white;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  border-color: black;
+/** Buttons ------------------ */
+
+/** Base Button **/
+
+.base-button {
+  background-color: white;
+
+  border: solid 2px black;
   border-radius: 25px;
-  font-size: 24px;
-  line-height: 1.2;
-  text-transform: uppercase;
-  transition: all .4s;
-  font-weight: 800;
+
+  padding: 10px;
+  width: 175px;
+
+  color: black;
   font-family: 'Coming Soon', cursive;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 1px;
+
+  transition: all .4s;
 }
 
-.login-button:hover {
-  background-color: #c44392;
-  cursor:pointer;
+.base-button:hover {
+  cursor: pointer;
 }
 
-.sign-up-button:hover {
+/** Specific Button Formatting **/
+
+.bottom-margin-50px {
+  margin-bottom: 50px;
+}
+
+.bottom-margin-20px {
+  margin-bottom: 20px;
+}
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.wide-button {
+  width: 185px;
+}
+
+/** Login Buttons **/
+.login-button {
+  font-size: 24px;
+}
+
+/** Button Colors **/
+
+.black-to-white-button, .white-to-black-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.black-to-white-button:hover {
   background-color: white;
   color: black;
-  cursor:pointer;
 }
 
-.login-form-container {
-  width: 382px;  
-  overflow: hidden;  
-  margin: auto;  
-  margin: 20 0 0 450px;  
-  padding: 80px;  
-  background: #23463f;  
-  border-radius: 15px ; 
+.pink-to-darkPink-button {
+  background-color: rgb(233, 147, 197);
+  color: white;
 }
 
-.login-form input {
-  width: 300px;
-  padding:15px;
-  margin:5px;
-  border-radius:1px;
-  border:1px solid #ccc;
-  font-family: 'Coming Soon', cursive;
-  font-size: 22px;
+.pink-to-darkPink-button:hover {
+  background-color: #c44392;
 }
 
-.login-title, .sign-up {
-  font-family: 'Coming Soon', cursive;
-  font-size: 28px;
+.white-to-darkPink-button {
+  color: rgb(207, 30, 113);
+  border: solid 2px rgb(207, 30, 113);
+  width: 185px;
+  font-size: 16px;
+  line-height: 1.2;
+  margin-top: 20px;
+  font-weight: bolder;
 }
 
-.login-title {
-  font-weight: bold;
+.white-to-darkPink-button:hover {
+  background-color: rgb(207, 30, 113);
+  color: white;
 }
 
-.view-non-dairy-page-button, .add-to-board-button, .view-board-button, .edit-board-button, .add-more-options-button, .delete-board-button, .edit-button, .delete-button, #create-board-button {
+.heart-button {
+  background-color: rgb(207, 30, 113);
+  text-align: center;
+  padding: 10px 15px;
+  color: white;
+  border: solid 2px black;
+  border-radius: 35px;
+  font-size: 24px;
+  transition: all .4s;
+  margin-top: 10px;
+}
+
+.view-board-button, .edit-board-button, .add-more-options-button, .delete-board-button, .edit-button, .delete-button, #create-board-button {
   background-color: rgb(233, 147, 197);
   padding: 10px;
   width: 175px;
@@ -393,7 +472,6 @@ h4 {
   border-radius: 25px;
   font-size: 20px;
   line-height: 1.2;
-  text-transform: uppercase;
   transition: all .4s;
   font-weight: 600;
   font-family: 'Coming Soon', cursive;
@@ -409,7 +487,6 @@ h4 {
   border-radius: 25px;
   font-size: 18px;
   line-height: 1.2;
-  text-transform: uppercase;
   transition: all .4s;
   font-weight: bold;
   font-family: 'Coming Soon', cursive;
@@ -422,14 +499,11 @@ h4 {
   width: 200px;
   color: black;
   text-transform: uppercase;
-  /* margin-bottom: 20px;
-  margin-top: 40px; */
   border: solid 2px black;
   border-radius: 25px;
   font-weight: bold;
   font-size: 20px;
   line-height: 1.2;
-  text-transform: uppercase;
   transition: all .4s;
   font-family: 'Coming Soon', cursive;
 }
@@ -445,7 +519,7 @@ h4 {
   color: white
 }
 
-.view-non-dairy-page-button:hover, .add-to-board-button:hover, .view-board-button:hover, .add-more-options-button:hover, #create-board-button:hover, #save-board-changes-button:hover, .no-button:hover {
+.view-board-button:hover, .add-more-options-button:hover, #create-board-button:hover, #save-board-changes-button:hover, .no-button:hover {
   background-color: #c44392;
   cursor: pointer;
   border-color: black;
@@ -512,7 +586,6 @@ h4 {
   font-weight: bold;
   font-size: 20px;
   line-height: 1.2;
-  text-transform: uppercase;
   transition: all .4s;
   font-family: 'Coming Soon', cursive;
 }
@@ -533,7 +606,7 @@ h4 {
   border: solid 2px black;
 }
 
-.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button, .back-to-all-options-button, .apply-filters-button, .edit-profile-button, .update-profile-button, .back-to-board-button, .sign-up-button {
+.home-button, .my-boards-button, .my-profile-button, .log-out-button, .back-to-boards-button, .move-option-button, .back-to-all-options-button, .apply-filters-button, .edit-profile-button, .update-profile-button, .back-to-board-button {
   background-color: black;
   padding: 10px;
   width: 160px;
@@ -544,7 +617,6 @@ h4 {
   font-weight: bolder;
   font-size: 20px;
   line-height: 1.2;
-  text-transform: uppercase;
   transition: all .4s;
   font-family: 'Coming Soon', cursive;
 }
@@ -557,7 +629,7 @@ h4 {
   margin-top: 20px;
 }
 
-.edit-profile-button, .sign-up-button {
+.edit-profile-button {
   padding: 12px;
   letter-spacing: 1px;
   margin-bottom: 10px;
@@ -582,47 +654,11 @@ h4 {
   margin-bottom: 5px;
 }
 
-.add-favorite-button {
-  background-color: white;
-  padding: 10px;
-  width: 175px;
-  color: rgb(207, 30, 113);
-  text-transform: uppercase;
-  border: solid 2px rgb(207, 30, 113);
-  border-radius: 25px;
-  font-size: 16px;
-  line-height: 1.2;
-  text-transform: uppercase;
-  transition: all .4s;
-  font-family: 'Coming Soon', cursive;
-  font-weight: bolder;
-  margin-top: 10px;
-}
-
-.add-favorite-button:hover {
-  cursor: pointer;
-  background-color: rgb(207, 30, 113);
-  color: white;
-}
-
-.favorite-button {
-  background-color: rgb(207, 30, 113);
-  text-align: center;
-  padding: 10px 15px;
-  color: white;
-  border: solid 2px black;
-  border-radius: 35px;
-  font-size: 24px;
-  transition: all .4s;
-  margin-top: 10px;
-
-}
-
 .back-to-boards-button {
   width: 200px;
 }
 
-.back-to-boards-button:hover, .back-to-all-options-button:hover, .apply-filters-button:hover, .edit-profile-button:hover, .back-to-board-button:hover, .sign-up-button:hover {
+.back-to-boards-button:hover, .back-to-all-options-button:hover, .apply-filters-button:hover, .edit-profile-button:hover, .back-to-board-button:hover {
   background-color: white;
   color: black;
   border: solid 2px black;
@@ -727,7 +763,6 @@ h4 {
 
   font-size: 20px;
   line-height: 1.2;
-  text-transform: uppercase;
   font-weight: 600;
   font-family: 'Coming Soon', cursive;
 

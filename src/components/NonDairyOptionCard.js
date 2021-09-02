@@ -140,7 +140,7 @@ export default class NonDairyOptionCard extends Component {
             <div>
               { this.state.boardPin.hasOwnProperty("favorite") ?
                 <div className="favorite-button-wrapper">
-                { this.state.boardPin.favorite === false ? <button className="add-favorite-button" onClick={() => this.fetchBoardPin(id)}>Add to favorites</button> : <button className="favorite-button">🤍</button> }
+                { this.state.boardPin.favorite === false ? <button className="base-button white-to-darkPink-button" onClick={() => this.fetchBoardPin(id)}>Add to favorites</button> : <button className="heart-button">🤍</button> }
                 </div> : null }
             </div> : null }
           </div> : null }
@@ -170,7 +170,7 @@ export default class NonDairyOptionCard extends Component {
                 <div className="non-dairy-option-board-card-buttons">
 
                   <div className="view-non-dairy-option-page-buttons">  
-                    <button className="view-board-button" onClick={() => this.props.fetchNonDairyOption(id)}>View Page</button>
+                    <button className="base-button pink-to-darkPink-button bottom-margin-20px wide-button" onClick={() => this.props.fetchNonDairyOption(id)}>View Page</button>
                   </div>
 
                   { boards.filter(board => board.id !== this.props.boardID).length === 0 ? null :
@@ -218,8 +218,7 @@ export default class NonDairyOptionCard extends Component {
 
               <div className="view-non-dairy-option-page-buttons"> 
 
-                <button className="view-non-dairy-page-button" onClick={() => this.props.changeToNonDairyOptionPage(id)}>View Page</button><br></br>
-              
+                <button className="base-button pink-to-darkPink-button bottom-margin-20px wide-button" onClick={() => this.props.changeToNonDairyOptionPage(id)}>View Page</button><br></br>
 
               { boards.length > 0 ? 
                 <span>
@@ -229,7 +228,7 @@ export default class NonDairyOptionCard extends Component {
                     <option disabled value="">Select a board:</option>
                       { boards.map(board => <option value={board.name}>Board: {board.name}</option>) }
                     </select><br></br>
-                    <button className="add-to-board-button" onClick={() => this.addOptionToBoard()}>Add to board</button><br></br>
+                    <button className="base-button pink-to-darkPink-button wide-button bottom-margin-20px" onClick={() => this.addOptionToBoard()}>Add to board</button><br/>
                     
                 </span> 
                 : <button onClick={() => this.props.changeToBoardsPage()}>Create new board</button> }

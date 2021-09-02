@@ -253,7 +253,7 @@ export default class NonDairyOptionCardContainer extends Component {
                 <button className="close-filters-button" onClick={() => this.closeFilters()}>Close filters</button>
                 
                 <div className="filter-allergen-checkboxes">
-                <h3>Allergen(s) to avoid:</h3>
+                <h3>Allergen(s) <br/>to avoid:</h3>
                 { this.props.allAllergens.map( allergen => (
                   <div className="filter-checkbox">
                     <label>
