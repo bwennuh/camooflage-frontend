@@ -1,20 +1,5 @@
 .non-dairy-card-container {
   background-image: url('https://i.imgur.com/GYeTo4c.png');
-    /* height: 100%;
-
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; */
-}
-
-@font-face {
-  font-family: 'chalk dash';
-  src: url('https://www.dafont.com/chalk-dash.font?fpp=200')
-}
-
-@font-face {
-  font-family: 'handwriting';
-  src: url('https://www.dafont.com/handwriting-3.font');
 }
 
 .coming-soon-font {
@@ -26,33 +11,28 @@
 }
 
 p {
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-size: 30px;
 }
 
 .big-p-tag {
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-size: 40px;
 }
 
 h1 {
-  /* font-family: 'chalk dash'; */
   font-family: 'Sigmar One', cursive;
   font-size: 80px;
   font-weight: normal;
 }
 
 h2 {
-  /* font-family: 'chalk dash'; */
   font-family: 'Sigmar One', cursive;
   font-size: 50px;
   font-weight: normal;
 }
 
 .no-margin-h2 {
-  /* font-family: 'chalk dash'; */
   font-family: 'Sigmar One', cursive;
   font-size: 50px;
   font-weight: normal;
@@ -63,14 +43,7 @@ h2 {
   font-size: 65px;
 }
 
-/* h3 {
-  font-family: 'chalk dash';
-  font-size: 30px;
-  font-weight: normal;
-} */
-
 h3 {
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-size: 40px;
   font-weight: bold;
@@ -78,7 +51,6 @@ h3 {
 }
 
 h4 {
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-size: 30px;
   font-weight: bold;
@@ -118,22 +90,10 @@ h4 {
   border-radius: 50px;
   padding: 10px;
   margin: 10px;
-  /* box-shadow: 10px 10px black */
 }
-
-/* .non-dairy-card-main {
-  background-color: white;
-  display: inline-block;
-  width: 100%;
-  border: #000000 solid 5px;
-  border-radius: 50px;
-  padding: 10px;
-  margin: 10px;
-} */
 
 .filters {
   margin-left: 50px;
-  /* padding-right: 100px; */
   flex: 0 0 355px;
 }
 
@@ -141,7 +101,6 @@ h4 {
   text-align: left;
   width: 350px;
   text-transform: capitalize;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-size: 24px;
   padding: 2px;
@@ -150,8 +109,6 @@ h4 {
 .delete-board-options label {
   text-align: left;
   width: 350px;
-  /* text-transform: capitalize; */
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-size: 24px;
   padding: 2px;
@@ -171,7 +128,6 @@ h4 {
   text-align: center;
   border: #000000 solid 10px;
   padding: 5px;
-  /* width: 700px; */
   height: auto;
   margin-top: 25px;
   margin-bottom: 100px;
@@ -181,8 +137,6 @@ h4 {
 }
 
 .non-dairy-option-card img {
-  /* width: 100px;
-  height: auto; */
   width: auto;
   height: 200px;
 }
@@ -205,11 +159,6 @@ h4 {
 }
 
 /** Non Dairy Option Page ------------------ */
-
-/* .non-dairy-option-page {
-  display: flex;
-  flex-flow: column nowrap;
-} */
 
 .non-dairy-option-page-main-info {
   display: grid;
@@ -265,15 +214,7 @@ h4 {
   grid-row: 1 / 2;
   padding: 25px;
   margin: 0px 25px 0px 25px;
-  /* display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: center; */
-  /* margin: 0px 50px 10px 50px; */
-  /* padding-bottom: 10px; */
   width: 80%;
-  /* border: #df7ac0 5px solid;
-  border-radius: 25px; */
 }
 
 .recommendations p {
@@ -287,13 +228,9 @@ h4 {
   flex-flow: row wrap;
   justify-content: center;
   align-content: center;
-  /* padding: 20px 50px 20px 50px;
-  margin: 0px 50px; */
   padding: 25px;
   margin: 0px 25px 0px 25px;
   width: 75%;
-  /* border: #df7ac0 5px solid;
-  border-radius: 25px; */
 }
 
 .product-link-span {
@@ -305,17 +242,15 @@ h4 {
   color: #c44392;
 }
 
-/** xxx ------------------ */
+/** Profile Page ------------------ */
 
 .profile-boards-favorites {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-around;
-  /* justify-content: center; */
 }
 
 .profile-boards-displays {
-  /* border: #df7ac0 solid 10px; */
   display: flex;
   flex-wrap: wrap;
   border-radius: 3em;
@@ -332,22 +267,9 @@ h4 {
   height: auto;
   display: inline-grid;
   margin: 25px;
-  /* box-shadow: 10px 10px #df7ac0, -10px -10px #000000; */
   box-shadow: #c44392 10px 10px, rgba(240, 46, 170, 0.4) 10px 10px, rgba(240, 46, 170, 0.3) 20px 20px, rgba(240, 46, 170, 0.2) 30px 30px, rgba(240, 46, 170, 0.1) 40px 40px, rgba(240, 46, 170, 0.05) 50px 50px;
   background-color: white;
 }
-
-/* .profile-favorite-card {
-  text-align: center;
-  border: #000000 solid 5px;
-  padding: 5px;
-  width: 250px;
-  height: auto;
-  display: inline-grid;
-  margin: 25px;
-  box-shadow: 10px 10px #df7ac0, -10px -10px #000000;
-  background-color: white;
-} */
 
 .profile-favorite-card {
   /* display: grid;
@@ -359,27 +281,6 @@ h4 {
   margin-right: auto;
 }
 
-/* .favorite {
-  margin-right: 200px
-} */
-
-/* .profile-favorite-card-info {
-  grid-column: 2 / 3;
-  grid-row: 1 / 2;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: center;
-  padding: 20px 75px;
-} */
-
-/* .heart-container {
-  /* grid-column: 1 / 2;
-  grid-row: 1 / 2; */
-  /* padding: 100px 50px 50px 250px;
-
-}  */
-
 .profile-favorite-card-info img {
   height: 200px;
   width: auto;
@@ -388,8 +289,6 @@ h4 {
 .non-dairy-card-displays {
   display: flex;
   flex-flow: row nowrap;
-  /* justify-content: space-around; */
-  /* justify-content: center; */
 }
 
 .login-page {
@@ -413,7 +312,6 @@ h4 {
   font-size: 50pt;
   font-weight: 750;
   letter-spacing: 0.25em;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
 }
 
@@ -424,7 +322,6 @@ h4 {
   padding-top: 10px;
   margin-left: -8px;
   margin-right: 10px;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   border-radius: 3px;
 }
@@ -439,13 +336,10 @@ h4 {
   border-color: black;
   border-radius: 25px;
   font-size: 24px;
-  /* font-style: bold; */
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
   font-weight: 800;
-  /* font-weight: bold; */
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
 }
 
@@ -476,15 +370,11 @@ h4 {
   margin:5px;
   border-radius:1px;
   border:1px solid #ccc;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-size: 22px;
 }
 
 .login-title, .sign-up {
-  /* text-transform: uppercase; */
-  /* font-family: Verdana, Geneva, Tahoma, sans-serif */
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-size: 28px;
 }
@@ -506,7 +396,6 @@ h4 {
   text-transform: uppercase;
   transition: all .4s;
   font-weight: 600;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
 }
 
@@ -523,7 +412,6 @@ h4 {
   text-transform: uppercase;
   transition: all .4s;
   font-weight: bold;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   margin-bottom: 10px;
 }
@@ -543,7 +431,6 @@ h4 {
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
 }
 
@@ -572,7 +459,6 @@ h4 {
 }
 
 .navbar {
-  /* background-color: #df7ac0; */
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -588,12 +474,9 @@ h4 {
 }
 
 #navbar-logo, .home-button, .my-boards-button {
-  /* float: left;
-  display: block; */
   color: white;
   text-align: center;
   padding: 6px 10px;
-  /* margin-top: 8px; */
   margin-right: 16px;
   text-decoration: none;
 }
@@ -603,10 +486,8 @@ h4 {
 }
 
 .navbar input {
-  /* float: right; */
   width: 300px;
   padding: 6px 10px;
-  /* margin-left: auto; */
   margin-right: 16px;
   background: white;
   font-size: 17px;
@@ -615,7 +496,6 @@ h4 {
   height: 25px;
   text-transform: uppercase;
   font-size: 20px;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-weight: bold;
 }
@@ -627,7 +507,6 @@ h4 {
   color: white;
   text-transform: uppercase;
   margin-bottom: 20px;
-  /* margin-top: 40px; */
   border: solid 2px white;
   border-radius: 25px;
   font-weight: bold;
@@ -635,7 +514,6 @@ h4 {
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
 }
 
@@ -661,8 +539,6 @@ h4 {
   width: 160px;
   color: white;
   text-transform: uppercase;
-  /* margin-bottom: 20px;
-  margin-top: 40px; */
   border: solid 2px white;
   border-radius: 25px;
   font-weight: bolder;
@@ -670,7 +546,6 @@ h4 {
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
 }
 
@@ -691,8 +566,6 @@ h4 {
 
 .update-profile-button {
   width: 200px;
-  /* position: absolute; */
-  /* left: 365px; */
   margin-top: 10px;
   padding: 12px;
   margin-left: -5px;
@@ -721,7 +594,6 @@ h4 {
   line-height: 1.2;
   text-transform: uppercase;
   transition: all .4s;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-weight: bolder;
   margin-top: 10px;
@@ -841,9 +713,7 @@ h4 {
 .edit-avatar-button {
   border-color: black;
   text-transform: uppercase;
-  /* font-family: "Arial Black", sans-serif; */
   text-align: center;
-  /* letter-spacing: 1px; */
   color: black;
   display: flex auto;
 
@@ -859,7 +729,6 @@ h4 {
   line-height: 1.2;
   text-transform: uppercase;
   font-weight: 600;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
 
   cursor: pointer;
@@ -874,23 +743,14 @@ h4 {
   background-image: linear-gradient(to right, #c44392, #F7DAD9, #FFF5DA, #D6D2C4, #5D534A);
 }
 
-/* .icecream-background:hover{
-  transition: 2s;
-  background-image: linear-gradient(to right, #F7DAD9, #FFF5DA, #D6D2C4, #5D534A);
-} */
-
 .edit-profile-form input, .add-new-board-form input, .edit-board-form input, .sign-up-form input  {
   padding: 6px 10px;
-  /* margin-right: 16px; */
   background: white;
   font-size: 17px;
   height: 35px;
   width: 200px;
-  /* text-transform: uppercase; */
   font-size: 20px;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
-  /* font-weight: bold; */
 }
 
 .add-new-board-form input, .edit-board-form input  {
@@ -909,7 +769,6 @@ h4 {
 
 .edit-profile-form label, .sign-up-form label {
   font-size: 22px;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-weight: bold;
   padding: 5px;
@@ -917,7 +776,6 @@ h4 {
 
 .add-new-board-form label, .edit-board-form label {
   font-size: 26px;
-  /* font-family: 'handwriting'; */
   font-family: 'Coming Soon', cursive;
   font-weight: bold;
   padding: 5px;
