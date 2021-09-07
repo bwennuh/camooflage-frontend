@@ -112,7 +112,7 @@ export default class Login extends Component {
             {/* <h2>Login</h2> */}
           </div>
 
-          <div clasName="login-form-container">
+          <div className="login-form-container">
             <form className="login-form" onSubmit={(event) => this.loginFormSubmitHandler(event)}>
               <span className="login-title">SIGN IN</span><br></br>
               {/* <label>Username:</label><br></br> */}
