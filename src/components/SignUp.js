@@ -282,7 +282,7 @@ export default class SignUp extends Component {
               <p></p>
 
               <label>Email:</label><br></br>
-              <input id="email-input" type="email" onChange={(event) => this.getEmail(event)} placeholder="example@example.com" required></input><br/>
+              <input id="email-input" type="email" onChange={(event) => this.getEmail(event)} placeholder="example@example.com"></input><br/>
               <p></p>
 
               {/* <label>Pick your favorite flavor:</label> */}
