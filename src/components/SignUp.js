@@ -264,7 +264,7 @@ export default class SignUp extends Component {
               {/* <button id="submit-username-password-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button> */}
               {/* <button id="submit-username-password-button" className="sign-up-button" type="submit">Submit</button> */}
 
-              <button id="base-button black-to-white-button" className="sign-up-button" type="submit">Submit</button>
+              <button id="submit-username-password-button" className="base-button black-to-white-button" type="submit">Submit</button>
 
             </form>
 
@@ -301,7 +301,7 @@ export default class SignUp extends Component {
               {/* <button id="submit-personal-info-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button> */}
               {/* <button id="submit-personal-info-button" type="submit" onClick={() => this.renderLoginContinueButton()}>Submit</button> */}
               {/* <button id="submit-personal-info-button" className="sign-up-button" type="submit">Submit</button> */}
-              <button id="base-button black-to-white-button" className="sign-up-button" type="submit">Submit</button>
+              <button id="submit-personal-info-button" className="base-button black-to-white-button" type="submit">Submit</button>
 
             </form>
 
