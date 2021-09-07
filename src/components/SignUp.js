@@ -262,11 +262,15 @@ export default class SignUp extends Component {
               <p id="re-enter-password-error" className="form-errors"></p>
 
               {/* <button id="submit-username-password-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button> */}
-              <button id="submit-username-password-button" className="sign-up-button" type="submit">Submit</button>
+              {/* <button id="submit-username-password-button" className="sign-up-button" type="submit">Submit</button> */}
+
+              <button id="base-button black-to-white-button" className="sign-up-button" type="submit">Submit</button>
 
             </form>
 
-            <button style={{display: "none"}} id="continue-button" className="sign-up-button" onClick={() => this.changeToUserInfo()}>Continue</button>
+            {/* <button style={{display: "none"}} id="continue-button" className="sign-up-button" onClick={() => this.changeToUserInfo()}>Continue</button> */}
+
+            <button style={{display: "none"}} id="continue-button" className="base-button black-to-white-button" onClick={() => this.changeToUserInfo()}>Continue</button>
           </div>
           : null }
 
@@ -296,11 +300,14 @@ export default class SignUp extends Component {
 
               {/* <button id="submit-personal-info-button" type="submit" onClick={(event) => this.renderContinueButton(event)}>Submit</button> */}
               {/* <button id="submit-personal-info-button" type="submit" onClick={() => this.renderLoginContinueButton()}>Submit</button> */}
-              <button id="submit-personal-info-button" className="sign-up-button" type="submit">Submit</button>
+              {/* <button id="submit-personal-info-button" className="sign-up-button" type="submit">Submit</button> */}
+              <button id="base-button black-to-white-button" className="sign-up-button" type="submit">Submit</button>
 
             </form>
 
-            <button style={{display: "none"}} id="login-continue-button" className="sign-up-button" onClick={() => this.props.changeToLogin()}>Continue to log in page:</button>
+            {/* <button style={{display: "none"}} id="login-continue-button" className="sign-up-button" onClick={() => this.props.changeToLogin()}>Continue to log in page:</button> */}
+
+            <button style={{display: "none"}} id="login-continue-button" className="base-button black-to-white-button" onClick={() => this.props.changeToLogin()}>Continue to log in page:</button>
 
           </div>
           : null }
